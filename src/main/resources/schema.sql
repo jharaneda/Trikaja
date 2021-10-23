@@ -1,4 +1,4 @@
-CREATE TABLE ticketHardware (
+CREATE TABLE tickets (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
 	creationDate VARCHAR(255),
 	status VARCHAR(255),

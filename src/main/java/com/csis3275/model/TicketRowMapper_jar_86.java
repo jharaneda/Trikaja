@@ -9,20 +9,20 @@ public class TicketRowMapper_jar_86 implements RowMapper<TicketModel_jar_86>{
 
 	@Override
 	public TicketModel_jar_86 mapRow(ResultSet rs, int rowNum) throws SQLException {
-		TicketModel_jar_86 ticketHardware = new TicketModel_jar_86();
+		TicketModel_jar_86 ticket = new TicketModel_jar_86();
 		
-		ticketHardware.setId(rs.getInt("id"));
-		ticketHardware.setCreationDate(rs.getString("creationDate"));
-		ticketHardware.setStatus(rs.getString("status"));
-		ticketHardware.setUserCreator(rs.getString("userCreator"));
-		ticketHardware.setAssigneeUser(rs.getString("assigneeUser"));
-		ticketHardware.setTypeOfTicket(rs.getString("typeOfTicket"));
-		ticketHardware.setPriority(rs.getString("priority"));
-		ticketHardware.setPosition(rs.getString("position"));
-		ticketHardware.setHardwareToBeChanged(rs.getString("hardwareToBeChanged"));
-		ticketHardware.setComments(rs.getString("comments"));
+		ticket.setId(rs.getInt("id"));
+		ticket.setCreationDate(rs.getString("creationDate"));
+		ticket.setStatus(rs.getString("status"));
+		ticket.setUserCreator(rs.getString("userCreator"));
+		ticket.setAssigneeUser(rs.getString("assigneeUser"));
+		ticket.setTypeOfTicket(rs.getString("typeOfTicket"));
+		ticket.setPriority(rs.getString("priority"));
+		ticket.setPosition(rs.getString("position"));
+		ticket.setHardwareToBeChanged(rs.getString("hardwareToBeChanged"));
+		ticket.setComments(rs.getString("comments"));
 		
-		return ticketHardware;
+		return ticket;
 	}
 
 }
