@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class TicketHardwareDAOImpl {
 	
 	private final String GET_TICKET_HARDWARE = "SELECT * FROM ticketHardware";
 	
+	@Autowired
 	public TicketHardwareDAOImpl(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
