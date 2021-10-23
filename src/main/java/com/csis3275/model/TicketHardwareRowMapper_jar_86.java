@@ -16,8 +16,8 @@ public class TicketHardwareRowMapper_jar_86 implements RowMapper<TicketHardwareM
 		ticketHardware.setStatus(rs.getString("status"));
 		ticketHardware.setUserCreator(rs.getString("userCreator"));
 		ticketHardware.setAssigneeUser(rs.getString("assigneeUser"));
-		ticketHardware.setType(rs.getString("type"));
-		ticketHardware.setPriority(rs.getString("prority"));
+		ticketHardware.setTypeOfTicket(rs.getString("typeOfTicket"));
+		ticketHardware.setPriority(rs.getString("priority"));
 		ticketHardware.setPosition(rs.getString("position"));
 		ticketHardware.setHardwareToBeChanged(rs.getString("hardwareToBeChanged"));
 		ticketHardware.setComments(rs.getString("comments"));

@@ -7,7 +7,7 @@ public class TicketHardwareModel_jar_86 {
 	private String status;
 	private String userCreator;
 	private String assigneeUser;
-	private String type;
+	private String typeOfTicket;
 	private String priority;
 	private String position;
 	private String hardwareToBeChanged;
@@ -43,11 +43,11 @@ public class TicketHardwareModel_jar_86 {
 	public void setAssigneeUser(String assigneeUser) {
 		this.assigneeUser = assigneeUser;
 	}
-	public String getType() {
-		return type;
+	public String getTypeOfTicket() {
+		return typeOfTicket;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setTypeOfTicket(String type) {
+		this.typeOfTicket = type;
 	}
 	public String getPriority() {
 		return priority;
