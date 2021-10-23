@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.csis3275.model.TicketHardwareModel_jar_86;
+import com.csis3275.model.TicketHardwareRowMapper_jar_86;
 
 @Service
 public class TicketHardwareDAOImpl {
@@ -22,7 +23,7 @@ public class TicketHardwareDAOImpl {
 	public ArrayList<TicketHardwareModel_jar_86> getAllTickets(){
 		ArrayList<TicketHardwareModel_jar_86> allTickets = new ArrayList<TicketHardwareModel_jar_86>();
 		
-		allTickets = jdbcTemplate.query(GET_TICKET_HARDWARE, new TicketHardwareRowMapper_jar_86());
+		allTickets = (ArrayList<TicketHardwareModel_jar_86>) jdbcTemplate.query(GET_TICKET_HARDWARE, new TicketHardwareRowMapper_jar_86());
 		
 		return allTickets;
 	}
