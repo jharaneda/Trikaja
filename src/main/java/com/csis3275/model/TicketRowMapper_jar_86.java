@@ -20,7 +20,7 @@ public class TicketRowMapper_jar_86 implements RowMapper<TicketModel_jar_86>{
 		ticket.setPriority(rs.getString("priority"));
 		ticket.setPosition(rs.getString("position"));
 		ticket.setHardwareToBeChanged(rs.getString("hardwareToBeChanged"));
-		ticket.setComments(rs.getString("comments"));
+		ticket.setCommentsID(rs.getString("commentsID"));
 		
 		return ticket;
 	}

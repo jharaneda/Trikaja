@@ -16,32 +16,18 @@
 </head>
 <body>
 	<div class='container'>
-		<h1>Create Ticket</h1>
-		<form:form action="${pageContext.request.contextPath}/tickets/create" method="POST" cssClass="form-horizontal" modelAttribute="ticket">
+		
+		<form:form action="${pageContext.request.contextPath}/tickets/create" method="POST" cssClass="form-horizontal" modelAttribute="ticketViewed">
+		<h1>Seen Ticket N# ${ticketViewed.id}</h1>
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">Type</span> 
-				<form:select path="typeOfTicket" class="form-select">
-					<form:option value="Software">Software</form:option>
-					<form:option value="Hardware">Hardware</form:option>
-				</form:select>
+				<form:input type="text" path="typeOfTicket" class="form-select" readonly="true"/>
 				<span class="input-group-text" id="basic-addon1">Priority</span> 
-				<form:select path="priority" class="form-select">
-					<form:option value="Low">Low</form:option>
-					<form:option value="Normal">Normal</form:option>
-					<form:option value="High">High</form:option>
-				</form:select>
+				<form:input type="text" path="priority" class="form-select" readonly="true"/>
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">Hardware to be changed</span> 
-				<form:select path="hardwareToBeChanged" class="form-select">
-					<form:option value="N/A">NA</form:option>
-					<form:option value="Keyboard">Keyboard</form:option>
-					<form:option value="Mouse">Mouse</form:option>
-					<form:option value="HeadSet">HeadSet</form:option>
-					<form:option value="Screen">Screen</form:option>
-					<form:option value="Tower">Tower</form:option>
-					<form:option value="Webcam">Webcam</form:option>
-				</form:select>
+				<form:input type="text" path="hardwareToBeChanged" class="form-select" readonly="true"/>
 				<span class="input-group-text" id="basic-addon1">Position number</span>
 				<form:input path="position" type="text"/>
 			</div>

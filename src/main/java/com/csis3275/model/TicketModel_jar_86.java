@@ -11,7 +11,7 @@ public class TicketModel_jar_86 {
 	private String priority;
 	private String position;
 	private String hardwareToBeChanged;
-	private String comments;
+	private String commentsID;
 	
 	public int getId() {
 		return id;
@@ -67,11 +67,11 @@ public class TicketModel_jar_86 {
 	public void setHardwareToBeChanged(String hardwareToBeChanged) {
 		this.hardwareToBeChanged = hardwareToBeChanged;
 	}
-	public String getComments() {
-		return comments;
+	public String getCommentsID() {
+		return commentsID;
 	}
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setCommentsID(String comments) {
+		this.commentsID = comments;
 	}
 	
 }

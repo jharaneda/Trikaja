@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -51,7 +52,7 @@ public class TicketController_jar_86 {
 		newTicket.setPriority(createTicket.getPriority());
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
-		newTicket.setComments(createTicket.getComments());
+		newTicket.setCommentsID(createTicket.getCommentsID());
 		ticketDAOImpl.createTicket(newTicket);
 		
 		return "redirect:/tickets/all";
@@ -62,8 +63,10 @@ public class TicketController_jar_86 {
 		return "createTicketUser-jar-86";
 	}
 	
-	@GetMapping("/tickets/viewbyone")
-	public String showTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
-		return "createTicketUser-jar-86";
+	@GetMapping("/tickets/viewbyone/{id}")
+	public String showOneTicketForm(@PathVariable("id") int id, Model model, HttpSession session) {
+		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
+		model.addAttribute("ticketViewed", ticket);
+		return "viewTicketUser-jar-86";
 	}
 }

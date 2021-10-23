@@ -1,3 +1,5 @@
+DROP TABLE tickets IF EXISTS;
+
 CREATE TABLE tickets (
 	id INTEGER PRIMARY KEY AUTO_INCREMENT,
 	creationDate VARCHAR(255),
@@ -8,5 +10,14 @@ CREATE TABLE tickets (
 	priority VARCHAR(255),
 	position VARCHAR(255),
 	hardwareToBeChanged VARCHAR(255),
-	comments TEXT
+	commentsID TEXT
+);
+
+CREATE TABLE comments (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	ticketID INTEGER,
+	creationDate VARCHAR(255),
+	creator VARCHAR(30),
+	commentType VARCHAR(30),
+	comment TEXT
 );
