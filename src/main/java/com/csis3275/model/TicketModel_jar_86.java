@@ -1,6 +1,6 @@
 package com.csis3275.model;
 
-public class TicketHardwareModel_jar_86 {
+public class TicketModel_jar_86 {
 	
 	private int id;
 	private String creationDate;

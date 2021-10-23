@@ -5,11 +5,11 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class TicketHardwareRowMapper_jar_86 implements RowMapper<TicketHardwareModel_jar_86>{
+public class TicketRowMapper_jar_86 implements RowMapper<TicketModel_jar_86>{
 
 	@Override
-	public TicketHardwareModel_jar_86 mapRow(ResultSet rs, int rowNum) throws SQLException {
-		TicketHardwareModel_jar_86 ticketHardware = new TicketHardwareModel_jar_86();
+	public TicketModel_jar_86 mapRow(ResultSet rs, int rowNum) throws SQLException {
+		TicketModel_jar_86 ticketHardware = new TicketModel_jar_86();
 		
 		ticketHardware.setId(rs.getInt("id"));
 		ticketHardware.setCreationDate(rs.getString("creationDate"));
