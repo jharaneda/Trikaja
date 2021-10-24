@@ -94,6 +94,7 @@ public class TicketController_jar_86 {
 	//**** MANAGER USER ****
 	@PostMapping("/manager/tickets/create")
 	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
+
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -110,6 +111,12 @@ public class TicketController_jar_86 {
 		newTicket.setCommentsID(createTicket.getCommentsID());
 		ticketDAOImpl.createTicket(newTicket);
 		
+		return "redirect:/manager/tickets/all";
+	}
+	
+	@GetMapping("/manager/tickets/delete/{id}")
+	public String deleteStudent(@PathVariable("id") int id) {
+		ticketDAOImpl.deleteTicket(id);
 		return "redirect:/manager/tickets/all";
 	}
 }

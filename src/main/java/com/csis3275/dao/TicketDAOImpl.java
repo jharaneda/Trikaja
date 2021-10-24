@@ -19,6 +19,7 @@ public class TicketDAOImpl {
 	private final String SQL_CREATE_TICKET = "insert into tickets (creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged, commentsID) values "
 			+ "(?,?,?,?,?,?,?,?,?)";
 	private final String SQL_GET_ONE_TICKET = "SELECT * FROM tickets where id = ?";
+	private final String SQL_DELETE_ONE_TICKET = "DELETE FROM tickets WHERE ID = ?";
 	
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -40,5 +41,9 @@ public class TicketDAOImpl {
 	@SuppressWarnings("deprecation")
 	public TicketModel_jar_86 getTicketById(int id) {
 		return jdbcTemplate.queryForObject(SQL_GET_ONE_TICKET, new Object[] { id }, new TicketRowMapper_jar_86());
+	}
+	
+	public boolean deleteTicket(int id) {
+		return jdbcTemplate.update(SQL_DELETE_ONE_TICKET, id) > 0;
 	}
 }
