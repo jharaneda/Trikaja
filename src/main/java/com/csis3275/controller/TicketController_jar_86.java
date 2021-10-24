@@ -28,6 +28,7 @@ public class TicketController_jar_86 {
 		return new TicketModel_jar_86();
 	}
 	
+	//**** END USER ****
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
@@ -37,6 +38,8 @@ public class TicketController_jar_86 {
 		return "allTickets-jar-86";
 	}
 	
+	//**** END USER ****
+	//path that create a new ticket
 	@PostMapping("/tickets/create")
 	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
@@ -58,15 +61,53 @@ public class TicketController_jar_86 {
 		return "redirect:/tickets/all";
 	}
 	
+	//**** END USER ****
+	//path to create ticket form
 	@GetMapping("/tickets/create")
 	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
 		return "createTicketUser-jar-86";
 	}
 	
+	//**** END USER ****
 	@GetMapping("/tickets/viewbyone/{id}")
 	public String showOneTicketForm(@PathVariable("id") int id, Model model, HttpSession session) {
 		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
 		model.addAttribute("ticketViewed", ticket);
 		return "viewTicketUser-jar-86";
+	}
+	
+	//**** MANAGER USER ****
+	@RequestMapping("/manager/tickets/all")
+	public String showAllTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
+		ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllTickets();
+		model.addAttribute("allTicketsManager", allTicketsManager);
+		
+		return "allTicketsManager-jar-86";
+	}
+	
+	@GetMapping("/manager/tickets/create")
+	public String showCreateTicketFormManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
+		return "createTicketManager-jar-86";
+	}
+	
+	@PostMapping("/manager/tickets/create")
+	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
+		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		
+		newTicket.setCreationDate(formatter.format(date));
+		newTicket.setStatus("Open");
+		newTicket.setUserCreator("jharanedac");
+		newTicket.setAssigneeUser("Blank");
+		newTicket.setTypeOfTicket(createTicket.getTypeOfTicket());
+		newTicket.setPriority(createTicket.getPriority());
+		newTicket.setPosition(createTicket.getPosition());
+		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
+		newTicket.setCommentsID(createTicket.getCommentsID());
+		ticketDAOImpl.createTicket(newTicket);
+		
+		return "redirect:/manager/tickets/all";
 	}
 }
