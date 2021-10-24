@@ -45,12 +45,14 @@
 				<span class="input-group-text" id="basic-addon1">Position number</span>
 				<form:input path="position" type="text"/>
 			</div>
+			<form:form method="POST" cssClass="form-horizontal" modelAttribute="comment">
 			<label for="basic-url" class="form-label">Comments</label>
 			<div class="input-group mb-3 form-floating">
-				<form:textarea path="commentsID" class="form-control" id="floatingTextarea" style="height: 120px"/>
+				<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px"/>
 				<label for="floatingTextarea">Write about your issue</label>
 			</div>
 			<form:button type="submit" class="btn btn-success">Create ticket</form:button>
+			</form:form>
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"	crossorigin="anonymous"></script>
 		</form:form>
 	</div>

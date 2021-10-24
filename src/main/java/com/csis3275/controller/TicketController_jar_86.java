@@ -43,20 +43,23 @@ public class TicketController_jar_86 {
 
 	// **** END USER display create ticket form ****
 	@GetMapping("/tickets/create")
-	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
+	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model,
 			HttpSession session) {
 		return "createTicketUser-jar-86";
 	}
 
 	// **** END USER get the ticket info and create a new ticket****
 	@PostMapping("/tickets/create")
-	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
+	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model,
 			HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
-
+		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		
+		//Get date and give it a format
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-
+		
+		//set each attribute for ticket
 		newTicket.setCreationDate(formatter.format(date));
 		newTicket.setStatus("Open");
 		newTicket.setUserCreator("jharanedac");
@@ -65,8 +68,17 @@ public class TicketController_jar_86 {
 		newTicket.setPriority(createTicket.getPriority());
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
-		newTicket.setCommentsID(createTicket.getCommentsID());
+//		newTicket.setCommentsID(createTicket.getCommentsID());
+		//create new ticket into the DB
 		ticketDAOImpl.createTicket(newTicket);
+		
+		//set each attribute for comments
+//		newComment.setTicketID(0);
+		newComment.setCreationDate(formatter.format(date));
+		newComment.setCreator("jharanedac");
+		newComment.setCommentType("public");
+		newComment.setComment(null);
+		
 
 		return "redirect:/tickets/all";
 	}
@@ -147,7 +159,7 @@ public class TicketController_jar_86 {
 		newTicket.setPriority(createTicket.getPriority());
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
-		newTicket.setCommentsID(createTicket.getCommentsID());
+//		newTicket.setCommentsID(createTicket.getCommentsID());
 		ticketDAOImpl.createTicket(newTicket);
 
 		return "redirect:/manager/tickets/all";

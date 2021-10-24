@@ -38,8 +38,7 @@ public class TicketDAOImpl {
 	public boolean createTicket(TicketModel_jar_86 createTicket) {
 		return jdbcTemplate.update(SQL_CREATE_TICKET, createTicket.getCreationDate(), createTicket.getStatus(),
 				createTicket.getUserCreator(), createTicket.getAssigneeUser(), createTicket.getTypeOfTicket(),
-				createTicket.getPriority(), createTicket.getPosition(), createTicket.getHardwareToBeChanged(),
-				createTicket.getCommentsID()) > 0;
+				createTicket.getPriority(), createTicket.getPosition(), createTicket.getHardwareToBeChanged()) > 0;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -52,9 +51,14 @@ public class TicketDAOImpl {
 	}
 
 	public boolean updateTicket(TicketModel_jar_86 updatedTicket) {
+		//ANTES DE QUITAR COMMENT
+		//		return jdbcTemplate.update(SQL_UPDATE_TICKET, updatedTicket.getStatus(), updatedTicket.getUserCreator(),
+//				updatedTicket.getAssigneeUser(), updatedTicket.getTypeOfTicket(), updatedTicket.getPriority(),
+//				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getCommentsID(), updatedTicket.getId()) > 0;
+		
 		return jdbcTemplate.update(SQL_UPDATE_TICKET, updatedTicket.getStatus(), updatedTicket.getUserCreator(),
 				updatedTicket.getAssigneeUser(), updatedTicket.getTypeOfTicket(), updatedTicket.getPriority(),
-				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getCommentsID(), updatedTicket.getId()) > 0;
+				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getId()) > 0;
 	}
 	
 }
