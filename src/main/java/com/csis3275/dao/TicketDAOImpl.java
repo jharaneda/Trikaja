@@ -56,4 +56,5 @@ public class TicketDAOImpl {
 				updatedTicket.getAssigneeUser(), updatedTicket.getTypeOfTicket(), updatedTicket.getPriority(),
 				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getCommentsID(), updatedTicket.getId()) > 0;
 	}
+	
 }

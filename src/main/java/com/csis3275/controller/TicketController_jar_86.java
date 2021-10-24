@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.csis3275.dao.CommentDAOImpl;
 import com.csis3275.dao.TicketDAOImpl;
+import com.csis3275.model.CommentsModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 
 @Controller
@@ -23,24 +25,30 @@ public class TicketController_jar_86 {
 
 	@Autowired
 	TicketDAOImpl ticketDAOImpl;
+	@Autowired
+	CommentDAOImpl commentDAOImpl;
 
 	public TicketModel_jar_86 setupAddForm() {
 		return new TicketModel_jar_86();
 	}
 
-	// **** END USER ****
+	// **** END USER show all tickets****
 	@RequestMapping("/tickets/all")
-	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model,
-			HttpSession session) {
+	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
 		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
-
 		model.addAttribute("allTickets", allTickets);
 
 		return "allTickets-jar-86";
 	}
 
-	// **** END USER ****
-	// path that create a new ticket
+	// **** END USER display create ticket form ****
+	@GetMapping("/tickets/create")
+	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
+			HttpSession session) {
+		return "createTicketUser-jar-86";
+	}
+
+	// **** END USER get the ticket info and create a new ticket****
 	@PostMapping("/tickets/create")
 	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
 			HttpSession session) {
@@ -63,40 +71,65 @@ public class TicketController_jar_86 {
 		return "redirect:/tickets/all";
 	}
 
-	// **** END USER ****
-	// path to create ticket form
-	@GetMapping("/tickets/create")
-	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
-			HttpSession session) {
-		return "createTicketUser-jar-86";
-	}
-
-	// **** END USER ****
+	// **** END USER display view one ticket****
 	@GetMapping("/tickets/viewbyone/{id}")
 	public String showOneTicketForm(@PathVariable("id") int id, Model model, HttpSession session) {
 		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
 		model.addAttribute("ticketViewed", ticket);
+		
+		
+		ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
+		ArrayList<CommentsModel_jar_86> allCommentsByID = new ArrayList<CommentsModel_jar_86>();
+		
+		for(CommentsModel_jar_86 comment : allComments) {
+	        if(comment.getTicketID() == id) {
+	            allCommentsByID.add(comment);
+	        }
+	    }
+		
+		model.addAttribute("commentViewed", allCommentsByID);
+		
 		return "viewTicketUser-jar-86";
 	}
 
-	// **** MANAGER USER ****
+	// **** MANAGER USER show all tickets****
 	@RequestMapping("/manager/tickets/all")
 	public String showAllTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model,
 			HttpSession session) {
 		ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllTickets();
 		model.addAttribute("allTicketsManager", allTicketsManager);
-
+		
 		return "allTicketsManager-jar-86";
 	}
 
-	// **** MANAGER USER ****
+	// **** MANAGER USER display view for one ticket****
+	@GetMapping("/manager/tickets/viewbyone/{id}")
+	public String showOneTicketManagerForm(@PathVariable("id") int id, Model model, HttpSession session) {
+		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
+		model.addAttribute("ticketViewed", ticket);
+		
+		ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
+		ArrayList<CommentsModel_jar_86> allCommentsByID = new ArrayList<CommentsModel_jar_86>();
+		
+		for(CommentsModel_jar_86 comment : allComments) {
+	        if(comment.getTicketID() == id) {
+	            allCommentsByID.add(comment);
+	        }
+	    }
+		
+		model.addAttribute("commentViewed", allCommentsByID);
+
+		return "viewTicketManager-jar-86";
+	}
+
+	// **** MANAGER USER display create ticket form****
 	@GetMapping("/manager/tickets/create")
 	public String showCreateTicketFormManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
 			HttpSession session) {
 		return "createTicketManager-jar-86";
 	}
 
-	// **** MANAGER USER ****
+	// **** MANAGER USER get the ticket info and create a new ticket****
 	@PostMapping("/manager/tickets/create")
 	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
 			HttpSession session) {
@@ -120,22 +153,14 @@ public class TicketController_jar_86 {
 		return "redirect:/manager/tickets/all";
 	}
 
-	// **** MANAGER USER ****
+	// **** MANAGER USER delete ticket by id****
 	@GetMapping("/manager/tickets/delete/{id}")
 	public String deleteStudent(@PathVariable("id") int id) {
 		ticketDAOImpl.deleteTicket(id);
 		return "redirect:/manager/tickets/all";
 	}
 
-	// **** MANAGER USER ****
-	@GetMapping("/manager/tickets/viewbyone/{id}")
-	public String showOneTicketManagerForm(@PathVariable("id") int id, Model model, HttpSession session) {
-		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
-		model.addAttribute("ticketViewed", ticket);
-		return "viewTicketManager-jar-86";
-	}
-	
-	// **** MANAGER USER ****
+	// **** MANAGER USER get the new ticket info and update it****
 	@PostMapping("/manager/tickets/update")
 	public String editTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model) {
 		ticketDAOImpl.updateTicket(ticket);

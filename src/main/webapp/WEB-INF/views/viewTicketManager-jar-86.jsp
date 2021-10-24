@@ -92,13 +92,20 @@
 					</table>
 				</div>
 				<div class="col">
-					<table class="table table-striped table-hover" id="ticketList"
-						data-striped="true" data-sort-name="creation_date"
-						data-search="true">
+					<table class="table" id="ticketList">
 						<tbody>
+							<c:forEach var='c' items="${commentViewed}">
+								<tr>
+									<td><b>${c.creator}</b></td>
+									<td><span style="font-size: 70%">${c.creationDate}</span></td>
+								</tr>
+								<tr>
+									<td>${c.comment}</td>
+								</tr>
+							</c:forEach>
 							<tr>
 								<td class="input-group mb-3 form-floating">
-									<form:textarea path="commentsID" class="form-control" id="floatingTextarea" style="height: 120px" readonly="true" /> 
+									<form:textarea path="commentsID" class="form-control" id="floatingTextarea" style="height: 120px"/> 
 									<label	for="floatingTextarea">Write about your issue</label>
 								</td>
 							</tr>

@@ -25,7 +25,7 @@
 </head>
 <body>
 	<div class='container'>
-		<h1>Ticket List</h1>
+		<h1>Ticket List ${allComments}</h1>
 		<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
 			<thead>
 				<tr>
