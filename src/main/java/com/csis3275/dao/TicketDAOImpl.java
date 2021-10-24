@@ -1,11 +1,14 @@
 package com.csis3275.dao;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
 
 import com.csis3275.model.TicketModel_jar_86;
@@ -16,11 +19,12 @@ public class TicketDAOImpl {
 	JdbcTemplate jdbcTemplate;
 
 	private final String SQL_GET_TICKETS = "SELECT * FROM tickets";
-	private final String SQL_CREATE_TICKET = "insert into tickets (creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged, commentsID) values "
-			+ "(?,?,?,?,?,?,?,?,?)";
+	private final String SQL_CREATE_TICKET = "insert into tickets (creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values "
+			+ "(?,?,?,?,?,?,?,?)";
 	private final String SQL_GET_ONE_TICKET = "SELECT * FROM tickets where id = ?";
 	private final String SQL_DELETE_ONE_TICKET = "DELETE FROM tickets WHERE ID = ?";
-	private final String SQL_UPDATE_TICKET = "UPDATE tickets SET status = ?, userCreator = ?, assigneeUser = ?, typeOfTicket = ?, priority = ?, position = ?, hardwareToBeChanged = ?, commentsID = ? WHERE id = ?";
+	private final String SQL_UPDATE_TICKET = "UPDATE tickets SET status = ?, userCreator = ?, assigneeUser = ?, typeOfTicket = ?, priority = ?, position = ?, hardwareToBeChanged = ? WHERE id = ?";
+	private final String SQL_UPDATE_TICKET_USER = "UPDATE tickets SET position = ? WHERE id = ?";
 
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -40,25 +44,42 @@ public class TicketDAOImpl {
 				createTicket.getUserCreator(), createTicket.getAssigneeUser(), createTicket.getTypeOfTicket(),
 				createTicket.getPriority(), createTicket.getPosition(), createTicket.getHardwareToBeChanged()) > 0;
 	}
+	
+	public Long save(TicketModel_jar_86 createTicket) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		
+		jdbcTemplate.update(connection -> {
+			PreparedStatement ps = connection.prepareStatement(SQL_CREATE_TICKET, new String[] {"id"});
+			ps.setString(1, createTicket.getCreationDate());
+			ps.setString(2, createTicket.getStatus());
+			ps.setString(3, createTicket.getUserCreator());
+			ps.setString(4, createTicket.getAssigneeUser());
+			ps.setString(5, createTicket.getTypeOfTicket());
+			ps.setString(6, createTicket.getPriority());
+			ps.setString(7, createTicket.getPosition());
+			ps.setString(8, createTicket.getHardwareToBeChanged());
+			return ps;
+		}, keyHolder);
+		return keyHolder.getKey().longValue();
+	}
 
 	@SuppressWarnings("deprecation")
-	public TicketModel_jar_86 getTicketById(int id) {
+	public TicketModel_jar_86 getTicketById(Long id) {
 		return jdbcTemplate.queryForObject(SQL_GET_ONE_TICKET, new Object[] { id }, new TicketRowMapper_jar_86());
 	}
 
-	public boolean deleteTicket(int id) {
+	public boolean deleteTicket(Long id) {
 		return jdbcTemplate.update(SQL_DELETE_ONE_TICKET, id) > 0;
 	}
 
 	public boolean updateTicket(TicketModel_jar_86 updatedTicket) {
-		//ANTES DE QUITAR COMMENT
-		//		return jdbcTemplate.update(SQL_UPDATE_TICKET, updatedTicket.getStatus(), updatedTicket.getUserCreator(),
-//				updatedTicket.getAssigneeUser(), updatedTicket.getTypeOfTicket(), updatedTicket.getPriority(),
-//				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getCommentsID(), updatedTicket.getId()) > 0;
-		
 		return jdbcTemplate.update(SQL_UPDATE_TICKET, updatedTicket.getStatus(), updatedTicket.getUserCreator(),
 				updatedTicket.getAssigneeUser(), updatedTicket.getTypeOfTicket(), updatedTicket.getPriority(),
 				updatedTicket.getPosition(), updatedTicket.getHardwareToBeChanged(), updatedTicket.getId()) > 0;
+	}
+	
+	public boolean updateTicketUserView(TicketModel_jar_86 updatedTicket) {
+		return jdbcTemplate.update(SQL_UPDATE_TICKET_USER, updatedTicket.getPosition(), updatedTicket.getId()) > 0;
 	}
 	
 }

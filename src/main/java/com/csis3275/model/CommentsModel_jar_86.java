@@ -2,7 +2,7 @@ package com.csis3275.model;
 
 public class CommentsModel_jar_86 {
 	private int id;
-	private int ticketID;
+	private Long ticketID;
 	private String creationDate;
 	private String creator;
 	private String commentType;
@@ -14,10 +14,10 @@ public class CommentsModel_jar_86 {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getTicketID() {
+	public Long getTicketID() {
 		return ticketID;
 	}
-	public void setTicketID(int ticketID) {
+	public void setTicketID(Long ticketID) {
 		this.ticketID = ticketID;
 	}
 	public String getCreationDate() {

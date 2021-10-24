@@ -34,7 +34,8 @@ public class TicketController_jar_86 {
 
 	// **** END USER show all tickets****
 	@RequestMapping("/tickets/all")
-	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
+	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket,
+			@ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
 		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
 		model.addAttribute("allTickets", allTickets);
 
@@ -43,23 +44,23 @@ public class TicketController_jar_86 {
 
 	// **** END USER display create ticket form ****
 	@GetMapping("/tickets/create")
-	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model,
-			HttpSession session) {
+	public String showCreateTicketForm(@ModelAttribute("ticket") TicketModel_jar_86 createTicket,
+			@ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model, HttpSession session) {
 		return "createTicketUser-jar-86";
 	}
 
 	// **** END USER get the ticket info and create a new ticket****
 	@PostMapping("/tickets/create")
-	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model,
-			HttpSession session) {
+	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket,
+			@ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
 		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
-		
-		//Get date and give it a format
+
+		// Get date and give it a format
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		
-		//set each attribute for ticket
+
+		// set each attribute for ticket
 		newTicket.setCreationDate(formatter.format(date));
 		newTicket.setStatus("Open");
 		newTicket.setUserCreator("jharanedac");
@@ -68,40 +69,63 @@ public class TicketController_jar_86 {
 		newTicket.setPriority(createTicket.getPriority());
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
-//		newTicket.setCommentsID(createTicket.getCommentsID());
-		//create new ticket into the DB
-		ticketDAOImpl.createTicket(newTicket);
-		
-		//set each attribute for comments
-//		newComment.setTicketID(0);
+		// create new ticket into the DB and get the ticket ID
+		Long ticketId = ticketDAOImpl.save(newTicket);
+
+		// set each attribute for comments
+		newComment.setTicketID(ticketId);
 		newComment.setCreationDate(formatter.format(date));
 		newComment.setCreator("jharanedac");
 		newComment.setCommentType("public");
-		newComment.setComment(null);
+		newComment.setComment(createComment.getComment());
 		
+		commentDAOImpl.createComment(newComment);
 
 		return "redirect:/tickets/all";
 	}
 
 	// **** END USER display view one ticket****
 	@GetMapping("/tickets/viewbyone/{id}")
-	public String showOneTicketForm(@PathVariable("id") int id, Model model, HttpSession session) {
+	public String showOneTicketForm(@PathVariable("id") Long id,  @ModelAttribute("comment") CommentsModel_jar_86 newComment, Model model, HttpSession session) {
 		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
 		model.addAttribute("ticketViewed", ticket);
-		
-		
+
 		ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
 		ArrayList<CommentsModel_jar_86> allCommentsByID = new ArrayList<CommentsModel_jar_86>();
-		
-		for(CommentsModel_jar_86 comment : allComments) {
-	        if(comment.getTicketID() == id) {
-	            allCommentsByID.add(comment);
-	        }
-	    }
-		
+
+		for (CommentsModel_jar_86 comment : allComments) {
+			if (comment.getTicketID() == id) {
+				allCommentsByID.add(comment);
+			}
+		}
+
 		model.addAttribute("commentViewed", allCommentsByID);
-		
+		model.addAttribute("comment", newComment);
+
 		return "viewTicketUser-jar-86";
+	}
+	
+	// **** END USER get the new ticket info and update it****
+	@PostMapping("/tickets/update")
+	public String editTicketUser(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comment") CommentsModel_jar_86 comments, Model model) {
+		
+		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+
+		// Get date and give it a format
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		
+		// set each attribute for comments
+		newComment.setTicketID(ticket.getId());
+		newComment.setCreationDate(formatter.format(date));
+		newComment.setCreator("jharanedac");
+		newComment.setCommentType("public");
+		newComment.setComment(comments.getComment());
+				
+		commentDAOImpl.createComment(newComment);
+		ticketDAOImpl.updateTicketUserView(ticket);
+		
+		return "redirect:/tickets/all";
 	}
 
 	// **** MANAGER USER show all tickets****
@@ -110,26 +134,27 @@ public class TicketController_jar_86 {
 			HttpSession session) {
 		ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllTickets();
 		model.addAttribute("allTicketsManager", allTicketsManager);
-		
+
 		return "allTicketsManager-jar-86";
 	}
 
 	// **** MANAGER USER display view for one ticket****
 	@GetMapping("/manager/tickets/viewbyone/{id}")
-	public String showOneTicketManagerForm(@PathVariable("id") int id, Model model, HttpSession session) {
+	public String showOneTicketManagerForm(@PathVariable("id") Long id, @ModelAttribute("comment") CommentsModel_jar_86 newComment, Model model, HttpSession session) {
 		TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
 		model.addAttribute("ticketViewed", ticket);
-		
+
 		ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
 		ArrayList<CommentsModel_jar_86> allCommentsByID = new ArrayList<CommentsModel_jar_86>();
-		
-		for(CommentsModel_jar_86 comment : allComments) {
-	        if(comment.getTicketID() == id) {
-	            allCommentsByID.add(comment);
-	        }
-	    }
-		
+
+		for (CommentsModel_jar_86 comment : allComments) {
+			if (comment.getTicketID() == id) {
+				allCommentsByID.add(comment);
+			}
+		}
+
 		model.addAttribute("commentViewed", allCommentsByID);
+		model.addAttribute("comment", newComment);
 
 		return "viewTicketManager-jar-86";
 	}
@@ -143,10 +168,10 @@ public class TicketController_jar_86 {
 
 	// **** MANAGER USER get the ticket info and create a new ticket****
 	@PostMapping("/manager/tickets/create")
-	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model,
-			HttpSession session) {
-
+	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket,
+			@ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
+		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -159,22 +184,43 @@ public class TicketController_jar_86 {
 		newTicket.setPriority(createTicket.getPriority());
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
-//		newTicket.setCommentsID(createTicket.getCommentsID());
-		ticketDAOImpl.createTicket(newTicket);
+
+		Long ticketId = ticketDAOImpl.save(newTicket);
+
+		// set each attribute for comments
+		newComment.setTicketID(ticketId);
+		newComment.setCreationDate(formatter.format(date));
+		newComment.setCreator("jharanedac");
+		newComment.setCommentType("public");
+		newComment.setComment(createComment.getComment());
 
 		return "redirect:/manager/tickets/all";
 	}
 
 	// **** MANAGER USER delete ticket by id****
 	@GetMapping("/manager/tickets/delete/{id}")
-	public String deleteStudent(@PathVariable("id") int id) {
+	public String deleteStudent(@PathVariable("id") Long id) {
 		ticketDAOImpl.deleteTicket(id);
 		return "redirect:/manager/tickets/all";
 	}
 
 	// **** MANAGER USER get the new ticket info and update it****
 	@PostMapping("/manager/tickets/update")
-	public String editTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model) {
+	public String editTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comment") CommentsModel_jar_86 comments, Model model) {
+		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		
+		// set each attribute for comments
+		newComment.setTicketID(ticket.getId());
+		newComment.setCreationDate(formatter.format(date));
+		newComment.setCreator("jharanedac");
+		newComment.setCommentType("public");
+		newComment.setComment(comments.getComment());
+		
+		commentDAOImpl.createComment(newComment);
+		
 		ticketDAOImpl.updateTicket(ticket);
 		return "redirect:/manager/tickets/all";
 	}

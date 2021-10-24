@@ -17,6 +17,7 @@ public class CommentDAOImpl {
 	
 	private final String SQL_GET_COMMENTS = "SELECT * FROM comments";
 	private final String SQL_GET_ONE_COMMENT = "SELECT * FROM comments where ticketID = ?";
+	private final String SQL_INSERT_COMMENT = "insert into comments (ticketID, creationDate, creator, commentType, comment) values (?,?,?,?,?);";
 	
 	@Autowired
 	public CommentDAOImpl(DataSource dataSource) {
@@ -31,5 +32,8 @@ public class CommentDAOImpl {
 		return allComments;
 	}
 	
+	public boolean createComment(CommentsModel_jar_86 createComment) {
+		return jdbcTemplate.update(SQL_INSERT_COMMENT, createComment.getTicketID(), createComment.getCreationDate(), createComment.getCreator(), createComment.getCommentType(), createComment.getComment()) > 0;
+	}
 }
  

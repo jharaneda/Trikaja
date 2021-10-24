@@ -21,10 +21,13 @@
 <body>
 	<div class='container'>
 
-		<form:form action="${pageContext.request.contextPath}/tickets/create"
+		<form:form action="${pageContext.request.contextPath}/tickets/update"
 			method="POST" cssClass="form-horizontal"
 			modelAttribute="ticketViewed">
 			<h1>Seen Ticket N# ${ticketViewed.id}</h1>
+
+			<form:input path="id" class="form-select" readonly="true" style="display:none"/>
+
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">Type</span>
 				<form:input type="text" path="typeOfTicket" class="form-select"
@@ -42,7 +45,7 @@
 					number</span>
 				<form:input path="position" type="text" />
 			</div>
-			<form:form method="POST" cssClass="form-horizontal" modelAttribute="commentViewed">
+			<form:form method="POST" cssClass="form-horizontal" modelAttribute="comment">
 				<table class="table">
 				<c:forEach var='c' items="${commentViewed}">
 						<tbody>
@@ -58,7 +61,7 @@
 				</table>
 				<label for="basic-url" class="form-label">Comments</label>
 				<div class="input-group mb-3 form-floating">
-					<form:textarea path="" class="form-control" id="floatingTextarea" style="height: 120px" />
+					<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" />
 					<label for="floatingTextarea">Write about your issue</label>
 				</div>
 				<form:button type="submit" class="btn btn-success">Update ticket</form:button>

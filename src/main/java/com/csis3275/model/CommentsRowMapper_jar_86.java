@@ -12,7 +12,7 @@ public class CommentsRowMapper_jar_86 implements RowMapper<CommentsModel_jar_86>
 		CommentsModel_jar_86 comments = new CommentsModel_jar_86();
 		
 		comments.setId(rs.getInt("id"));
-		comments.setTicketID(rs.getInt("ticketID"));
+		comments.setTicketID(rs.getLong("ticketID"));
 		comments.setCreationDate(rs.getString("creationDate"));
 		comments.setCreator(rs.getString("creator"));
 		comments.setCommentType(rs.getString("commentType"));

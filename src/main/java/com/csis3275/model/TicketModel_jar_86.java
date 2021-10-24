@@ -2,7 +2,7 @@ package com.csis3275.model;
 
 public class TicketModel_jar_86 {
 	
-	private int id;
+	private Long id;
 	private String creationDate;
 	private String status;
 	private String userCreator;
@@ -13,10 +13,10 @@ public class TicketModel_jar_86 {
 	private String hardwareToBeChanged;
 //	private String commentsID;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCreationDate() {

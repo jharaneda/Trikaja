@@ -92,7 +92,7 @@
 						<tbody>
 							<tr>
 								<td class="input-group mb-3 form-floating">
-									<form:textarea path="commentsID" class="form-control" id="floatingTextarea" style="height: 120px" /> 
+									<form:textarea path="" class="form-control" id="floatingTextarea" style="height: 120px" /> 
 									<label	for="floatingTextarea">Write about your issue</label>
 									
 								</td>

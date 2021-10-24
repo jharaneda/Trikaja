@@ -11,7 +11,7 @@ public class TicketRowMapper_jar_86 implements RowMapper<TicketModel_jar_86>{
 	public TicketModel_jar_86 mapRow(ResultSet rs, int rowNum) throws SQLException {
 		TicketModel_jar_86 ticket = new TicketModel_jar_86();
 		
-		ticket.setId(rs.getInt("id"));
+		ticket.setId(rs.getLong("id"));
 		ticket.setCreationDate(rs.getString("creationDate"));
 		ticket.setStatus(rs.getString("status"));
 		ticket.setUserCreator(rs.getString("userCreator"));
