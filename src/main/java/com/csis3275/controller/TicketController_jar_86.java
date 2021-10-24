@@ -85,11 +85,13 @@ public class TicketController_jar_86 {
 		return "allTicketsManager-jar-86";
 	}
 	
+	//**** MANAGER USER ****
 	@GetMapping("/manager/tickets/create")
 	public String showCreateTicketFormManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
 		return "createTicketManager-jar-86";
 	}
 	
+	//**** MANAGER USER ****
 	@PostMapping("/manager/tickets/create")
 	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
