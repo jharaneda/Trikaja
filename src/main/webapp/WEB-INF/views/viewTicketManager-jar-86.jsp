@@ -402,7 +402,7 @@
 						<tbody>
 							<c:forEach var='c' items="${commentViewed}">
 								<tr>
-									<td><b>${c.creator}</b></td>
+									<td><i class='bx bxs-user-circle' ></i><b>${c.creator}</b></td>
 									<td><span style="font-size: 70%">${c.creationDate}</span></td>
 								</tr>
 								<tr>
