@@ -17,7 +17,7 @@ public class TrikajaGroupProjectCsis3275_user_RowMapper_kne_58 implements RowMap
 		user.setEmail(rs.getString("email"));
 		user.setNumTickets(rs.getInt("numTickets"));
 		
-		return null;
+		return user;
 	}
 
 }
