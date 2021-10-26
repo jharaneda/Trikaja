@@ -12,10 +12,10 @@ public class TrikajaGroupProjectCsis3275_user_RowMapper_kne_58 implements RowMap
 		
 		TrikajaGroupProjectCsis3275_user_model_kne_58 user = new TrikajaGroupProjectCsis3275_user_model_kne_58();
 		
-		user.setUserID(rs.getInt("userID"));
-		user.setName(rs.getString("name"));
-		user.setEmail(rs.getString("email"));
-		user.setNumTickets(rs.getInt("numTickets"));
+		user.setUserID_kne_58(rs.getInt("userID"));
+		user.setName_kne_58(rs.getString("name"));
+		user.setEmail_kne_58(rs.getString("email"));
+		user.setNumTickets_kne_58(rs.getInt("numTickets"));
 		
 		return user;
 	}

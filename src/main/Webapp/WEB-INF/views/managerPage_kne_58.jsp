@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Welcome</h1>
+		<h1>Employee List</h1>
 		<c:if test="${ messages !=null}">
 			<c:forEach var="message" items="${messages}">
 				<div class="alert alert-success fade show" role="alert">${message}</div>
@@ -44,6 +44,32 @@
 						<td>${e.email}</td>
 						<td>${e.position}</td>
 						<td>${e.numAssignTicks}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<h1>User List</h1>
+		<c:if test="${ messages !=null}">
+			<c:forEach var="message" items="${messages}">
+				<div class="alert alert-success fade show" role="alert">${message}</div>
+			</c:forEach>
+		</c:if>
+		
+		<table class="table table-striped">
+			<thead>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Number of Current Tickets</th>
+			</thead>
+			
+			<tbody>
+				<c:forEach var="u" items="${usersArray}">
+					<tr>
+						<td>${u.name}</td>
+						<td>${u.email}</td>
+						<td>${u.numAssignTicks}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

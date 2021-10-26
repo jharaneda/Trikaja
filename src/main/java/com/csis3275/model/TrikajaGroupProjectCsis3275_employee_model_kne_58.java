@@ -8,34 +8,34 @@ public class TrikajaGroupProjectCsis3275_employee_model_kne_58 {
 	private String position;
 	private int numAssignTicks;
 	
-	public int getEmployeeID() {
+	public int getEmployeeID_kne_58() {
 		return employeeID;
 	}
-	public void setEmployeeID(int employeeID) {
+	public void setEmployeeID_kne_58(int employeeID) {
 		this.employeeID = employeeID;
 	}
-	public String getName() {
+	public String getName_kne_58() {
 		return name;
 	}
-	public void setName(String name) {
+	public void setName_kne_58(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
+	public String getEmail_kne_58() {
 		return email;
 	}
-	public void setEmail(String email) {
+	public void setEmail_kne_58(String email) {
 		this.email = email;
 	}
-	public String getPosition() {
+	public String getPosition_kne_58() {
 		return position;
 	}
-	public void setPosition(String position) {
+	public void setPosition_kne_58(String position) {
 		this.position = position;
 	}
-	public int getNumAssignTicks() {
+	public int getNumAssignTicks_kne_58() {
 		return numAssignTicks;
 	}
-	public void setNumAssignTicks(int numAssignTicks) {
+	public void setNumAssignTicks_kne_58(int numAssignTicks) {
 		this.numAssignTicks = numAssignTicks;
 	}
 }

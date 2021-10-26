@@ -27,7 +27,7 @@ public class EmployeeDAOImpl_kne_58 {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	public ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> getEmployees() {
+	public ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> getEmployees_kne_58() {
 
 		ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> employees = new ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58>();
 
@@ -37,25 +37,25 @@ public class EmployeeDAOImpl_kne_58 {
 		return employees;
 	}
 
-	public boolean createEmployee(TrikajaGroupProjectCsis3275_employee_model_kne_58 newEmployee) {
+	public boolean createEmployee_kne_58(TrikajaGroupProjectCsis3275_employee_model_kne_58 newEmployee) {
 
-		return jdbcTemplate.update(SQL_CREATE_EMPLOYEE, newEmployee.getName(), newEmployee.getEmail(),
-				newEmployee.getPosition(), newEmployee.getNumAssignTicks()) > 0;
+		return jdbcTemplate.update(SQL_CREATE_EMPLOYEE, newEmployee.getName_kne_58(), newEmployee.getEmail_kne_58(),
+				newEmployee.getPosition_kne_58(), newEmployee.getNumAssignTicks_kne_58()) > 0;
 	}
 
-	public boolean deleteEmployee(int employeeID) {
+	public boolean deleteEmployee_kne_58(int employeeID) {
 		return jdbcTemplate.update(SQL_DELETE_EMPLOYEE, employeeID) > 0;
 
 	}
 
-	public boolean updateEmployee(TrikajaGroupProjectCsis3275_employee_model_kne_58 employee) {
-		return jdbcTemplate.update(SQL_UPDATE_EMPLOYEE, employee.getName(), employee.getEmail(), employee.getPosition(),
-				employee.getNumAssignTicks()) > 0;
+	public boolean updateEmployee_kne_58(TrikajaGroupProjectCsis3275_employee_model_kne_58 employee) {
+		return jdbcTemplate.update(SQL_UPDATE_EMPLOYEE, employee.getName_kne_58(), employee.getEmail_kne_58(), employee.getPosition_kne_58(),
+				employee.getNumAssignTicks_kne_58()) > 0;
 
 	}
 
 	@SuppressWarnings("deprecation")
-	public TrikajaGroupProjectCsis3275_employee_model_kne_58 findEmployeeByID(int employeeID) {
+	public TrikajaGroupProjectCsis3275_employee_model_kne_58 findEmployeeByID_kne_58(int employeeID) {
 		return jdbcTemplate.queryForObject(SQL_FIND_EMPLOYEE, new Object[] { employeeID }, new TrikajaGroupProjectCsis3275_employee_RowMapper_kne_58());
 	}
 }

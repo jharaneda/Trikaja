@@ -28,11 +28,11 @@ public class TrikajaGroupProjectCsis3275_controller {
 	}
 
 	@RequestMapping("/")
-	public String showEmployees(
+	public String showEmployees_kne_58(
 			@ModelAttribute("employee") TrikajaGroupProjectCsis3275_employee_model_kne_58 createEmployee, Model model,
 			HttpSession session) {
 
-		ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> employeesArray = employeeDaoImpl.getEmployees();
+		ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> employeesArray = employeeDaoImpl.getEmployees_kne_58();
 
 		ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
 

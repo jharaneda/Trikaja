@@ -8,11 +8,11 @@ CREATE TABLE employee (
 	numAssignTicks int
 );
 
---DROP TABLE USERS IF EXISTS;
---
---CREATE TABLE USERS (
---	userID INTEGER PRIMARY KEY AUTO_INCREMENT,
---	name VARCHAR(255),
---	email VARCHAR(255),
---	numTickets int
---);
+DROP TABLE USERS IF EXISTS;
+
+CREATE TABLE users (
+	userID INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(255),
+	email VARCHAR(255),
+	numTickets int
+);

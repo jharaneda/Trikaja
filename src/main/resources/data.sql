@@ -6,7 +6,7 @@ insert into employee (name, email, position, numAssignTicks) values ('Luigi','Lu
 insert into employee (name, email, position, numAssignTicks) values ('Donkey Kong', 'Bannanas@Kong.com', 'Agent',0);
 
 
---insert into users (name,email, numTickets) values ('Phoenix Wright' ,'Attention@lawyer.com', 0);
---insert into users (name,email, numTickets) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0);
---insert into users (name,email, numTickets) values ('King Dedede', 'Dedede@king.com' 0);
---insert into users (name,email, numTickets) values ('Ash Ketchem', 'AshKet@pallet.town', 0);
+insert into users (name,email, numTickets) values ('Phoenix Wright' ,'Attention@lawyer.com', 0);
+insert into users (name,email, numTickets) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0);
+insert into users (name,email, numTickets) values ('King Dedede', 'Dedede@king.com' 0);
+insert into users (name,email, numTickets) values ('Ash Ketchem', 'AshKet@pallet.town', 0);
