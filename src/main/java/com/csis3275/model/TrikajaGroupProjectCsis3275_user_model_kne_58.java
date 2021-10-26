@@ -7,28 +7,28 @@ public class TrikajaGroupProjectCsis3275_user_model_kne_58 {
 	protected String email;
 	protected int numTickets;
 	
-	public int getUserID_kne_58() {
+	public int getUserID() {
 		return userID;
 	}
-	public void setUserID_kne_58(int userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	public String getName_kne_58() {
+	public String getName() {
 		return name;
 	}
-	public void setName_kne_58(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail_kne_58() {
+	public String getEmail() {
 		return email;
 	}
-	public void setEmail_kne_58(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getNumTickets_kne_58() {
+	public int getNumTickets() {
 		return numTickets;
 	}
-	public void setNumTickets_kne_58(int numTickets) {
+	public void setNumTickets(int numTickets) {
 		this.numTickets = numTickets;
 	}
 }

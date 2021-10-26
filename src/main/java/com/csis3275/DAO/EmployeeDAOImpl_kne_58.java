@@ -39,8 +39,8 @@ public class EmployeeDAOImpl_kne_58 {
 
 	public boolean createEmployee_kne_58(TrikajaGroupProjectCsis3275_employee_model_kne_58 newEmployee) {
 
-		return jdbcTemplate.update(SQL_CREATE_EMPLOYEE, newEmployee.getName_kne_58(), newEmployee.getEmail_kne_58(),
-				newEmployee.getPosition_kne_58(), newEmployee.getNumAssignTicks_kne_58()) > 0;
+		return jdbcTemplate.update(SQL_CREATE_EMPLOYEE, newEmployee.getName(), newEmployee.getEmail(),
+				newEmployee.getPosition(), newEmployee.getNumAssignTicks()) > 0;
 	}
 
 	public boolean deleteEmployee_kne_58(int employeeID) {
@@ -49,8 +49,8 @@ public class EmployeeDAOImpl_kne_58 {
 	}
 
 	public boolean updateEmployee_kne_58(TrikajaGroupProjectCsis3275_employee_model_kne_58 employee) {
-		return jdbcTemplate.update(SQL_UPDATE_EMPLOYEE, employee.getName_kne_58(), employee.getEmail_kne_58(), employee.getPosition_kne_58(),
-				employee.getNumAssignTicks_kne_58()) > 0;
+		return jdbcTemplate.update(SQL_UPDATE_EMPLOYEE, employee.getName(), employee.getEmail(), employee.getPosition(),
+				employee.getNumAssignTicks()) > 0;
 
 	}
 
