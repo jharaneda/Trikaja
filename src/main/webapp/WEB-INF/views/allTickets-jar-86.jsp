@@ -19,52 +19,70 @@
 		$('#ticketList').bootstrapTable()
 	})
 </script>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tickets</title>
 </head>
 <body>
-	<div class='container'>
-		<h1>Ticket List</h1>
-		<c:forEach var="message" items="${messages}">
-			<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/tickets/all"><i class='bx bx-help-circle' ></i>Help ME!</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav me-auto mb-2 mb-md-0">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/tickets/all">View Tickets</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/tickets/create">Create Ticket</a></li>
+				</ul>
 			</div>
-		</c:forEach>
-		<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date">
-			<thead>
-				<tr>
-					<!-- <th scope="col">ID</th> -->
-					<th scope="col" data-field="creation_date" data-sortable="true">Creation Date</th>
-					<th scope="col" data-sortable="true">Status</th>
-					<th scope="col" data-sortable="true">Creator</th>
-					<th scope="col" data-sortable="true">Assignee user</th>
-					<th scope="col" data-sortable="true">Type</th>
-					<th scope="col" data-sortable="true">Priority</th>
-					<th scope="col" data-sortable="true">Position</th>
-					<th scope="col" data-sortable="true">Hardware</th>
-					<th scope="col">Edit</th>
-					<th scope="col">Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var='t' items="${allTickets}">
-					<tr>
-						<th scope="row">${t.id }</th>
-						<td>${t.creationDate}</td>
-						<td>${t.status}</td>
-						<td>${t.userCreator}</td>
-						<td>${t.assigneeUser}</td>
-						<td>${t.typeOfTicket}</td>
-						<td>${t.priority}</td>
-						<td>${t.position}</td>
-						<td>${t.hardwareToBeChanged}</td>
-						<td><a href="${pageContext.request.contextPath}/tickets/viewbyone/${t.id}" class='btn btn-primary'>View</a></td>
-						<td><a href="${pageContext.request.contextPath}/tickets/delete/${t.id}" class='btn btn-danger'>Delete</a></td>
-					</tr>
+		</div>
+	</nav>
+	<main class="container">
+		<div class="bg-light p-5 rounded">
+			<div class='container'>
+				<h1>Ticket List</h1>
+				<c:forEach var="message" items="${messages}">
+					<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
 				</c:forEach>
-			</tbody>
-		</table>
-		<!-- Option 1: Bootstrap Bundle with Popper -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	</div>
+				<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date">
+					<thead>
+						<tr>
+							<!-- <th scope="col">ID</th> -->
+							<th scope="col" data-field="creation_date" data-sortable="true">Creation Date</th>
+							<th scope="col" data-sortable="true">Status</th>
+							<th scope="col" data-sortable="true">Creator</th>
+							<th scope="col" data-sortable="true">Assignee user</th>
+							<th scope="col" data-sortable="true">Type</th>
+							<th scope="col" data-sortable="true">Priority</th>
+							<th scope="col" data-sortable="true">Position</th>
+							<th scope="col" data-sortable="true">Hardware</th>
+							<th scope="col">View</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var='t' items="${allTickets}">
+							<tr>
+								<th scope="row">${t.id }</th>
+								<td>${t.creationDate}</td>
+								<td>${t.status}</td>
+								<td>${t.userCreator}</td>
+								<td>${t.assigneeUser}</td>
+								<td>${t.typeOfTicket}</td>
+								<td>${t.priority}</td>
+								<td>${t.position}</td>
+								<td>${t.hardwareToBeChanged}</td>
+								<td><a href="${pageContext.request.contextPath}/tickets/viewbyone/${t.id}" class='btn btn-primary'>View</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<!-- Option 1: Bootstrap Bundle with Popper -->
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+			</div>
+		</div>
+	</main>
 </body>
 </html>
