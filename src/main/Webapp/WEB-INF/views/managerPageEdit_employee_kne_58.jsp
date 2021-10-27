@@ -343,7 +343,7 @@
 		<div class="container">
 			<h3>Edit ${employee.name} -- ${employee.employeeID}</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager"
+				action="${pageContext.request.contextPath}/manager/employee/edit"
 				cssClass="form-control" method="post" modelAttribute="employee">
 
 				<div class="form-group">

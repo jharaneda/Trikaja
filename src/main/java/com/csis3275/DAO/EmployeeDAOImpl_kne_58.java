@@ -19,7 +19,7 @@ public class EmployeeDAOImpl_kne_58 {
 	private final String SQL_GET_ALL_THE_EMPLOYEES = "SELECT * FROM employee";
 	private final String SQL_CREATE_EMPLOYEE = "INSERT INTO employee (name, email, position, numAssignTicks) VALUES (?,?,?,?)";
 	private final String SQL_DELETE_EMPLOYEE = "DELETE FROM employee WHERE employeeID = ?";
-	private final String SQL_UPDATE_EMPLOYEE = "UPDATE employee SET name = ?, email = ?, position = ?, numAssignTicks = ? WHERE employeeID = ?";
+	private final String SQL_UPDATE_EMPLOYEE = "UPDATE employee set name = ?, email = ?, position = ?, numAssignTicks = ? WHERE employeeID = ?";
 	private final String SQL_FIND_EMPLOYEE = "SELECT * FROM employee WHERE employeeID = ?";
 
 	@Autowired

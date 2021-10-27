@@ -394,10 +394,10 @@
 							<td>${u.email}</td>
 							<td>${u.numTickets}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/manager/user/edit/?userID=${u.employeeID}"
+								href="${pageContext.request.contextPath}/manager/user/edit/?userID=${u.userID}"
 								class="btn btn-primary">Edit</a></td>
 							<td><a
-								href="${pageContext.request.contextPath}/manager/user/delete/?userID=${u.employeeID}"
+								href="${pageContext.request.contextPath}/manager/user/delete/?userID=${u.userID}"
 								class="btn btn-danger">Delete</a></td>
 						</tr>
 					</c:forEach>

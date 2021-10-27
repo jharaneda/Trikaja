@@ -18,9 +18,9 @@ public class UserDAOImpl_kne_58 {
 
 	private final String SQL_GET_ALL_THE_USERS = "SELECT * FROM users";
 	private final String SQL_CREATE_USER = "INSERT INTO users (name, email, numTickets) VALUES (?,?,?)";
-	private final String SQL_DELETE_USER = "DELETE FROM employee WHERE userID = ?";
+	private final String SQL_DELETE_USER = "DELETE FROM users WHERE userID = ?";
 	private final String SQL_UPDATE_USER = "UPDATE users SET name = ?, email = ?, numTickets = ? WHERE userID = ?";
-	private final String SQL_FIND_USER = "SELECT * FROM user WHERE userID = ?";
+	private final String SQL_FIND_USER = "SELECT * FROM users WHERE userID = ?";
 
 	@Autowired
 	public UserDAOImpl_kne_58(DataSource dataSource2) {
@@ -50,7 +50,7 @@ public class UserDAOImpl_kne_58 {
 
 	public boolean updateUser_kne_58(TrikajaGroupProjectCsis3275_user_model_kne_58 user) {
 		return jdbcTemplate2.update(SQL_UPDATE_USER, user.getName(), user.getEmail(),
-				user.getNumTickets()) > 0;
+				user.getNumTickets(),user.getUserID()) > 0;
 
 	}
 	

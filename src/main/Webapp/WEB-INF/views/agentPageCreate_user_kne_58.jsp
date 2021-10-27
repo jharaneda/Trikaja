@@ -17,6 +17,7 @@
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
 
+
 * {
 	margin: 0;
 	padding: 0;
@@ -310,7 +311,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>User Landing</title>
+<title>Create User</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -323,56 +324,36 @@
 					class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bx-user'></i> <span class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bx-user'></i> <span
+					class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user'></i> <span class="links_name">Create
-						Employee</span>
+			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user'></i> <span
+					class="links_name">Create Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bx-user'></i> <span class="links_name">Create User</span>
+			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bx-user'></i> <span
+					class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<c:if test="${ messages !=null}">
-				<c:forEach var="message" items="${messages}">
-					<div class="alert alert-success fade show" role="alert">${message}</div>
-				</c:forEach>
-			</c:if>
-			<h3>Users</h3>
-			<table class="table table-striped">
-				<thead>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Number of Current Tickets</th>
-					<th>Edit User</th>
-					<th>Delete User</th>
+			<h3>Add an User</h3>
+			<form:form
+				action="${pageContext.request.contextPath}/agent/user/create"
+				method="POST" class="form-horizontal" modelAttribute="user">
 
-				</thead>
-
-				<tbody>
-					<c:forEach var="u" items="${usersArray}">
-						<tr>
-							<td>${u.name}</td>
-							<td>${u.email}</td>
-							<td>${u.numTickets}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/agent/user/edit/?userID=${u.userID}"
-								class="btn btn-primary">Edit</a></td>
-							<td><a
-								href="${pageContext.request.contextPath}/agent/user/delete/?userID=${u.userID}"
-								class="btn btn-danger">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+				<div class="mb-3">
+					Name
+					<form:input type="text" class="form-control" path="name" />
+				</div>
+				<div class="mb-3">
+					Email
+					<form:input type="email" class="form-control" path="email" />
+					<form:button type="submit" class="btn btn-primary">Submit</form:button>
+				</div>
+			</form:form>
 		</div>
 	</section>
 	<!-- Optional JavaScript; choose one of the two! -->

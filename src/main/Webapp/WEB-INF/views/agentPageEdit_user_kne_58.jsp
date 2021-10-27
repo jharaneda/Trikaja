@@ -310,7 +310,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>User Landing</title>
+<title>Create User</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -341,38 +341,41 @@
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<c:if test="${ messages !=null}">
-				<c:forEach var="message" items="${messages}">
-					<div class="alert alert-success fade show" role="alert">${message}</div>
-				</c:forEach>
-			</c:if>
-			<h3>Users</h3>
-			<table class="table table-striped">
-				<thead>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Number of Current Tickets</th>
-					<th>Edit User</th>
-					<th>Delete User</th>
+			<h3>Edit ${user.name} -- ${user.userID}</h3>
+			<form:form
+				action="${pageContext.request.contextPath}/agent/user/edit/"
+				cssClass="form-control" method="post" modelAttribute="user">
 
-				</thead>
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">Name</label>
+					<div class="col-md-9">
+						<form:input path="name" value="${user.name}"
+							cssClass="form-control" />
+					</div>
+				</div>
 
-				<tbody>
-					<c:forEach var="u" items="${usersArray}">
-						<tr>
-							<td>${u.name}</td>
-							<td>${u.email}</td>
-							<td>${u.numTickets}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/agent/user/edit/?userID=${u.userID}"
-								class="btn btn-primary">Edit</a></td>
-							<td><a
-								href="${pageContext.request.contextPath}/agent/user/delete/?userID=${u.userID}"
-								class="btn btn-danger">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">Email</label>
+					<div class="col-md-9">
+						<form:input path="email" value="${user.email}"
+							cssClass="form-control" />
+					</div>
+				</div>
+
+				
+				<div class="form-group">
+					<label for="numTickets" class="col-md-3 control-label">Number of Current Tickets</label>
+					<div class="col-md-9">
+						<form:input path="numTickets" value="${user.numTickets}"
+							cssClass="form-control" readonly="true" />
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-3 col-md-9">
+							<form:button class="btn btn-primary">Submit</form:button>
+						</div>
+					</div>
+			</form:form>
 		</div>
 	</section>
 	<!-- Optional JavaScript; choose one of the two! -->

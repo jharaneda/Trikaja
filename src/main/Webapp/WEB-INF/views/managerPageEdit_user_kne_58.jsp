@@ -341,15 +341,15 @@
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Edit ${employee.name} -- ${employee.employeeID}</h3>
+			<h3>Edit ${user.name} -- ${user.userID}</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager"
-				cssClass="form-control" method="post" modelAttribute="employee">
+				action="${pageContext.request.contextPath}/manager/user/edit/"
+				cssClass="form-control" method="post" modelAttribute="user">
 
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Name</label>
 					<div class="col-md-9">
-						<form:input path="name" value="${employee.name}"
+						<form:input path="name" value="${user.name}"
 							cssClass="form-control" />
 					</div>
 				</div>
@@ -357,26 +357,16 @@
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Email</label>
 					<div class="col-md-9">
-						<form:input path="email" value="${employee.email}"
+						<form:input path="email" value="${user.email}"
 							cssClass="form-control" />
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Position</label>
-					<div class="col-md-9">
-						<form:select type="select" id="position" cssClass="form-control"
-							path="position">
-							<option value="Manager">Manager</option>
-							<option value="Agent">Agent</option>
-						</form:select>
-					</div>
-				</div>
 				
 				<div class="form-group">
-					<label for="numAssignTicks" class="col-md-3 control-label">Number of Current Tickets</label>
+					<label for="numTickets" class="col-md-3 control-label">Number of Current Tickets</label>
 					<div class="col-md-9">
-						<form:input path="numAssignTicks" value="${employee.numAssignTicks}"
+						<form:input path="numTickets" value="${user.numTickets}"
 							cssClass="form-control" readonly="true" />
 					</div>
 
