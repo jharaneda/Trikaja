@@ -314,8 +314,20 @@
 			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 			
-			<li><a href="#"> <i class='bx bx-user' ></i> <span class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/manager"> <i
+					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
+
+			<li><a
+				href="${pageContext.request.contextPath}/manager/employee/create">
+					<i class='bx bx-user'></i> <span class="links_name">Create
+						Employee</span>
+			</a> <span class="tooltip">Create Employee</span></li>
+
+			<li><a
+				href="${pageContext.request.contextPath}/manager/user/create"> <i
+					class='bx bx-user'></i> <span class="links_name">Create User</span>
+			</a> <span class="tooltip">Create User</span></li>
 		</ul>
 	</div>
 	<section class="home-section">

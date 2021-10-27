@@ -31,7 +31,12 @@ public class TicketController_jar_86 {
 	public TicketModel_jar_86 setupAddForm() {
 		return new TicketModel_jar_86();
 	}
-
+	
+	@RequestMapping("/")
+	public String showHome() {
+		return "home-jar-86";
+	}
+	
 	// **** END USER show all tickets****
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
