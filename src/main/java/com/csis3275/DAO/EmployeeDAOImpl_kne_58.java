@@ -50,7 +50,7 @@ public class EmployeeDAOImpl_kne_58 {
 
 	public boolean updateEmployee_kne_58(TrikajaGroupProjectCsis3275_employee_model_kne_58 employee) {
 		return jdbcTemplate.update(SQL_UPDATE_EMPLOYEE, employee.getName(), employee.getEmail(), employee.getPosition(),
-				employee.getNumAssignTicks()) > 0;
+				employee.getNumAssignTicks(),employee.getEmployeeID()) > 0;
 
 	}
 

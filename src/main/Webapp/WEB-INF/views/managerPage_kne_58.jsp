@@ -11,32 +11,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-style
-
-
- 
-
-
-type
-
-
-
-
-="
-text
-/
-
-
-
-
-css
-
-
-
-
-"
-> /* Google Font Link */
+<style type="text/css">
+/* Google Font Link */
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
@@ -358,27 +334,27 @@ css
 			</a> <span class="tooltip">Create Employee</span></li>
 
 			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user'></i> <span class="links_name">Create
-						Employee</span>
-			</a> <span class="tooltip">Create Employee</span></li>
+				href="${pageContext.request.contextPath}/manager/user/create"> <i
+					class='bx bx-user'></i> <span class="links_name">Create User</span>
+			</a> <span class="tooltip">Create User</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Employees</h3>
 			<c:if test="${ messages !=null}">
 				<c:forEach var="message" items="${messages}">
 					<div class="alert alert-success fade show" role="alert">${message}</div>
 				</c:forEach>
 			</c:if>
-
+			<h3>Employees</h3>
 			<table class="table table-striped">
 				<thead>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Position</th>
 					<th>Number of Current Tickets</th>
+					<th>Edit Employee</th>
+					<th>Delete Employee</th>
 				</thead>
 
 				<tbody>
@@ -388,6 +364,12 @@ css
 							<td>${e.email}</td>
 							<td>${e.position}</td>
 							<td>${e.numAssignTicks}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/manager/employee/edit/?employeeID=${e.employeeID}"
+								class="btn btn-primary">Edit</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/manager/employee/delete/?employeeID=${e.employeeID}"
+								class="btn btn-danger">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -395,17 +377,14 @@ css
 		</div>
 		<div class="container">
 			<h3>Users</h3>
-			<c:if test="${ messages !=null}">
-				<c:forEach var="message" items="${messages}">
-					<div class="alert alert-success fade show" role="alert">${message}</div>
-				</c:forEach>
-			</c:if>
-
 			<table class="table table-striped">
 				<thead>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Number of Current Tickets</th>
+					<th>Edit User</th>
+					<th>Delete User</th>
+
 				</thead>
 
 				<tbody>
@@ -414,6 +393,12 @@ css
 							<td>${u.name}</td>
 							<td>${u.email}</td>
 							<td>${u.numTickets}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/manager/user/edit/?userID=${u.employeeID}"
+								class="btn btn-primary">Edit</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/manager/user/delete/?userID=${u.employeeID}"
+								class="btn btn-danger">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

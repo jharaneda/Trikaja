@@ -311,7 +311,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>Create Employee</title>
+<title>Create User</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -339,10 +339,10 @@
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Add an Employee</h3>
+			<h3>Add an User</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager/employee/create"
-				method="POST" class="form-horizontal" modelAttribute="employee">
+				action="${pageContext.request.contextPath}/manager/user/create"
+				method="POST" class="form-horizontal" modelAttribute="user">
 
 				<div class="mb-3">
 					Name
@@ -351,13 +351,6 @@
 				<div class="mb-3">
 					Email
 					<form:input type="email" class="form-control" path="email" />
-				</div>
-				<div class="mb-3">
-					<label for ="position">Position</label>
-					<form:select type="select" id="position" class="form-control" path="position">
-						<option value="Manager">Manager</option>
-						<option value="Agent">Agent</option>
-					</form:select>
 					<form:button type="submit" class="btn btn-primary">Submit</form:button>
 				</div>
 			</form:form>

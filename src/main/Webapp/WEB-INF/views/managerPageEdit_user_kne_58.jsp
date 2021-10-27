@@ -17,7 +17,6 @@
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
 
-
 * {
 	margin: 0;
 	padding: 0;
@@ -311,7 +310,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>Create Employee</title>
+<title>Create User</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -324,42 +323,68 @@
 					class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bx-user'></i> <span
-					class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/manager"> <i
+					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user'></i> <span
-					class="links_name">Create Employee</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/employee/create">
+					<i class='bx bx-user'></i> <span class="links_name">Create
+						Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bx-user'></i> <span
-					class="links_name">Create User</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/user/create"> <i
+					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Add an Employee</h3>
+			<h3>Edit ${employee.name} -- ${employee.employeeID}</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager/employee/create"
-				method="POST" class="form-horizontal" modelAttribute="employee">
+				action="${pageContext.request.contextPath}/manager"
+				cssClass="form-control" method="post" modelAttribute="employee">
 
-				<div class="mb-3">
-					Name
-					<form:input type="text" class="form-control" path="name" />
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">Name</label>
+					<div class="col-md-9">
+						<form:input path="name" value="${employee.name}"
+							cssClass="form-control" />
+					</div>
 				</div>
-				<div class="mb-3">
-					Email
-					<form:input type="email" class="form-control" path="email" />
+
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">Email</label>
+					<div class="col-md-9">
+						<form:input path="email" value="${employee.email}"
+							cssClass="form-control" />
+					</div>
 				</div>
-				<div class="mb-3">
-					<label for ="position">Position</label>
-					<form:select type="select" id="position" class="form-control" path="position">
-						<option value="Manager">Manager</option>
-						<option value="Agent">Agent</option>
-					</form:select>
-					<form:button type="submit" class="btn btn-primary">Submit</form:button>
+
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">Position</label>
+					<div class="col-md-9">
+						<form:select type="select" id="position" cssClass="form-control"
+							path="position">
+							<option value="Manager">Manager</option>
+							<option value="Agent">Agent</option>
+						</form:select>
+					</div>
 				</div>
+				
+				<div class="form-group">
+					<label for="numAssignTicks" class="col-md-3 control-label">Number of Current Tickets</label>
+					<div class="col-md-9">
+						<form:input path="numAssignTicks" value="${employee.numAssignTicks}"
+							cssClass="form-control" readonly="true" />
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-3 col-md-9">
+							<form:button class="btn btn-primary">Submit</form:button>
+						</div>
+					</div>
 			</form:form>
 		</div>
 	</section>
