@@ -315,14 +315,14 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="#"> <i class='bx bx-message-alt-add'></i> <span
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span
 					class="links_name">Create Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a href="#"> <i class='bx bxs-book-content'></i> <span
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span
 					class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
-
+			
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>

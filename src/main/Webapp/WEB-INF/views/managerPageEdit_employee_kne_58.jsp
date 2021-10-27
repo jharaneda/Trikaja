@@ -315,12 +315,16 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="#"> <i class='bx bx-message-alt-add'></i> <span
-					class="links_name">Create Ticket</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/create">
+					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
+						Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a href="#"> <i class='bx bxs-book-content'></i> <span
-					class="links_name">View Tickets</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
@@ -346,6 +350,13 @@
 				action="${pageContext.request.contextPath}/manager/employee/edit"
 				cssClass="form-control" method="post" modelAttribute="employee">
 
+				<div class="form-group" style="display: none">
+					<div class="col-md-9">
+						<form:input path="employeeID" value="${employee.employeeID}"
+							cssClass="form-control" />
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Name</label>
 					<div class="col-md-9">
@@ -372,12 +383,14 @@
 						</form:select>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="numAssignTicks" class="col-md-3 control-label">Number of Assigned Tickets</label>
+					<label for="numAssignTicks" class="col-md-3 control-label">Number
+						of Assigned Tickets</label>
 					<div class="col-md-9">
-						<form:input path="numAssignTicks" value="${employee.numAssignTicks}"
-							cssClass="form-control" readonly="true" />
+						<form:input path="numAssignTicks"
+							value="${employee.numAssignTicks}" cssClass="form-control"
+							readonly="true" />
 					</div>
 
 					<div class="form-group">

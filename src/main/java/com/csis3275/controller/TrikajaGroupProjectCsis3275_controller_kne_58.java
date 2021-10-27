@@ -304,6 +304,18 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		return "redirect:/agent";
 	}
 	
+	@GetMapping("/agent/user/delete/")
+	public String agentDeleteUser(@RequestParam(required = true) int userID, Model model, HttpSession session) {
+		userDaoImpl.deleteUser_kne_58(userID);
+		ArrayList<String> messages = new ArrayList<String>();
+		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages")
+				: new ArrayList<String>();
+		messages.add("Deleted User " + userID);
+		session.setAttribute("messages", messages);
+
+		return "redirect:/agent/";
+	}
+	
 	@RequestMapping("/user")
 	public String showUser_kne_58(
 			@ModelAttribute("user")

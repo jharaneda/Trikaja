@@ -315,12 +315,16 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="#"> <i class='bx bx-message-alt-add'></i> <span
-					class="links_name">Create Ticket</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/create">
+					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
+						Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a href="#"> <i class='bx bxs-book-content'></i> <span
-					class="links_name">View Tickets</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
@@ -345,7 +349,14 @@
 			<form:form
 				action="${pageContext.request.contextPath}/agent/user/edit/"
 				cssClass="form-control" method="post" modelAttribute="user">
-
+				
+				<div class="form-group" style="display: none">
+					<div class="col-md-9">
+						<form:input path="userID" value="${user.userID}"
+							cssClass="form-control" />
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Name</label>
 					<div class="col-md-9">
@@ -362,9 +373,10 @@
 					</div>
 				</div>
 
-				
+
 				<div class="form-group">
-					<label for="numTickets" class="col-md-3 control-label">Number of Current Tickets</label>
+					<label for="numTickets" class="col-md-3 control-label">Number
+						of Current Tickets</label>
 					<div class="col-md-9">
 						<form:input path="numTickets" value="${user.numTickets}"
 							cssClass="form-control" readonly="true" />
