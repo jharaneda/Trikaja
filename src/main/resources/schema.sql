@@ -1,4 +1,4 @@
---
+
 DROP TABLE tickets IF EXISTS;
 
 CREATE TABLE tickets (
