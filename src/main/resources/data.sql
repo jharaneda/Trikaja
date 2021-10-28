@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 insert into tickets (creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged, commentsID) values ('2020-12-12 03:38:28', 'pending', 'jhattigan0', 'csuerz0', 'software', 'normal', 1, 'Colville','1');
 insert into tickets (creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged, commentsID) values ('2021-03-22 05:48:51', 'solved', 'dbeveridge1', 'rricioppo1', 'software', 'normal', 35, 'Black or African American', '1');
