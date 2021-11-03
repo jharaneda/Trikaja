@@ -42,3 +42,9 @@ CREATE TABLE users (
 	numTickets int
 );
 
+DROP TABLE sessions IF EXISTS;
+
+CREATE TABLE sessions (id VARCHAR(255),
+	email VARCHAR(255),
+	position VARCHAR(255)
+);

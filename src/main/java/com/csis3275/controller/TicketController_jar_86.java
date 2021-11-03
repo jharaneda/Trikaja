@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.csis3275.dao.CommentDAOImpl;
 import com.csis3275.dao.TicketDAOImpl;
 import com.csis3275.model.CommentsModel_jar_86;
+import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 
 @Controller
@@ -33,8 +34,11 @@ public class TicketController_jar_86 {
 	}
 	
 	@RequestMapping("/")
-	public String showHome() {
-		return "home-jar-86";
+	public String showHome(@ModelAttribute("session") SessionModel_jar_86 userSession, Model model, HttpSession session) {
+//		return "home-jar-86";
+		model.addAttribute("session", userSession);
+//		session.setAttribute("session", session);
+		return "login-jar-86";
 	}
 	
 	// **** END USER show all tickets****
