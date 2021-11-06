@@ -13,7 +13,7 @@ import com.csis3275.model.SessionRowMapper_jar_86;
 public class SessionDAOImpl_jar_86 {
 	JdbcTemplate jdbcTemplate;
 
-	private final String SQL_INSERT_SESSION = "INSERT INTO sessions (id, email, role) VALUES (?,?,?)";
+	private final String SQL_INSERT_SESSION = "INSERT INTO sessions (id, email, position) VALUES (?,?,?)";
 	private final String SQL_FIND_SESSION = "SELECT * FROM sessions WHERE id = ?";
 
 	@Autowired

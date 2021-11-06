@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en" dir="ltr">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 *{
@@ -126,6 +128,11 @@ input[type="submit"]:hover{
   </head>
   <body>
     <div class="center">
+    <c:forEach var="message" items="${messages}">
+				<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</c:forEach>
       <h1>Login</h1>
       <form:form action="${pageContext.request.contextPath}/login" method="POST" cssClass="form-horizontal" modelAttribute="session">
         <div class="txt_field">

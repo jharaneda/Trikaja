@@ -21,6 +21,7 @@ public class EmployeeDAOImpl_kne_58 {
 	private final String SQL_DELETE_EMPLOYEE = "DELETE FROM employee WHERE employeeID = ?";
 	private final String SQL_UPDATE_EMPLOYEE = "UPDATE employee set name = ?, email = ?, position = ?, numAssignTicks = ? WHERE employeeID = ?";
 	private final String SQL_FIND_EMPLOYEE = "SELECT * FROM employee WHERE employeeID = ?";
+	private final String SQL_FIND_EMPLOYEE_BY_EMAIL = "SELECT * FROM employee WHERE email = ?";
 
 	@Autowired
 	public EmployeeDAOImpl_kne_58(DataSource dataSource) {
@@ -58,4 +59,15 @@ public class EmployeeDAOImpl_kne_58 {
 	public TrikajaGroupProjectCsis3275_employee_model_kne_58 findEmployeeByID_kne_58(int employeeID) {
 		return jdbcTemplate.queryForObject(SQL_FIND_EMPLOYEE, new Object[] { employeeID }, new TrikajaGroupProjectCsis3275_employee_RowMapper_kne_58());
 	}
+	
+	@SuppressWarnings("deprecation")
+	public TrikajaGroupProjectCsis3275_employee_model_kne_58 findEmployeeByEmail_kne_58(String email) {
+		try {
+			return jdbcTemplate.queryForObject(SQL_FIND_EMPLOYEE_BY_EMAIL, new Object[] { email }, new TrikajaGroupProjectCsis3275_employee_RowMapper_kne_58());
+		} catch (Exception e) {
+			System.out.println("Error desde findEmplEmail" + e.getMessage());
+			return null;
+		}
+	}
+	
 }

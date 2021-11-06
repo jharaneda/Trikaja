@@ -30,7 +30,8 @@ CREATE TABLE employee (
 	name VARCHAR(255),
 	email VARCHAR(255),
 	position VARCHAR(255),
-	numAssignTicks int
+	numAssignTicks int,
+	password VARCHAR(255)
 );
 
 DROP TABLE USERS IF EXISTS;
@@ -39,7 +40,8 @@ CREATE TABLE users (
 	userID INTEGER PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(255),
 	email VARCHAR(255),
-	numTickets int
+	numTickets int,
+	password VARCHAR(255)
 );
 
 DROP TABLE sessions IF EXISTS;
