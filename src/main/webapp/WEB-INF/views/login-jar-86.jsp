@@ -136,12 +136,12 @@ input[type="submit"]:hover{
       <h1>Login</h1>
       <form:form action="${pageContext.request.contextPath}/login" method="POST" cssClass="form-horizontal" modelAttribute="session">
         <div class="txt_field">
-          <form:input type="email" cssClass="form-control" path="email"/>
+          <form:input type="email" cssClass="form-control" path="email" required="required"/>
           <span></span>
           <label>Username</label>
         </div>
         <div class="txt_field">
-          <form:input type="password" cssClass="form-control" path="password"/>
+          <form:input type="password" cssClass="form-control" path="password" required="required"/>
           <span></span>
           <label>Password</label>
         </div>

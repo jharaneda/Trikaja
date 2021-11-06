@@ -423,7 +423,7 @@
 							</c:forEach>
 							<tr>
 								<td class="input-group mb-3 form-floating">
-									<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px"/> 
+									<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required"/> 
 									<label	for="floatingTextarea">Write about your issue</label>
 								</td>
 							</tr>

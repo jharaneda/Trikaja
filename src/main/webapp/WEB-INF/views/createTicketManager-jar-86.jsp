@@ -384,7 +384,7 @@
 									</form:select></td>
 							</tr>
 							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" /></td>
+								<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" required="required"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -396,7 +396,7 @@
 							
 								<tr>
 									<td class="input-group mb-3 form-floating">
-										<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" /> 
+										<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required" /> 
 										<label for="floatingTextarea">Write about your issue</label>
 										</td>
 								</tr>
