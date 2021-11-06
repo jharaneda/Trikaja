@@ -58,6 +58,7 @@ public class TicketController_jar_86 {
 		model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
 		// Clear the messages before the returning
 		session.removeAttribute("messages");
+		session.removeAttribute("session");
 
 		return "login-jar-86";
 	}
@@ -161,7 +162,7 @@ public class TicketController_jar_86 {
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
 
-		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
+//		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
 		ArrayList<String> messages = new ArrayList<String>();
 
 		messages = session.getAttribute("messages") != null ? messages : new ArrayList<String>();
@@ -170,7 +171,9 @@ public class TicketController_jar_86 {
 		SessionModel_jar_86 dbSession = new SessionModel_jar_86();
 
 		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
-
+		String[] user = webSession.getEmail().split("@");
+		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getTicketByUser(user[0]);
+		
 		//
 		if (webSession.getEmail() == null) {
 			messages.add("You dont have access to this place. Please Login");
@@ -223,15 +226,18 @@ public class TicketController_jar_86 {
 	public String createTicket(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
 		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 
 		// Get date and give it a format
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
+		String[] user = webSession.getEmail().split("@");
 
 		// set each attribute for ticket
 		newTicket.setCreationDate(formatter.format(date));
 		newTicket.setStatus("Open");
-		newTicket.setUserCreator("jharanedac");
+		newTicket.setUserCreator(user[0]);
 		newTicket.setAssigneeUser("Blank");
 		newTicket.setTypeOfTicket(createTicket.getTypeOfTicket());
 		newTicket.setPriority(createTicket.getPriority());
@@ -243,7 +249,7 @@ public class TicketController_jar_86 {
 		// set each attribute for comments
 		newComment.setTicketID(ticketId);
 		newComment.setCreationDate(formatter.format(date));
-		newComment.setCreator("jharanedac");
+		newComment.setCreator(user[0]);
 		newComment.setCommentType("public");
 		newComment.setComment(createComment.getComment());
 
@@ -307,6 +313,9 @@ public class TicketController_jar_86 {
 	public String editTicketUser(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comment") CommentsModel_jar_86 comments, Model model, HttpSession session) {
 
 		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
+		String[] user = webSession.getEmail().split("@");
 
 		// Get date and give it a format
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -315,7 +324,7 @@ public class TicketController_jar_86 {
 		// set each attribute for comments
 		newComment.setTicketID(ticket.getId());
 		newComment.setCreationDate(formatter.format(date));
-		newComment.setCreator("jharanedac");
+		newComment.setCreator(user[0]);
 		newComment.setCommentType("public");
 		newComment.setComment(comments.getComment());
 
@@ -445,13 +454,17 @@ public class TicketController_jar_86 {
 	public String createTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 createTicket, @ModelAttribute("comment") CommentsModel_jar_86 createComment, Model model, HttpSession session) {
 		TicketModel_jar_86 newTicket = new TicketModel_jar_86();
 		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
+
+		String[] user = webSession.getEmail().split("@");
 
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 
 		newTicket.setCreationDate(formatter.format(date));
 		newTicket.setStatus("Open");
-		newTicket.setUserCreator("jharanedac");
+		newTicket.setUserCreator(user[0]);
 		newTicket.setAssigneeUser("Blank");
 		newTicket.setTypeOfTicket(createTicket.getTypeOfTicket());
 		newTicket.setPriority(createTicket.getPriority());
@@ -463,7 +476,7 @@ public class TicketController_jar_86 {
 		// set each attribute for comments
 		newComment.setTicketID(ticketId);
 		newComment.setCreationDate(formatter.format(date));
-		newComment.setCreator("jharanedac");
+		newComment.setCreator(user[0]);
 		newComment.setCommentType("public");
 		newComment.setComment(createComment.getComment());
 
@@ -515,14 +528,17 @@ public class TicketController_jar_86 {
 	@PostMapping("/manager/tickets/update")
 	public String editTicketManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comment") CommentsModel_jar_86 comments, Model model, HttpSession session) {
 		CommentsModel_jar_86 newComment = new CommentsModel_jar_86();
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 
+		String[] user = webSession.getEmail().split("@");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 
 		// set each attribute for comments
 		newComment.setTicketID(ticket.getId());
 		newComment.setCreationDate(formatter.format(date));
-		newComment.setCreator("jharanedac");
+		newComment.setCreator(user[0]);
 		newComment.setCommentType("public");
 		newComment.setComment(comments.getComment());
 
