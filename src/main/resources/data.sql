@@ -32,6 +32,19 @@ insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicke
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-24 00:35:36', 'Open', 'MSue', 'mhaysomi', 'Hardware', 'High', 4, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-12-28 19:29:56', 'Solved', 'MSue', 'ccostleyj', 'Hardware', 'Low', 48, 'HeadSet');
 
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Keyboard", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Mouse", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Monitor", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Keyboard", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Keyboard", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Mouse", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Mouse", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Monitor", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Speakers", "N/A", "Working");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Keyboard", "N/A", "Needs Repair");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Stockroom", "Mouse", "N/A", "Needs Repair");
+insert into inventory (itemLocation, itemType, assignedTo, status) values ("Repair Facility", "Keyboard", "N/A", "Under Repair");
+
 
 insert into comments (id, ticketID, creationDate, creator, commentType, comment) values (1, 1, '2020-12-03 23:54:34', 'cpacher0', 'public', 'In congue. Etiam justo. Etiam pretium iaculis justo.');
 insert into comments (id, ticketID, creationDate, creator, commentType, comment) values (2, 2, '2021-03-17 22:39:51', 'dbursnell1', 'public', 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.');
