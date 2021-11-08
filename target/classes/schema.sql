@@ -50,3 +50,13 @@ CREATE TABLE sessions (id VARCHAR(255),
 	email VARCHAR(255),
 	position VARCHAR(255)
 );
+
+DROP TABLE inventory IF EXISTS;
+
+CREATE TABLE inventory (
+	itemID INTEGER PRIMARY KEY AUTO_INCREMENT,
+	itemLocation VARCHAR(255),
+	itemType VARCHAR(255),
+	assignedTo INTEGER,
+	status VARCHAR(255)
+);
