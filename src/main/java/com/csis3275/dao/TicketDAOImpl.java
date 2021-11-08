@@ -26,6 +26,9 @@ public class TicketDAOImpl {
 	private final String SQL_UPDATE_TICKET = "UPDATE tickets SET status = ?, userCreator = ?, assigneeUser = ?, typeOfTicket = ?, priority = ?, position = ?, hardwareToBeChanged = ? WHERE id = ?";
 	private final String SQL_UPDATE_TICKET_USER = "UPDATE tickets SET position = ? WHERE id = ?";
 	private final String SQL_GET_TICKET_BY_USER = "SELECT * FROM tickets where userCreator = ?";
+	private final String SQL_GET_OPEN_TICKETS = "SELECT * FROM tickets where status = 'Open'";
+	private final String SQL_GET_PENDING_TICKETS = "SELECT * FROM tickets where status = 'Pending'";
+	private final String SQL_GET_SOLVED_TICKETS = "SELECT * FROM tickets where status = 'Solved'";
 
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -38,6 +41,29 @@ public class TicketDAOImpl {
 		allTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_TICKETS, new TicketRowMapper_jar_86());
 
 		return allTickets;
+	}
+	public ArrayList<TicketModel_jar_86> getAllOpenTickets() {
+		ArrayList<TicketModel_jar_86> allOpenTickets = new ArrayList<TicketModel_jar_86>();
+
+		allOpenTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_OPEN_TICKETS, new TicketRowMapper_jar_86());
+
+		return allOpenTickets;
+	}
+	
+	public ArrayList<TicketModel_jar_86> getAllPendingTickets() {
+		ArrayList<TicketModel_jar_86> allPendingTickets = new ArrayList<TicketModel_jar_86>();
+
+		allPendingTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_PENDING_TICKETS, new TicketRowMapper_jar_86());
+
+		return allPendingTickets;
+	}
+	
+	public ArrayList<TicketModel_jar_86> getAllSolvedTickets() {
+		ArrayList<TicketModel_jar_86> allSolvedTickets = new ArrayList<TicketModel_jar_86>();
+
+		allSolvedTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_SOLVED_TICKETS, new TicketRowMapper_jar_86());
+
+		return allSolvedTickets;
 	}
 	
 	@SuppressWarnings("deprecation")
