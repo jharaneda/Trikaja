@@ -17,6 +17,7 @@ public class TrikajaGroupProjectCsis3275_employee_RowMapper_kne_58 implements Ro
 		employee.setEmail(rs.getString("email"));
 		employee.setPosition(rs.getString("position"));
 		employee.setNumAssignTicks(rs.getInt("numAssignTicks"));
+		employee.setPassword(rs.getString("password"));
 		
 		return employee;
 	}

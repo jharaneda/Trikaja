@@ -6,7 +6,14 @@ public class TrikajaGroupProjectCsis3275_user_model_kne_58 {
 	protected String name;
 	protected String email;
 	protected int numTickets;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getUserID() {
 		return userID;
 	}

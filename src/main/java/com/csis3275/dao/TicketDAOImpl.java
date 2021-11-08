@@ -25,6 +25,7 @@ public class TicketDAOImpl {
 	private final String SQL_DELETE_ONE_TICKET = "DELETE FROM tickets WHERE ID = ?";
 	private final String SQL_UPDATE_TICKET = "UPDATE tickets SET status = ?, userCreator = ?, assigneeUser = ?, typeOfTicket = ?, priority = ?, position = ?, hardwareToBeChanged = ? WHERE id = ?";
 	private final String SQL_UPDATE_TICKET_USER = "UPDATE tickets SET position = ? WHERE id = ?";
+	private final String SQL_GET_TICKET_BY_USER = "SELECT * FROM tickets where userCreator = ?";
 
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -37,6 +38,15 @@ public class TicketDAOImpl {
 		allTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_TICKETS, new TicketRowMapper_jar_86());
 
 		return allTickets;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public ArrayList<TicketModel_jar_86> getTicketByUser(String userCreator) {
+		ArrayList<TicketModel_jar_86> ticketByUser = new ArrayList<TicketModel_jar_86>();
+
+		ticketByUser = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_TICKET_BY_USER, new Object[] { userCreator }, new TicketRowMapper_jar_86());
+
+		return ticketByUser;
 	}
 
 	public boolean createTicket(TicketModel_jar_86 createTicket) {

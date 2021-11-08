@@ -345,13 +345,13 @@
 										<form:option value="Solved">Solved</form:option>
 									</form:select></td>
 							</tr>
-							<tr>
+							<%-- <tr>
 								<td><span class="input-group-text" id="basic-addon1">Creator</span> <form:select path="userCreator" class="form-select">
 										<form:option value="user1">User1</form:option>
 										<form:option value="user1">User2</form:option>
 										<form:option value="user2">User3</form:option>
 									</form:select></td>
-							</tr>
+							</tr> --%>
 							<tr>
 								<td><span class="input-group-text" id="basic-addon1">Assignee User</span> <form:select path="assigneeUser" class="form-select">
 										<form:option value="user1">User1</form:option>
@@ -384,7 +384,7 @@
 									</form:select></td>
 							</tr>
 							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" /></td>
+								<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" required="required"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -396,7 +396,7 @@
 							
 								<tr>
 									<td class="input-group mb-3 form-floating">
-										<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" /> 
+										<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required" /> 
 										<label for="floatingTextarea">Write about your issue</label>
 										</td>
 								</tr>
