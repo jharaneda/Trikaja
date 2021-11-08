@@ -120,41 +120,19 @@ public class TicketController_jar_86 {
 				return "redirect:/tickets/all";
 			}
 		}
-		/*
-		 * codigo antiguo con for for (TrikajaGroupProjectCsis3275_employee_model_kne_58
-		 * employee : allEmplo) { if (employee.getEmail().equals(email)) { if
-		 * (employee.getPassword().equals(password)) { switch (employee.getPosition()) {
-		 * case "Manager": employeePass = employee;
-		 * 
-		 * // set attribute of session model uSession.setId(session.getId());
-		 * uSession.setEmail(employeePass.getEmail());
-		 * uSession.setPosition(employeePass.getPosition());
-		 * 
-		 * // create session into DB sessionDAOImpl.createSession(uSession); // add
-		 * session object into session session.setAttribute("session", uSession); return
-		 * "redirect:/manager/tickets/all"; case "Agent": employeePass = employee;
-		 * 
-		 * // set attribute of session model uSession.setId(session.getId());
-		 * uSession.setEmail(employeePass.getEmail());
-		 * uSession.setPosition(employeePass.getPosition());
-		 * 
-		 * // create session into DB sessionDAOImpl.createSession(uSession); // add
-		 * session object into session session.setAttribute("session", uSession); return
-		 * "redirect:/manager/tickets/all"; } } } } for
-		 * (TrikajaGroupProjectCsis3275_user_model_kne_58 user : allUsers) { if
-		 * (user.getEmail().equals(email)) { if (user.getPassword().equals(password)) {
-		 * userPass = user; // set attribute of session model
-		 * uSession.setId(session.getId()); uSession.setEmail(employeePass.getEmail());
-		 * uSession.setPosition(employeePass.getPosition()); // create session into DB
-		 * sessionDAOImpl.createSession(uSession); // add session object into session
-		 * session.setAttribute("session", uSession); return "redirect:/tickets/all"; }
-		 * } }
-		 */
 
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Holy moly! Your credentials are wrong. Please try again");
 		session.setAttribute("messages", messages);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(@ModelAttribute("session") TrikajaGroupProjectCsis3275_employee_model_kne_58 userSession, Model model, HttpSession session) {
+		session.removeAttribute("session");
+		session.invalidate();
+		
 		return "redirect:/";
 	}
 

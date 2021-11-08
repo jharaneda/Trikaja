@@ -330,10 +330,13 @@
 
 			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+			</a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-black">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
