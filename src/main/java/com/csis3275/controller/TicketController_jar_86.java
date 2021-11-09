@@ -2,6 +2,7 @@ package com.csis3275.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -47,9 +48,7 @@ public class TicketController_jar_86 {
 
 	@RequestMapping("/")
 	public String showHome(@ModelAttribute("session") TrikajaGroupProjectCsis3275_employee_model_kne_58 userSession, Model model, HttpSession session) {
-//		return "home-jar-86";
 		model.addAttribute("session", userSession);
-//		session.setAttribute("session", session);
 
 		@SuppressWarnings("unchecked")
 		ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
@@ -63,21 +62,15 @@ public class TicketController_jar_86 {
 		return "login-jar-86";
 	}
 
+	@SuppressWarnings("unchecked")
 	@PostMapping("/login")
 	public String login(@ModelAttribute("session") TrikajaGroupProjectCsis3275_employee_model_kne_58 userSession, Model model, HttpSession session) {
-//		ArrayList<TrikajaGroupProjectCsis3275_employee_model_kne_58> allEmplo = emplDAOImpl.getEmployees_kne_58();
-//		ArrayList<TrikajaGroupProjectCsis3275_user_model_kne_58> allUsers = userDAOImpl.getUsers_kne_58();
-
 		String email = userSession.getEmail();
-		String password = userSession.getPassword();
+		String password = Base64.getEncoder().encodeToString(userSession.getPassword().getBytes());
 
 		TrikajaGroupProjectCsis3275_employee_model_kne_58 employeePass = emplDAOImpl.findEmployeeByEmail_kne_58(email);
 		TrikajaGroupProjectCsis3275_user_model_kne_58 userPass = userDAOImpl.findUserByEmail_kne_58(email);
 
-//		System.out.println("email desde empl:" + employeePass.getEmail());
-//		System.out.println("email desde user:" + userPass.getEmail());
-//		TrikajaGroupProjectCsis3275_employee_model_kne_58 employeePass = new TrikajaGroupProjectCsis3275_employee_model_kne_58();
-//		TrikajaGroupProjectCsis3275_user_model_kne_58 userPass = new TrikajaGroupProjectCsis3275_user_model_kne_58();
 		SessionModel_jar_86 uSession = new SessionModel_jar_86();
 
 		if (employeePass != null) {
@@ -140,7 +133,6 @@ public class TicketController_jar_86 {
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
 
-//		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getAllTickets();
 		ArrayList<String> messages = new ArrayList<String>();
 
 		messages = session.getAttribute("messages") != null ? messages : new ArrayList<String>();
@@ -318,6 +310,7 @@ public class TicketController_jar_86 {
 	}
 
 	// **** MANAGER USER show all tickets****
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/manager/tickets/all")
 	public String showAllTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 
@@ -355,6 +348,7 @@ public class TicketController_jar_86 {
 	}
 
 	// **** MANAGER USER show all tickets****
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/manager/tickets/open")
 	public String showAllOpenTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 
@@ -391,6 +385,7 @@ public class TicketController_jar_86 {
 	}
 
 	// **** MANAGER USER show all tickets****
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/manager/tickets/pending")
 	public String showAllPendingTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 
@@ -427,6 +422,7 @@ public class TicketController_jar_86 {
 	}
 	
 	// **** MANAGER USER show all tickets****
+		@SuppressWarnings("unchecked")
 		@RequestMapping("/manager/tickets/solved")
 		public String showAllSolvedTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 

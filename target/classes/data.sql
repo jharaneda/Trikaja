@@ -1,15 +1,15 @@
 
-insert into employee (name, email, position, numAssignTicks, password) values ('Kadyn Neale', 'Kneale95@hotmail.ca', 'Manager', 0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Jon Doe', 'JDoe@gmail.com', 'Manager',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Mary Sue', 'MSue@shaw.ca', 'Manager',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Hubert Farnsworth','Farnsworth@planetexpress.future', 'Agent',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Luigi','Luigi@mushroomkingdom.com','Agent',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Donkey Kong', 'Bannanas@Kong.com', 'Agent',0, '1234');
+insert into employee (name, email, position, numAssignTicks, password) values ('Kadyn Neale', 'Kneale95@hotmail.ca', 'Manager', 0, 'S25lYWxlOTU=');
+insert into employee (name, email, position, numAssignTicks, password) values ('Jon Doe', 'JDoe@gmail.com', 'Manager',0, 'SkRvZQ==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Mary Sue', 'MSue@shaw.ca', 'Manager',0, 'TVN1ZQ==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Hubert Farnsworth','Farnsworth@planetexpress.future', 'Agent',0, 'RmFybnN3b3J0aA==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Luigi','Luigi@mushroomkingdom.com','Agent',0, 'THVpZ2k=');
+insert into employee (name, email, position, numAssignTicks, password) values ('Donkey Kong', 'Bannanas@Kong.com', 'Agent',0, 'QmFubmFuYXM=');
 
 
-insert into users (name, email, numTickets, password) values ('Phoenix Wright' , 'Attention@lawyer.com', 0, '1234');
-insert into users (name, email, numTickets, password) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0, '1234');
-insert into users (name, email, numTickets, password) values ('Ash Ketchem', 'AshKet@pallet.town', 0, '1234');
+insert into users (name, email, numTickets, password) values ('Phoenix Wright' , 'Attention@lawyer.com', 0, 'QXR0ZW50aW9u');
+insert into users (name, email, numTickets, password) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0, 'TURMdWZmeQ==');
+insert into users (name, email, numTickets, password) values ('Ash Ketchem', 'AshKet@pallet.town', 0, 'QXNoS2V0');
 
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-13 21:50:08', 'Open', 'Attention', 'dgounel0', 'Hardware', 'Low', 12, 'HeadSet');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-20 08:55:12', 'Pending', 'Attention', 'mkaradzas1', 'Hardware', 'Low', 39, 'HeadSet');
