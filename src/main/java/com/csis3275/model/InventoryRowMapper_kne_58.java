@@ -12,7 +12,7 @@ public class InventoryRowMapper_kne_58  implements RowMapper<InventoryModel_kne_
 		
 		InventoryModel_kne_58 inventory = new InventoryModel_kne_58();
 		
-		inventory.setItemID(rs.getInt("inventoryID"));
+		inventory.setItemID(rs.getInt("itemID"));
 		inventory.setItemLocation(rs.getString("itemLocation"));
 		inventory.setAssignedTo(rs.getInt("assignedTo"));
 		inventory.setItemType(rs.getString("itemType"));

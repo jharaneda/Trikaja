@@ -6,10 +6,12 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import com.csis3275.model.InventoryModel_kne_58;
 import com.csis3275.model.InventoryRowMapper_kne_58;
 
+@Service
 public class InventoryDAOImp_kne_58 {
 
 	JdbcTemplate jdbcTemplate;

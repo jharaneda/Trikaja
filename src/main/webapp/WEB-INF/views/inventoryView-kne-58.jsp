@@ -315,14 +315,18 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span
-					class="links_name">Create Ticket</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/create">
+					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
+						Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span
-					class="links_name">View Tickets</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
-			
+
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
@@ -340,8 +344,66 @@
 		</ul>
 	</div>
 	<section class="home-section">
+		<div class="container">
+			<c:if test="${ messages !=null}">
+				<c:forEach var="message" items="${messages}">
+					<div class="alert alert-success fade show" role="alert">${message}</div>
+				</c:forEach>
+			</c:if>
+			<h3>Inventory</h3>
+			<table class="table table-striped">
+				<thead>
+					<th>Item ID</th>
+					<th>Item Type</th>
+					<th>Item Location</th>
+					<th>Assigned To</th>
+					<th>Status</th>
+					<th>Edit Item</th>
+					<th>Delete Item</th>
+				</thead>
 
+				<tbody>
+					<c:forEach var="i" items="${inventoryArray}">
+						<tr>
+							<td>${i.itemID}</td>
+							<td>${i.itemType}</td>
+							<td>${i.itemLocation}</td>
+							<td>${i.assignedTo}</td>
+							<td>${i.status}</td>
+							<td><a
+								href="${pageContext.request.contextPath}#"
+								class="btn btn-primary">Edit</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}#"
+								class="btn btn-danger">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="container">
+			<h3>Order More Stock</h3>
+			<form:form
+				action="${pageContext.request.contextPath}/inventory/create"
+				method="POST" class="form-horizontal" modelAttribute="inventory">
 
+				<div class="mb-3">
+
+					<label for="itemType">Item Type</label>
+					<form:select type="select" id="itemType" class="form-control"
+						path="itemType">
+						<option value="Keyboard">Keyboard</option>
+						<option value="Mouse">Mouse</option>
+						<option value="Screen">Screen</option>
+						<option value="Headset">Headset</option>
+						<option value="Webcam">Webcam</option>
+					</form:select>
+				</div>
+				<div class="mb-3">
+					<form:button type="submit" class="btn btn-primary">Submit</form:button>
+				</div>
+			</form:form>
+		</div>
 	</section>
 	<!-- Optional JavaScript; choose one of the two! -->
 
