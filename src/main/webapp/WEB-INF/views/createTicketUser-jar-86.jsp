@@ -25,6 +25,7 @@
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/tickets/all">View Tickets</a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/tickets/create">Create Ticket</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout <i class='bx bx-log-out'></i></a></li>
 				</ul>
 			</div>
 		</div>

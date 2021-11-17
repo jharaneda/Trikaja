@@ -1,15 +1,16 @@
 
-insert into employee (name, email, position, numAssignTicks, password) values ('Kadyn Neale', 'Kneale95@hotmail.ca', 'Manager', 0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Jon Doe', 'JDoe@gmail.com', 'Manager',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Mary Sue', 'MSue@shaw.ca', 'Manager',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Hubert Farnsworth','Farnsworth@planetexpress.future', 'Agent',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Luigi','Luigi@mushroomkingdom.com','Agent',0, '1234');
-insert into employee (name, email, position, numAssignTicks, password) values ('Donkey Kong', 'Bannanas@Kong.com', 'Agent',0, '1234');
+insert into employee (name, email, position, numAssignTicks, password) values ('Kadyn Neale', 'Kneale95@hotmail.ca', 'Manager', 0, 'S25lYWxlOTU=');
+insert into employee (name, email, position, numAssignTicks, password) values ('Jon Doe', 'JDoe@gmail.com', 'Manager',0, 'SkRvZQ==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Mary Sue', 'MSue@shaw.ca', 'Manager',0, 'TVN1ZQ==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Hubert Farnsworth','Farnsworth@planetexpress.future', 'Agent',0, 'RmFybnN3b3J0aA==');
+insert into employee (name, email, position, numAssignTicks, password) values ('Luigi','Luigi@mushroomkingdom.com','Agent',0, 'THVpZ2k=');
+insert into employee (name, email, position, numAssignTicks, password) values ('Donkey Kong', 'Bannanas@Kong.com', 'Agent',0, 'QmFubmFuYXM=');
 
 
-insert into users (name, email, numTickets, password) values ('Phoenix Wright' , 'Attention@lawyer.com', 0, '1234');
-insert into users (name, email, numTickets, password) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0, '1234');
-insert into users (name, email, numTickets, password) values ('Ash Ketchem', 'AshKet@pallet.town', 0, '1234');
+insert into users (name, email, numTickets, password) values ('Phoenix Wright' , 'Attention@lawyer.com', 0, 'QXR0ZW50aW9u');
+insert into users (name, email, numTickets, password) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0, 'TURMdWZmeQ==');
+insert into users (name, email, numTickets, password) values ('Ash Ketchem', 'AshKet@pallet.town', 0, 'QXNoS2V0');
+
 
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-13 21:50:08', 'Open', 'Attention', 'dgounel0', 'Hardware', 'Low', 12, 'HeadSet');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-20 08:55:12', 'Pending', 'Attention', 'mkaradzas1', 'Hardware', 'Low', 39, 'HeadSet');
@@ -20,8 +21,10 @@ insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicke
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-04-11 01:36:38', 'Solved', 'MDLuffy', 'splatts6', 'Hardware', 'Low', 32, 'Keyboard');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-10-26 18:06:50', 'Solved', 'MDLuffy', 'kwapples7', 'Hardware', 'High', 43, 'Webcam');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-03 17:11:01', 'Open', 'MDLuffy', 'hprall8', 'Software', 'Normal', 15, 'Webcam');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-05-04 06:46:23', 'Pending', 'MDLuffy', 'rmcilvoray9', 'Software', 'Normal', 44, null);
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-08 01:45:03', 'Open', 'MDLuffy', 'fschouthedea', 'Hardware', 'High', 6, null);
+
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-05-04 06:46:23', 'Pending', 'MDLuffy', 'rmcilvoray9', 'Software', 'Normal', 44, 'N/A');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-08 01:45:03', 'Open', 'MDLuffy', 'fschouthedea', 'Hardware', 'High', 6, 'N/A');
+
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-07-24 02:01:14', 'Pending', 'MDLuffy', 'cpickettb', 'Hardware', 'High', 39, 'HeadSet');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-02-26 23:35:18', 'Pending', 'MDLuffy', 'bhurdwellc', 'Software', 'Normal', 35, 'Mouse');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-07-30 13:52:00', 'Solved', 'AshKet', 'cjoselevitchd', 'Hardware', 'Normal', 40, 'Keyboard');
@@ -31,6 +34,7 @@ insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicke
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-03 11:05:59', 'Pending', 'Kneale95', 'ecornfooth', 'Hardware', 'Normal', 33, 'Mouse');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-24 00:35:36', 'Open', 'MSue', 'mhaysomi', 'Hardware', 'High', 4, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-12-28 19:29:56', 'Solved', 'MSue', 'ccostleyj', 'Hardware', 'Low', 48, 'HeadSet');
+
 
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Keyboard', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Mouse', null, 'Working');
@@ -47,6 +51,7 @@ insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stoc
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Keyboard', null, 'Needs Repair');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Mouse', null, 'Needs Repair');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Repair Facility', 'Keyboard', null, 'Under Repair');
+
 
 
 insert into comments (id, ticketID, creationDate, creator, commentType, comment) values (1, 1, '2020-12-03 23:54:34', 'cpacher0', 'public', 'In congue. Etiam justo. Etiam pretium iaculis justo.');

@@ -28,7 +28,7 @@
 	left: 0;
 	top: 0;
 	height: 100%;
-	width: 120px;
+	width: 100px;
 	background: #11101D;
 	padding: 6px 14px;
 	z-index: 99;
@@ -84,7 +84,7 @@
 .sidebar i {
 	color: #fff;
 	height: 60px;
-	min-width: 50px;
+	min-width: 10px;
 	font-size: 28px;
 	text-align: center;
 	line-height: 60px;
@@ -97,7 +97,7 @@
 
 .sidebar li {
 	position: relative;
-	margin: 8px 0;
+	margin: 10px 0;
 	list-style: none;
 }
 
@@ -275,7 +275,7 @@
 	background: #E4E9F7;
 	min-height: 100vh;
 	top: 0;
-	left: 78px;
+	left: 100px;
 	width: calc(90% - 78px);
 	transition: all 0.5s ease;
 	z-index: 2;
@@ -308,109 +308,96 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add' ></i> <span class="links_name">Create Ticket</span>
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span class="links_name">Create Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
-			
+
 			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
-			
-			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bx-user'></i> <span class="links_name">Users</span>
+
+			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bxs-user-detail' ></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user'></i> <span class="links_name">Create
-						Employee</span>
+			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user-plus' ></i> <span class="links_name">Create Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bx-user'></i> <span class="links_name">Create User</span>
+			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bxs-user-plus' ></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+			</a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
-	<div class='container'>
-		<h1>Create Ticket</h1>
-		<form:form action="${pageContext.request.contextPath}/manager/tickets/create" method="POST" cssClass="form-horizontal" modelAttribute="ticket">
-			<div class="row">
-				<div class="col">
-					<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
-						<tbody>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Status</span> <form:select path="status" class="form-select">
-										<form:option value="Open">Open</form:option>
-										<form:option value="Pending">Pending</form:option>
-										<form:option value="Solved">Solved</form:option>
-									</form:select></td>
-							</tr>
-							<%-- <tr>
-								<td><span class="input-group-text" id="basic-addon1">Creator</span> <form:select path="userCreator" class="form-select">
-										<form:option value="user1">User1</form:option>
-										<form:option value="user1">User2</form:option>
-										<form:option value="user2">User3</form:option>
-									</form:select></td>
-							</tr> --%>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Assignee User</span> <form:select path="assigneeUser" class="form-select">
-										<form:option value="user1">User1</form:option>
-										<form:option value="user1">User2</form:option>
-										<form:option value="user2">User3</form:option>
-									</form:select></td>
-							</tr>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Type</span> <form:select path="typeOfTicket" class="form-select">
-										<form:option value="Software">Software</form:option>
-										<form:option value="Hardware">Hardware</form:option>
-									</form:select></td>
-							</tr>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Priority</span> <form:select path="priority" class="form-select">
-										<form:option value="Low">Low</form:option>
-										<form:option value="Normal">Normal</form:option>
-										<form:option value="High">High</form:option>
-									</form:select></td>
-							</tr>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Hardware to be changed</span> <form:select path="hardwareToBeChanged" class="form-select">
-										<form:option value="N/A">NA</form:option>
-										<form:option value="Keyboard">Keyboard</form:option>
-										<form:option value="Mouse">Mouse</form:option>
-										<form:option value="HeadSet">HeadSet</form:option>
-										<form:option value="Screen">Screen</form:option>
-										<form:option value="Tower">Tower</form:option>
-										<form:option value="Webcam">Webcam</form:option>
-									</form:select></td>
-							</tr>
-							<tr>
-								<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" required="required"/></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col">
-				<form:form method="POST" cssClass="form-horizontal" modelAttribute="comment">
-					<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
-						<tbody>
-							
+		<div class='container'>
+			<h1>Create Ticket</h1>
+			<form:form action="${pageContext.request.contextPath}/manager/tickets/create" method="POST" cssClass="form-horizontal" modelAttribute="ticket">
+				<div class="row">
+					<div class="col">
+						<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
+							<tbody>
 								<tr>
-									<td class="input-group mb-3 form-floating">
-										<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required" /> 
-										<label for="floatingTextarea">Write about your issue</label>
-										</td>
+									<td><span class="input-group-text" id="basic-addon1">Status</span> <form:select path="status" class="form-select">
+											<form:option value="Open">Open</form:option>
+											<form:option value="Pending">Pending</form:option>
+											<form:option value="Solved">Solved</form:option>
+										</form:select></td>
 								</tr>
 								<tr>
-									<td><form:button type="submit" class="btn btn-success">Create ticket</form:button></td>
+									<td><span class="input-group-text" id="basic-addon1">Assignee User</span> <form:select path="assigneeUser" class="form-select">
+											<form:option value="user1">User1</form:option>
+											<form:option value="user1">User2</form:option>
+											<form:option value="user2">User3</form:option>
+										</form:select></td>
 								</tr>
-							
-						</tbody>
-					</table>
-					</form:form>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1">Type</span> <form:select path="typeOfTicket" class="form-select">
+											<form:option value="Software">Software</form:option>
+											<form:option value="Hardware">Hardware</form:option>
+										</form:select></td>
+								</tr>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1">Priority</span> <form:select path="priority" class="form-select">
+											<form:option value="Low">Low</form:option>
+											<form:option value="Normal">Normal</form:option>
+											<form:option value="High">High</form:option>
+										</form:select></td>
+								</tr>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1">Hardware to be changed</span> <form:select path="hardwareToBeChanged" class="form-select">
+											<form:option value="N/A">NA</form:option>
+											<form:option value="Keyboard">Keyboard</form:option>
+											<form:option value="Mouse">Mouse</form:option>
+											<form:option value="HeadSet">HeadSet</form:option>
+											<form:option value="Screen">Screen</form:option>
+											<form:option value="Tower">Tower</form:option>
+											<form:option value="Webcam">Webcam</form:option>
+										</form:select></td>
+								</tr>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" required="required" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col">
+						<form:form method="POST" cssClass="form-horizontal" modelAttribute="comment">
+							<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
+								<tbody>
+
+									<tr>
+										<td class="input-group mb-3 form-floating"><form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required" /> <label for="floatingTextarea">Write about your issue</label></td>
+									</tr>
+									<tr>
+										<td><form:button type="submit" class="btn btn-success">Create ticket</form:button></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</form:form>
+					</div>
 				</div>
-			</div>
-		</form:form>
-	</div>
+			</form:form>
+		</div>
 	</section>
 </body>
 </html>

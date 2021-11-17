@@ -26,7 +26,7 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/"><i class='bx bx-help-circle' ></i>Help ME!</a>
+			<a class="navbar-brand" href="#"><i class='bx bx-help-circle' ></i>Help ME!</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -34,6 +34,7 @@
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/tickets/all">View Tickets</a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/tickets/create">Create Ticket</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout <i class='bx bx-log-out'></i></a></li>
 				</ul>
 			</div>
 		</div>
