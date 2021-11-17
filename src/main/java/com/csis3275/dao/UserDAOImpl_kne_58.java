@@ -21,6 +21,7 @@ public class UserDAOImpl_kne_58 {
 	private final String SQL_DELETE_USER = "DELETE FROM users WHERE userID = ?";
 	private final String SQL_UPDATE_USER = "UPDATE users SET name = ?, email = ?, numTickets = ? WHERE userID = ?";
 	private final String SQL_FIND_USER = "SELECT * FROM users WHERE userID = ?";
+	private final String SQL_FIND_USER_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
 
 	@Autowired
 	public UserDAOImpl_kne_58(DataSource dataSource2) {
@@ -57,6 +58,16 @@ public class UserDAOImpl_kne_58 {
 	@SuppressWarnings("deprecation")
 	public TrikajaGroupProjectCsis3275_user_model_kne_58 findUserByID_kne_58(int userID) {
 		return jdbcTemplate2.queryForObject(SQL_FIND_USER, new Object[] { userID }, new TrikajaGroupProjectCsis3275_user_RowMapper_kne_58());
+	}
+	
+	@SuppressWarnings("deprecation")
+	public TrikajaGroupProjectCsis3275_user_model_kne_58 findUserByEmail_kne_58(String email) {
+		try {
+			return jdbcTemplate2.queryForObject(SQL_FIND_USER_BY_EMAIL, new Object[] { email }, new TrikajaGroupProjectCsis3275_user_RowMapper_kne_58());
+			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }
 

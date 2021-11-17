@@ -349,7 +349,7 @@
 			</div>
 		</nav>
 		<div class='container'>
-			<h1>All Tickets</h1>
+			<h1>Solved Tickets</h1>
 			<c:forEach var="message" items="${messages}">
 				<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -372,7 +372,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var='t' items="${allTicketsManager}">
+					<c:forEach var='t' items="${allSolvedTicketsManager}">
 						<tr>
 							<th scope="row">${t.id }</th>
 							<td>${t.creationDate}</td>

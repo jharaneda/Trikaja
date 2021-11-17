@@ -25,6 +25,7 @@
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/tickets/all">View Tickets</a></li>
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/tickets/create">Create Ticket</a></li>
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout <i class='bx bx-log-out'></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,12 +60,12 @@
 							<form:option value="Webcam">Webcam</form:option>
 						</form:select>
 						<span class="input-group-text" id="basic-addon1">Position number</span>
-						<form:input path="position" type="text" />
+						<form:input path="position" type="text" required="required"/>
 					</div>
 					<form:form method="POST" cssClass="form-horizontal" modelAttribute="comment">
 						<label for="basic-url" class="form-label">Comments</label>
 						<div class="input-group mb-3 form-floating">
-							<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" />
+							<form:textarea path="comment" class="form-control" id="floatingTextarea" style="height: 120px" required="required"/>
 							<label for="floatingTextarea">Write about your issue</label>
 						</div>
 						<form:button type="submit" class="btn btn-success">Create ticket</form:button>

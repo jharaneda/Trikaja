@@ -7,7 +7,14 @@ public class TrikajaGroupProjectCsis3275_employee_model_kne_58 {
 	private String email;
 	private String position;
 	private int numAssignTicks;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getEmployeeID() {
 		return employeeID;
 	}
