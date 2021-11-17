@@ -310,7 +310,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>Create User</title>
+<title>Inventory List</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -327,8 +327,9 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/inventory">
-					<i class='bx bxs-book-content'></i> <span class="links_name">View
+			<li><a
+				href="${pageContext.request.contextPath}/inventory"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
 						Inventory</span>
 			</a> <span class="tooltip">View Inventory</span></li>
 
@@ -346,52 +347,85 @@
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
 					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			<li><a href="${pageContext.request.contextPath}/logout"><i
+					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+			</a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Edit ${user.name} -- ${user.userID}</h3>
+			<c:if test="${ messages !=null}">
+				<c:forEach var="message" items="${messages}">
+					<div class="alert alert-success fade show" role="alert">${message}</div>
+				</c:forEach>
+			</c:if>
+			<h3>Inventory</h3>
+			<table class="table table-striped">
+				<thead>
+					<th>Item ID</th>
+					<th>Item Type</th>
+					<th>Item Location</th>
+					<th>Assigned To</th>
+					<th>Status</th>
+					<th>Edit Item</th>
+					<th>Delete Item</th>
+				</thead>
+
+				<tbody>
+					<c:forEach var="i" items="${inventoryArray}">
+						<tr>
+							<td>${i.itemID}</td>
+							<td>${i.itemType}</td>
+							<td>${i.itemLocation}</td>
+							<td>${i.assignedTo}</td>
+							<td>${i.status}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/inventory/edit?itemID=${i.itemID}"
+								class="btn btn-primary">Edit</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/inventory/delete/?itemID=${i.itemID}"
+								class="btn btn-danger">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="container">
+			<h3>Order More Stock</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager/user/edit/"
-				cssClass="form-control" method="post" modelAttribute="user">
+				action="${pageContext.request.contextPath}/inventory/create"
+				method="POST" class="form-horizontal" modelAttribute="inventory">
 
-				<div class="form-group" style="display: none">
-					<div class="col-md-9">
-						<form:input path="userID" value="${user.userID}"
-							cssClass="form-control" />
-					</div>
+				<div class="mb-3">
+
+					<label for="itemType">Item Type</label>
+					<form:select type="select" id="itemType" class="form-control"
+						path="itemType">
+						<option value="Keyboard">Keyboard</option>
+						<option value="Mouse">Mouse</option>
+						<option value="Screen">Screen</option>
+						<option value="Headset">Headset</option>
+						<option value="Headset">Tower</option>
+						<option value="Webcam">Webcam</option>
+					</form:select>
 				</div>
-
-				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Name</label>
-					<div class="col-md-9">
-						<form:input path="name" value="${user.name}"
-							cssClass="form-control" />
-					</div>
+				<div class="mb-3">
+					<form:button type="submit" class="btn btn-primary">Submit</form:button>
 				</div>
+			</form:form>
+		</div>
+		<div class="container">
+			<form:form
+				action="${pageContext.request.contextPath}/inventory/assign/"
+				method="GET" class="form-horizontal" modelAttribute="inventory">
 
-				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Email</label>
-					<div class="col-md-9">
-						<form:input path="email" value="${user.email}"
-							cssClass="form-control" />
-					</div>
+				<div class="mb-3">
+
+					<H3>Assign Hardware</H3>
 				</div>
-
-
-				<div class="form-group">
-					<label for="numTickets" class="col-md-3 control-label">Number
-						of Current Tickets</label>
-					<div class="col-md-9">
-						<form:input path="numTickets" value="${user.numTickets}"
-							cssClass="form-control" readonly="true" />
-					</div>
-
-					<div class="form-group">
-						<div class="col-md-offset-3 col-md-9">
-							<form:button class="btn btn-primary">Submit</form:button>
-						</div>
-					</div>
+				<div class="mb-3">
+					<form:button type="submit" class="btn btn-primary">Go To</form:button>
+				</div>
 			</form:form>
 		</div>
 	</section>

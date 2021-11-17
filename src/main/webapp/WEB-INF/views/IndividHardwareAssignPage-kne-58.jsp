@@ -310,7 +310,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>Create User</title>
+<title>Inventory List</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -327,11 +327,6 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/inventory">
-					<i class='bx bxs-book-content'></i> <span class="links_name">View
-						Inventory</span>
-			</a> <span class="tooltip">View Inventory</span></li>
-
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
@@ -346,45 +341,64 @@
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
 					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+            </a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Edit ${user.name} -- ${user.userID}</h3>
-			<form:form
-				action="${pageContext.request.contextPath}/manager/user/edit/"
-				cssClass="form-control" method="post" modelAttribute="user">
+			<h3>Edit ${inventory.itemID}</h3>
+			<form:form action="${pageContext.request.contextPath}/inventory/edit"
+				cssClass="form-control" method="post" modelAttribute="inventory">
 
 				<div class="form-group" style="display: none">
 					<div class="col-md-9">
-						<form:input path="userID" value="${user.userID}"
+						<form:input path="itemID" value="${inventory.itemID}"
 							cssClass="form-control" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Name</label>
+					<label for="itemLocation" class="col-md-3 control-label">Location</label>
 					<div class="col-md-9">
-						<form:input path="name" value="${user.name}"
+						<form:select type="select" id="itemLocation" cssClass="form-control"
+							path="itemLocation">
+							<option value="Stockroom">Send to Stockroom</option>
+							<option value="Repair Facility">Send for Repairs</option>
+						</form:select>
+					</div>
+				</div>
+
+				<div class="form-group" style="display: none">
+					<label for="itemType" class="col-md-3 control-label">itemType</label>
+					<div class="col-md-9">
+						<form:input path="itemType" value="${inventory.itemType}"
 							cssClass="form-control" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Email</label>
+					<label for="assignedTo" class="col-md-3 control-label">Assigned
+						To</label>
 					<div class="col-md-9">
-						<form:input path="email" value="${user.email}"
-							cssClass="form-control" />
+						<form:select type="select" id="assignedTo" cssClass="form-control"
+							path="assignedTo">
+							<option value="${inventory.assignedTo}">${inventory.assignedTo}</option>
+							<option value="0">Unassign</option>
+						</form:select>
 					</div>
 				</div>
 
-
 				<div class="form-group">
-					<label for="numTickets" class="col-md-3 control-label">Number
-						of Current Tickets</label>
+					<label for="status" class="col-md-3 control-label">status</label>
 					<div class="col-md-9">
-						<form:input path="numTickets" value="${user.numTickets}"
-							cssClass="form-control" readonly="true" />
+						<form:select type="select" id="status" cssClass="form-control"
+							path="status">
+							<option value="Working">Working</option>
+							<option value="Needs Repair">Needs Repair</option>
+							<option value="Under Repair">Under Repair</option>
+						</form:select>
 					</div>
 
 					<div class="form-group">

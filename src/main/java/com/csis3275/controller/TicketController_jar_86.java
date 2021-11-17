@@ -48,6 +48,7 @@ public class TicketController_jar_86 {
 
 	@RequestMapping("/")
 	public String showHome(@ModelAttribute("session") TrikajaGroupProjectCsis3275_employee_model_kne_58 userSession, Model model, HttpSession session) {
+
 		model.addAttribute("session", userSession);
 
 		@SuppressWarnings("unchecked")
@@ -60,6 +61,7 @@ public class TicketController_jar_86 {
 		session.removeAttribute("session");
 
 		return "login-jar-86";
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -129,9 +131,11 @@ public class TicketController_jar_86 {
 		return "redirect:/";
 	}
 
+
 	// **** END USER show all tickets****
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
+
 
 		ArrayList<String> messages = new ArrayList<String>();
 
@@ -143,6 +147,8 @@ public class TicketController_jar_86 {
 		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 		String[] user = webSession.getEmail().split("@");
 		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getTicketByUser(user[0]);
+
+
 
 		//
 		if (webSession.getEmail() == null) {
@@ -498,6 +504,7 @@ public class TicketController_jar_86 {
 				return "viewTicketManager-jar-86";
 			}
 		}
+
 		return "redirect:/";
 	}
 

@@ -310,7 +310,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
-<title>Create User</title>
+<title>Inventory List</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -350,48 +350,55 @@
 	</div>
 	<section class="home-section">
 		<div class="container">
-			<h3>Edit ${user.name} -- ${user.userID}</h3>
+			<h3>Edit ${inventory.itemID}</h3>
 			<form:form
-				action="${pageContext.request.contextPath}/manager/user/edit/"
-				cssClass="form-control" method="post" modelAttribute="user">
+				action="${pageContext.request.contextPath}/inventory/assign/assignTo"
+				cssClass="form-control" method="post" modelAttribute="inventory">
 
 				<div class="form-group" style="display: none">
 					<div class="col-md-9">
-						<form:input path="userID" value="${user.userID}"
+						<form:input path="itemID" value="${inventory.itemID}"
+							cssClass="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group" style="display: none">
+					<label for="itemLocation" class="col-md-3 control-label">Location</label>
+					<div class="col-md-9">
+						<form:input path="itemLocation" value="${inventory.itemLocation}"
+							cssClass="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group" style="display: none">
+					<label for="itemType" class="col-md-3 control-label">itemType</label>
+					<div class="col-md-9">
+						<form:input path="itemType" value="${inventory.itemType}"
 							cssClass="form-control" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Name</label>
+					<label for="assignedTo" class="col-md-3 control-label">Assigned
+						To</label>
 					<div class="col-md-9">
-						<form:input path="name" value="${user.name}"
-							cssClass="form-control" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="name" class="col-md-3 control-label">Email</label>
-					<div class="col-md-9">
-						<form:input path="email" value="${user.email}"
-							cssClass="form-control" />
-					</div>
-				</div>
-
-
-				<div class="form-group">
-					<label for="numTickets" class="col-md-3 control-label">Number
-						of Current Tickets</label>
-					<div class="col-md-9">
-						<form:input path="numTickets" value="${user.numTickets}"
+						<form:input path="assignedTo" value="${inventory.assignedTo}"
 							cssClass="form-control" readonly="true" />
 					</div>
-
 					<div class="form-group">
 						<div class="col-md-offset-3 col-md-9">
-							<form:button class="btn btn-primary">Submit</form:button>
+							<form:button class="btn btn-primary">Confirm</form:button>
 						</div>
 					</div>
+				</div>
+
+				<div class="form-group" style="display: none">
+					<label for="status" class="col-md-3 control-label">status</label>
+					<div class="col-md-9">
+						<form:input path="status" value="${inventory.status}"
+							cssClass="form-control" />
+					</div>
+				</div>
 			</form:form>
 		</div>
 	</section>
