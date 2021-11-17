@@ -36,7 +36,10 @@ insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stoc
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Mouse', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Screen', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Keyboard', null, 'Working');
-insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Headset', null, 'Working');
+insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Tower', null, 'Working');
+insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Keyboard', null, 'Working');
+insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Tower', null, 'Working');
+insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'HeadSet', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Mouse', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Mouse', null, 'Working');
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Screen', null, 'Working');
