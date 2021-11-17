@@ -17,7 +17,6 @@
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
 
-
 * {
 	margin: 0;
 	padding: 0;
@@ -316,24 +315,36 @@
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span
-					class="links_name">Create Ticket</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/create">
+					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
+						Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span
-					class="links_name">View Tickets</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bx-user'></i> <span
-					class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
+			<li><a href="${pageContext.request.contextPath}/manager"> <i
+					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user'></i> <span
-					class="links_name">Create Employee</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/employee/create">
+					<i class='bx bx-user'></i> <span class="links_name">Create
+						Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bx-user'></i> <span
-					class="links_name">Create User</span>
+			<li><a
+				href="${pageContext.request.contextPath}/manager/user/create"> <i
+					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
 		</ul>
 	</div>
@@ -353,8 +364,9 @@
 					<form:input type="email" class="form-control" path="email" />
 				</div>
 				<div class="mb-3">
-					<label for ="position">Position</label>
-					<form:select type="select" id="position" class="form-control" path="position">
+					<label for="position">Position</label>
+					<form:select type="select" id="position" class="form-control"
+						path="position">
 						<option value="Manager">Manager</option>
 						<option value="Agent">Agent</option>
 					</form:select>

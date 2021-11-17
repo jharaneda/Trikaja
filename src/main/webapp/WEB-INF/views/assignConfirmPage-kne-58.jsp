@@ -327,6 +327,11 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
@@ -378,7 +383,7 @@
 						To</label>
 					<div class="col-md-9">
 						<form:input path="assignedTo" value="${inventory.assignedTo}"
-							cssClass="form-control"  readonly ="true"/>
+							cssClass="form-control" readonly="true" />
 					</div>
 					<div class="form-group">
 						<div class="col-md-offset-3 col-md-9">

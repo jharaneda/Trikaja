@@ -327,6 +327,12 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
+			<li><a
+				href="${pageContext.request.contextPath}/inventory"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
@@ -341,6 +347,9 @@
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
 					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			<li><a href="${pageContext.request.contextPath}/logout"><i
+					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+			</a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
@@ -374,7 +383,7 @@
 								href="${pageContext.request.contextPath}/inventory/edit?itemID=${i.itemID}"
 								class="btn btn-primary">Edit</a></td>
 							<td><a
-								href="${pageContext.request.contextPath}#"
+								href="${pageContext.request.contextPath}/inventory/delete/?itemID=${i.itemID}"
 								class="btn btn-danger">Delete</a></td>
 						</tr>
 					</c:forEach>
@@ -396,6 +405,7 @@
 						<option value="Mouse">Mouse</option>
 						<option value="Screen">Screen</option>
 						<option value="Headset">Headset</option>
+						<option value="Headset">Tower</option>
 						<option value="Webcam">Webcam</option>
 					</form:select>
 				</div>
@@ -411,7 +421,7 @@
 
 				<div class="mb-3">
 
-				<H3>Assign Hardware</H3>
+					<H3>Assign Hardware</H3>
 				</div>
 				<div class="mb-3">
 					<form:button type="submit" class="btn btn-primary">Go To</form:button>

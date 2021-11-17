@@ -341,6 +341,9 @@
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
 					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+            </a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
@@ -359,8 +362,11 @@
 				<div class="form-group">
 					<label for="itemLocation" class="col-md-3 control-label">Location</label>
 					<div class="col-md-9">
-						<form:input path="itemLocation" value="${inventory.itemLocation}"
-							cssClass="form-control" />
+						<form:select type="select" id="itemLocation" cssClass="form-control"
+							path="itemLocation">
+							<option value="Stockroom">Send to Stockroom</option>
+							<option value="Repair Facility">Send for Repairs</option>
+						</form:select>
 					</div>
 				</div>
 
@@ -373,12 +379,13 @@
 				</div>
 
 				<div class="form-group">
-					<label for="assignedTo" class="col-md-3 control-label">Assigned To</label>
+					<label for="assignedTo" class="col-md-3 control-label">Assigned
+						To</label>
 					<div class="col-md-9">
 						<form:select type="select" id="assignedTo" cssClass="form-control"
 							path="assignedTo">
-							<option value="Manager">Manager</option>
-							<option value="Agent">Agent</option>
+							<option value="${inventory.assignedTo}">${inventory.assignedTo}</option>
+							<option value="0">Unassign</option>
 						</form:select>
 					</div>
 				</div>
@@ -386,8 +393,12 @@
 				<div class="form-group">
 					<label for="status" class="col-md-3 control-label">status</label>
 					<div class="col-md-9">
-						<form:input path="status" value="${inventory.status}"
-							cssClass="form-control" />
+						<form:select type="select" id="status" cssClass="form-control"
+							path="status">
+							<option value="Working">Working</option>
+							<option value="Needs Repair">Needs Repair</option>
+							<option value="Under Repair">Under Repair</option>
+						</form:select>
 					</div>
 
 					<div class="form-group">
