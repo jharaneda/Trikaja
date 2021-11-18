@@ -326,7 +326,7 @@
 					class='bx bxs-book-content'></i> <span class="links_name">View
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
-			
+
 			<li><a href="${pageContext.request.contextPath}/inventory">
 					<i class='bx bxs-book-content'></i> <span class="links_name">View
 						Inventory</span>
@@ -346,6 +346,9 @@
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
 					class='bx bx-user'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			<li><a href="${pageContext.request.contextPath}/logout"><i
+					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
+			</a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
