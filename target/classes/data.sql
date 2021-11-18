@@ -11,22 +11,19 @@ insert into users (name, email, numTickets, password) values ('Phoenix Wright' ,
 insert into users (name, email, numTickets, password) values ('Monkey D Luffy', 'MDLuffy@strawhat.com', 0, 'TURMdWZmeQ==');
 insert into users (name, email, numTickets, password) values ('Ash Ketchem', 'AshKet@pallet.town', 0, 'QXNoS2V0');
 
-
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-13 21:50:08', 'Open', 'Attention', 'dgounel0', 'Hardware', 'Low', 12, 'HeadSet');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-09-20 08:55:12', 'Pending', 'Attention', 'mkaradzas1', 'Hardware', 'Low', 39, 'HeadSet');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-13 02:58:26', 'Solved', 'Attention', 'lmacarthur2', 'Software', 'High', 34, 'Screen');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-04-08 10:17:57', 'Solved', 'Attention', 'udytham3', 'Software', 'High', 41, 'Screen');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-20 05:40:37', 'Open', 'Attention', 'vostridge4', 'Software', 'Normal', 50, 'Screen');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-02-22 03:46:10', 'Pending', 'Attention', 'bjerram5', 'Software', 'Normal', 35, 'Webcam');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-13 02:58:26', 'Solved', 'Attention', 'lmacarthur2', 'Software', 'High', 34, 'N/A');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-04-08 10:17:57', 'Solved', 'Attention', 'udytham3', 'Software', 'High', 41, 'N/A');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-20 05:40:37', 'Open', 'Attention', 'vostridge4', 'Software', 'Normal', 50, 'N/A');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-02-22 03:46:10', 'Pending', 'Attention', 'bjerram5', 'Software', 'Normal', 35, 'N/A');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-04-11 01:36:38', 'Solved', 'MDLuffy', 'splatts6', 'Hardware', 'Low', 32, 'Keyboard');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-10-26 18:06:50', 'Solved', 'MDLuffy', 'kwapples7', 'Hardware', 'High', 43, 'Webcam');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-03 17:11:01', 'Open', 'MDLuffy', 'hprall8', 'Software', 'Normal', 15, 'Webcam');
-
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-03 17:11:01', 'Open', 'MDLuffy', 'hprall8', 'Software', 'Normal', 15, 'N/A');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-05-04 06:46:23', 'Pending', 'MDLuffy', 'rmcilvoray9', 'Software', 'Normal', 44, 'N/A');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-08 01:45:03', 'Open', 'MDLuffy', 'fschouthedea', 'Hardware', 'High', 6, 'N/A');
-
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-08 01:45:03', 'Open', 'MDLuffy', 'fschouthedea', 'Hardware', 'High', 6, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-07-24 02:01:14', 'Pending', 'MDLuffy', 'cpickettb', 'Hardware', 'High', 39, 'HeadSet');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-02-26 23:35:18', 'Pending', 'MDLuffy', 'bhurdwellc', 'Software', 'Normal', 35, 'Mouse');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-02-26 23:35:18', 'Pending', 'MDLuffy', 'bhurdwellc', 'Software', 'Normal', 35, 'N/A');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-07-30 13:52:00', 'Solved', 'AshKet', 'cjoselevitchd', 'Hardware', 'Normal', 40, 'Keyboard');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-08-19 05:55:11', 'Open', 'AshKet', 'rkearneye', 'Hardware', 'Normal', 48, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-08-31 07:10:17', 'Solved', 'AshKet', 'mspeariettf', 'Hardware', 'Low', 26, 'Keyboard');
@@ -34,6 +31,7 @@ insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicke
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-03 11:05:59', 'Pending', 'Kneale95', 'ecornfooth', 'Hardware', 'Normal', 33, 'Mouse');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-24 00:35:36', 'Open', 'MSue', 'mhaysomi', 'Hardware', 'High', 4, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-12-28 19:29:56', 'Solved', 'MSue', 'ccostleyj', 'Hardware', 'Low', 48, 'HeadSet');
+
 
 
 insert into inventory (itemLocation, itemType, assignedTo, status) values ('Stockroom', 'Keyboard', null, 'Working');
