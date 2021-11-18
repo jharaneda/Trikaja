@@ -327,6 +327,11 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>

@@ -26,10 +26,12 @@ public class TicketDAOImpl {
 	private final String SQL_UPDATE_TICKET = "UPDATE tickets SET status = ?, userCreator = ?, assigneeUser = ?, typeOfTicket = ?, priority = ?, position = ?, hardwareToBeChanged = ? WHERE id = ?";
 	private final String SQL_UPDATE_TICKET_USER = "UPDATE tickets SET position = ? WHERE id = ?";
 	private final String SQL_GET_TICKET_BY_USER = "SELECT * FROM tickets where userCreator = ?";
+	private final String SQL_GET_TICKET_BY_HARDWARE ="SELECT * FROM tickets WHERE status = ? AND typeOfTicket = ? and hardwareToBeChanged IS NOT NULL";
 	private final String SQL_GET_OPEN_TICKETS = "SELECT * FROM tickets where status = 'Open'";
 	private final String SQL_GET_PENDING_TICKETS = "SELECT * FROM tickets where status = 'Pending'";
 	private final String SQL_GET_SOLVED_TICKETS = "SELECT * FROM tickets where status = 'Solved'";
 	private final String SQL_COUNT_TICKETS = "SELECT COUNT(STATUS) FROM tickets where userCreator = ?";
+
 
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -43,6 +45,15 @@ public class TicketDAOImpl {
 
 		return allTickets;
 	}
+
+	@SuppressWarnings("deprecation")
+	public ArrayList<TicketModel_jar_86> getOpenHardwareTickets(String status, String type){
+		ArrayList<TicketModel_jar_86> openHardwareTickets = new ArrayList<TicketModel_jar_86>();
+		openHardwareTickets = (ArrayList<TicketModel_jar_86> ) jdbcTemplate.query(SQL_GET_TICKET_BY_HARDWARE,new Object[] {status, type},new TicketRowMapper_jar_86());
+		
+		return openHardwareTickets;
+	}
+	
 	public ArrayList<TicketModel_jar_86> getAllOpenTickets() {
 		ArrayList<TicketModel_jar_86> allOpenTickets = new ArrayList<TicketModel_jar_86>();
 
@@ -65,6 +76,7 @@ public class TicketDAOImpl {
 		allSolvedTickets = (ArrayList<TicketModel_jar_86>) jdbcTemplate.query(SQL_GET_SOLVED_TICKETS, new TicketRowMapper_jar_86());
 
 		return allSolvedTickets;
+
 	}
 	
 	@SuppressWarnings("deprecation")

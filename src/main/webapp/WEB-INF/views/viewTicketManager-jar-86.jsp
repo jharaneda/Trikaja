@@ -9,7 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 <style type="text/css">
 /* Google Font Link */
 @import
@@ -300,13 +304,34 @@
 	}
 }
 </style>
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
+	rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Update ticket - Manager View</title>
 </head>
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/create">
+					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
+						Ticket</span>
+			</a> <span class="tooltip">Create Ticket</span></li>
+
+			<li><a
+				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
+					class='bx bxs-book-content'></i> <span class="links_name">View
+						Tickets</span>
+			</a> <span class="tooltip">View Tickets</span></li>
+
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
+			<li><a href="${pageContext.request.contextPath}/manager"> <i
+					class='bx bx-user'></i> <span class="links_name">Users</span>
+
 			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span class="links_name">Create Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
@@ -314,6 +339,7 @@
 			</a> <span class="tooltip">View Tickets</span></li>
 
 			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bxs-user-detail' ></i> <span class="links_name">Users</span>
+
 			</a> <span class="tooltip">Users</span></li>
 
 			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user-plus' ></i> <span class="links_name">Create Employee</span>
@@ -342,6 +368,7 @@
 								</tr>
 								<tr>
 									<td><span class="input-group-text" id="basic-addon1">Status</span> <form:select path="status" class="form-select">
+
 											<form:option value="Open">Open</form:option>
 											<form:option value="Pending">Pending</form:option>
 											<form:option value="Solved">Solved</form:option>

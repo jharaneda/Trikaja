@@ -327,6 +327,11 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
+						Inventory</span>
+			</a> <span class="tooltip">View Inventory</span></li>
+
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
 					class='bx bx-user'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
@@ -349,14 +354,14 @@
 			<form:form
 				action="${pageContext.request.contextPath}/agent/user/edit/"
 				cssClass="form-control" method="post" modelAttribute="user">
-				
+
 				<div class="form-group" style="display: none">
 					<div class="col-md-9">
 						<form:input path="userID" value="${user.userID}"
 							cssClass="form-control" />
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="name" class="col-md-3 control-label">Name</label>
 					<div class="col-md-9">
