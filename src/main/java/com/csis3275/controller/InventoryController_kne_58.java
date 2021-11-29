@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.csis3275.dao.InventoryDAOImp_kne_58;
 import com.csis3275.dao.TicketDAOImpl;
 import com.csis3275.model.InventoryModel_kne_58;
+import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_employee_model_kne_58;
+import com.csis3275.service.SendEmailService_kne_58;
 
 @Controller
 public class InventoryController_kne_58 {
@@ -30,6 +32,9 @@ public class InventoryController_kne_58 {
 
 	@Autowired
 	TicketDAOImpl ticketDAOImpl;
+	
+	@Autowired
+	SendEmailService_kne_58 emailService;
 
 	@RequestMapping("/inventory")
 	public String showInventory_kne_58(@ModelAttribute("inventory") InventoryModel_kne_58 createInventory, Model model,
@@ -58,10 +63,17 @@ public class InventoryController_kne_58 {
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages")
 				: new ArrayList<String>();
+		
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
 
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
+		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "You ordered a " + createInventory.getItemType(), "Ordered Inventory");
+		
 		messages.add("Created Item: " + createInventory.getItemType());
 
 		session.setAttribute("messages", messages);
+		
 
 		return "redirect:/inventory";
 	}
