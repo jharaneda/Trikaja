@@ -60,3 +60,12 @@ CREATE TABLE inventory (
 	assignedTo INTEGER,
 	status VARCHAR(255)
 );
+
+
+DROP TABLE predefinedAnswers IF EXISTS;
+
+create table predefinedAnswers (
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50),
+	comment TEXT
+);
