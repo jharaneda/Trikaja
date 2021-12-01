@@ -2,7 +2,6 @@ package com.csis3275.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,7 +20,6 @@ import com.csis3275.dao.TicketDAOImpl;
 import com.csis3275.model.InventoryModel_kne_58;
 import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
-import com.csis3275.model.TrikajaGroupProjectCsis3275_employee_model_kne_58;
 import com.csis3275.service.SendEmailService_kne_58;
 
 @Controller

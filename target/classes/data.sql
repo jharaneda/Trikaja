@@ -29,8 +29,8 @@ insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicke
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-08-31 07:10:17', 'Solved', 'AshKet', 'Phoenix Wright', 'Hardware', 'Low', 26, 'Keyboard');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-08 17:49:19', 'Solved', 'Kneale95', 'Phoenix Wright', 'Hardware', 'High', 35, 'Tower');
 insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2021-03-03 11:05:59', 'Pending', 'Kneale95', 'Phoenix Wright', 'Hardware', 'Normal', 33, 'Mouse');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-24 00:35:36', 'Open', 'MSue', 'mhaysomi', 'Phoenix Wright', 'High', 4, 'Tower');
-insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-12-28 19:29:56', 'Solved', 'MSue', 'ccostleyj', 'Phoenix Wright', 'Low', 48, 'HeadSet');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-11-24 00:35:36', 'Open', 'MSue', 'Ash Ketchem', 'Hardware', 'High', 4, 'Tower');
+insert into tickets(creationDate, status, userCreator, assigneeUser, typeOfTicket, priority, position, hardwareToBeChanged) values ('2020-12-28 19:29:56', 'Solved', 'MSue', 'Ash Ketchem', 'Software', 'Low', 48, 'HeadSet');
 
 
 
