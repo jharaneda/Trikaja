@@ -194,6 +194,7 @@ public class TicketController_jar_86 {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
 				model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
+
 				// Clear the messages before the returning
 				session.removeAttribute("messages");
 				return "createTicketUser-jar-86";
@@ -245,7 +246,10 @@ public class TicketController_jar_86 {
 
 		messages.add("Ticket " + ticketId + " was created");
 		
-		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Test", "test");
+		//Send Email for newly created ticket
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + createComment.getCreator() + "\n" +"Your " + createTicket.getTypeOfTicket() + 
+				" ticket has been created!", "Ticket Created");
+		
 		return "redirect:/tickets/all";
 	}
 
@@ -314,8 +318,11 @@ public class TicketController_jar_86 {
 
 		commentDAOImpl.createComment(newComment);
 		ticketDAOImpl.updateTicketUserView(ticket);
-
-		emailService.sendEmail_kne_58("Kneale95@hotmial.ca","Greetings" + ticket.getAssigneeUser() + "\n" + "Here are the new details of your ticket", "Ticket Number " + ticket.getId() + "Status Change");
+		
+		//Send email for ticket update
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + ticket.getAssigneeUser() + "\n" +"Your " + ticket.getTypeOfTicket() + 
+				" ticket has been updated!", "Ticket updated");
+		
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Created Ticket " + ticket.getId());
@@ -588,7 +595,7 @@ public class TicketController_jar_86 {
 		
 		//Send Email to the creator of the ticket
 		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + newComment.getCreator() + "\n" +"Your " + newTicket.getTypeOfTicket() + 
-				" ticket has been created!", "test");
+				" ticket has been created!", "ticket Created");
 		
 		return "redirect:/manager/tickets/all";
 	}

@@ -375,9 +375,9 @@
 								<tr>
 									<td><span class="input-group-text" id="basic-addon1">Assignee
 											User</span> <form:select path="assigneeUser" class="form-select">
-											<form:option value="user1">User1</form:option>
-											<form:option value="user1">User2</form:option>
-											<form:option value="user2">User3</form:option>
+											<form:option value="Monkey D Luffy">Monkey D Luffy</form:option>
+											<form:option value="Phoenix Wright">Phoenix Wright</form:option>
+											<form:option value="Ash Ketchem">Ash Ketchem</form:option>
 										</form:select></td>
 								</tr>
 								<tr>
