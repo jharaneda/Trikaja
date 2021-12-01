@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.csis3275.dao.CommentDAOImpl;
 import com.csis3275.dao.EmployeeDAOImpl_kne_58;
+import com.csis3275.dao.PreAnswersDAOImpl_jar_86;
 import com.csis3275.dao.SessionDAOImpl_jar_86;
 import com.csis3275.dao.TicketDAOImpl;
 import com.csis3275.dao.UserDAOImpl_kne_58;
 import com.csis3275.model.CommentsModel_jar_86;
+import com.csis3275.model.PredefinedAnswersModel_jar_86;
 import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 import com.csis3275.model.TicketUserJoinModel_kne_58;
@@ -42,11 +44,15 @@ public class TicketController_jar_86 {
 	EmployeeDAOImpl_kne_58 emplDAOImpl;
 	@Autowired
 	UserDAOImpl_kne_58 userDAOImpl;
+	
 	@Autowired
 	SessionDAOImpl_jar_86 sessionDAOImpl;
 	
 	@Autowired
 	SendEmailService_kne_58 emailService;
+
+	@Autowired
+	PreAnswersDAOImpl_jar_86 preAnswerDAOImpl;
 
 	public TicketModel_jar_86 setupAddForm() {
 		return new TicketModel_jar_86();
@@ -128,20 +134,18 @@ public class TicketController_jar_86 {
 		session.setAttribute("messages", messages);
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout(@ModelAttribute("session") TrikajaGroupProjectCsis3275_employee_model_kne_58 userSession, Model model, HttpSession session) {
 		session.removeAttribute("session");
 		session.invalidate();
-		
+
 		return "redirect:/";
 	}
-
 
 	// **** END USER show all tickets****
 	@RequestMapping("/tickets/all")
 	public String showAllTickets(@ModelAttribute("ticket") TicketModel_jar_86 ticket, @ModelAttribute("comments") CommentsModel_jar_86 comment, Model model, HttpSession session) {
-
 
 		ArrayList<String> messages = new ArrayList<String>();
 
@@ -153,8 +157,6 @@ public class TicketController_jar_86 {
 		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 		String[] user = webSession.getEmail().split("@");
 		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getTicketByUser(user[0]);
-
-
 
 		//
 		if (webSession.getEmail() == null) {
@@ -284,9 +286,11 @@ public class TicketController_jar_86 {
 						allCommentsByID.add(comment);
 					}
 				}
+
 				model.addAttribute("commentViewed", allCommentsByID);
 				model.addAttribute("comment", newComment);
 				model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
+
 				// Clear the messages before the returning
 				session.removeAttribute("messages");
 				return "viewTicketUser-jar-86";
@@ -442,43 +446,43 @@ public class TicketController_jar_86 {
 		}
 		return "redirect:/";
 	}
-	
+
 	// **** MANAGER USER show all tickets****
-		@SuppressWarnings("unchecked")
-		@RequestMapping("/manager/tickets/solved")
-		public String showAllSolvedTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/manager/tickets/solved")
+	public String showAllSolvedTicketsManager(@ModelAttribute("ticket") TicketModel_jar_86 ticket, Model model, HttpSession session) {
 
-			ArrayList<String> messages = new ArrayList<String>();
+		ArrayList<String> messages = new ArrayList<String>();
 
-			messages = session.getAttribute("messages") != null ? messages : new ArrayList<String>();
+		messages = session.getAttribute("messages") != null ? messages : new ArrayList<String>();
 
-			SessionModel_jar_86 webSession = new SessionModel_jar_86();
-			SessionModel_jar_86 dbSession = new SessionModel_jar_86();
+		SessionModel_jar_86 webSession = new SessionModel_jar_86();
+		SessionModel_jar_86 dbSession = new SessionModel_jar_86();
 
-			webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
+		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 
-			if (webSession.getEmail() == null) {
-				messages.add("You dont have access to this place. Please Login");
-				session.setAttribute("messages", messages);
-				return "redirect:/";
-			} else if (sessionDAOImpl.getSession(webSession.getId()) != null) {
-				dbSession = sessionDAOImpl.getSession(webSession.getId());
-				if (webSession.getId().equals(dbSession.getId())) {
-
-					ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllSolvedTickets();
-					model.addAttribute("allSolvedTicketsManager", allTicketsManager);
-
-					messages = (ArrayList<String>) session.getAttribute("messages");
-
-					// Add in the messages, if the api is blank.
-					model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
-					// Clear the messages before the returning
-					session.removeAttribute("messages");
-					return "allTicketSolvedManager-jar-86";
-				}
-			}
+		if (webSession.getEmail() == null) {
+			messages.add("You dont have access to this place. Please Login");
+			session.setAttribute("messages", messages);
 			return "redirect:/";
+		} else if (sessionDAOImpl.getSession(webSession.getId()) != null) {
+			dbSession = sessionDAOImpl.getSession(webSession.getId());
+			if (webSession.getId().equals(dbSession.getId())) {
+
+				ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllSolvedTickets();
+				model.addAttribute("allSolvedTicketsManager", allTicketsManager);
+
+				messages = (ArrayList<String>) session.getAttribute("messages");
+
+				// Add in the messages, if the api is blank.
+				model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
+				// Clear the messages before the returning
+				session.removeAttribute("messages");
+				return "allTicketSolvedManager-jar-86";
+			}
 		}
+		return "redirect:/";
+	}
 
 	// **** MANAGER USER display view for one ticket****
 	@GetMapping("/manager/tickets/viewbyone/{id}")
@@ -511,10 +515,14 @@ public class TicketController_jar_86 {
 						allCommentsByID.add(comment);
 					}
 				}
+
+				ArrayList<PredefinedAnswersModel_jar_86> answers = preAnswerDAOImpl.getAllAnswers();
+
 				model.addAttribute("commentViewed", allCommentsByID);
 				model.addAttribute("comment", newComment);
 				// Add in the messages, if the api is blank.
 				model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
+				model.addAttribute("predefinedAnswers", answers);
 				// Clear the messages before the returning
 				session.removeAttribute("messages");
 				
@@ -658,11 +666,7 @@ public class TicketController_jar_86 {
 		commentDAOImpl.createComment(newComment);
 		
 		TicketUserJoinModel_kne_58 ticketUser = ticketDAOImpl.getUserTicketEmail(ticket.getId());
-	
-		System.out.println(ticketUser.getTypeOfTicket());
-		System.out.println(ticketUser.getEmail());
-		System.out.println(ticketUser.getPriority());
-		System.out.println(ticketUser.getUserID());
+
 		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + ticketUser.getName() + "\n" +"Your " + ticketUser.getTypeOfTicket() + 
 				" ticket has been updated!", "Ticket Update");
 		

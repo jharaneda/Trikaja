@@ -10,15 +10,6 @@
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
-<script>
-	$(function() {
-		$('#ticketList').bootstrapTable()
-	})
-</script>
 <style type="text/css">
 /* Google Font Link */
 @import
@@ -311,7 +302,8 @@
 </style>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tickets - Manager View</title>
+
+<title>Create ticket</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -345,57 +337,34 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/manager/tickets/all">View Tickets</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/open">Open</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/pending">Pending</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/solved">Solved</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/preanswers/list">View Predefined answers</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/preanswers/create">Create Predefined Answer</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div class='container'>
-			<h1>Pending Tickets</h1>
-			<c:forEach var="message" items="${messages}">
-				<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			<h1>Create Answer</h1>
+			<form:form action="${pageContext.request.contextPath}/preanswers/create" method="POST" cssClass="form-horizontal" modelAttribute="answer">
+				<div class="row">
+					<div class="col">
+						<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="name" data-search="true">
+							<tbody>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1">Name</span> <form:input path="name" type="text" required="required" /></td>
+								</tr>
+								<tr>
+									<td class="input-group mb-3 form-floating"><form:textarea path="comment" class="form-control" id="floatingTextarea" style="min-width:100px; max-width:100%;min-height:50px;height:100%;width:100%;" required="required" /> <label
+										for="floatingTextarea">Write your predefined answer</label></td>
+								</tr>
+								<tr>
+									<td><form:button type="submit" class="btn btn-success">Create Predefined Answer</form:button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</c:forEach>
-			<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
-				<thead>
-					<tr>
-						<!-- <th scope="col">ID</th> -->
-						<th scope="col" data-field="creation_date" data-sortable="true">Creation Date</th>
-						<th scope="col" data-field="status" data-sortable="true">Status</th>
-						<th scope="col" data-field="creator" data-sortable="true">Creator</th>
-						<th scope="col" data-sortable="true">Assignee user</th>
-						<th scope="col" data-sortable="true">Type</th>
-						<th scope="col" data-sortable="true">Priority</th>
-						<th scope="col" data-sortable="true">Position</th>
-						<th scope="col" data-sortable="true">Hardware</th>
-						<th scope="col">Edit</th>
-						<th scope="col">Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var='t' items="${allPendingTicketsManager}">
-						<tr>
-							<th scope="row">${t.id }</th>
-							<td>${t.creationDate}</td>
-							<td>${t.status}</td>
-							<td>${t.userCreator}</td>
-							<td>${t.assigneeUser}</td>
-							<td>${t.typeOfTicket}</td>
-							<td>${t.priority}</td>
-							<td>${t.position}</td>
-							<td>${t.hardwareToBeChanged}</td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}" class='btn btn-primary'>Edit</a></td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}" class='btn btn-danger'>Delete</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<!-- Option 1: Bootstrap Bundle with Popper -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+			</form:form>
 		</div>
 	</section>
 </body>

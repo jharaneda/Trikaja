@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
@@ -10,19 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<link
-	href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery.js"></script>
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 <script>
 	$(function() {
 		$('#ticketList').bootstrapTable()
@@ -318,50 +309,35 @@
 	}
 }
 </style>
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tickets - Manager View</title>
 </head>
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/create">
-					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
-						Ticket</span>
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span class="links_name">Create Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
-					class='bx bxs-book-content'></i> <span class="links_name">View
-						Tickets</span>
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/inventory">
-					<i class='bx bxs-book-content'></i> <span class="links_name">View
-						Inventory</span>
+			<li><a href="${pageContext.request.contextPath}/inventory"> <i class='bx bxs-book-content'></i> <span class="links_name">View Inventory</span>
 			</a> <span class="tooltip">View Inventory</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user-plus'></i> <span class="links_name">Create
-						Employee</span>
+			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user-plus'></i> <span class="links_name">Create Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bxs-user-plus'></i> <span class="links_name">Create
-						User</span>
+			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bxs-user-plus'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/preanswers/list"> <i class='bx bx-copy-alt'></i> <span class="links_name">Predefined Answers</span>
+			</a> <span class="tooltip">Predefined Answers</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/logout"><i
-					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
-			</a> <span class="tooltip">Logout</span></li>
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span> </a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
@@ -369,16 +345,10 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page"
-							href="${pageContext.request.contextPath}/manager/tickets/all">View
-								Tickets</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/manager/tickets/open">Open</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/manager/tickets/pending">Pending</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/manager/tickets/solved">Solved</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/manager/tickets/all">View Tickets</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/open">Open</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/pending">Pending</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/solved">Solved</a></li>
 					</ul>
 				</div>
 			</div>
@@ -386,20 +356,15 @@
 		<div class='container'>
 			<h1>All Tickets</h1>
 			<c:forEach var="message" items="${messages}">
-				<div class="alert alert-success alert-dismissible fade show"
-					role="alert" id="mainAlertMessage">${message}
-					<button type="button" class="btn-close" data-bs-dismiss="alert"
-						aria-label="Close"></button>
+				<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			</c:forEach>
-			<table class="table table-striped table-hover" id="ticketList"
-				data-striped="true" data-sort-name="creation_date"
-				data-search="true">
+			<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
 				<thead>
 					<tr>
 						<!-- <th scope="col">ID</th> -->
-						<th scope="col" data-field="creation_date" data-sortable="true">Creation
-							Date</th>
+						<th scope="col" data-field="creation_date" data-sortable="true">Creation Date</th>
 						<th scope="col" data-field="status" data-sortable="true">Status</th>
 						<th scope="col" data-field="creator" data-sortable="true">Creator</th>
 						<th scope="col" data-sortable="true">Assignee user</th>
@@ -423,21 +388,14 @@
 							<td>${t.priority}</td>
 							<td>${t.position}</td>
 							<td>${t.hardwareToBeChanged}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}"
-								class='btn btn-primary'>Edit</a></td>
-							<td><a
-								href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}"
-								class='btn btn-danger'>Delete</a></td>
+							<td><a href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}" class='btn btn-primary'>Edit</a></td>
+							<td><a href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}" class='btn btn-danger'>Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<!-- Option 1: Bootstrap Bundle with Popper -->
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 		</div>
 	</section>
 </body>

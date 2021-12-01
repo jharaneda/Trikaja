@@ -311,7 +311,7 @@
 </style>
 <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tickets - Manager View</title>
+<title>Predefined Answers - Manager View</title>
 </head>
 <body>
 	<div class="sidebar">
@@ -345,16 +345,14 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/manager/tickets/all">View Tickets</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/open">Open</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/pending">Pending</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/manager/tickets/solved">Solved</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/preanswers/list">View Predefined answers</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/preanswers/create">Create Predefined Answer</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div class='container'>
-			<h1>Pending Tickets</h1>
+			<h1>Predefined Answers</h1>
 			<c:forEach var="message" items="${messages}">
 				<div class="alert alert-success alert-dismissible fade show" role="alert" id="mainAlertMessage">${message}
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -364,32 +362,20 @@
 				<thead>
 					<tr>
 						<!-- <th scope="col">ID</th> -->
-						<th scope="col" data-field="creation_date" data-sortable="true">Creation Date</th>
-						<th scope="col" data-field="status" data-sortable="true">Status</th>
-						<th scope="col" data-field="creator" data-sortable="true">Creator</th>
-						<th scope="col" data-sortable="true">Assignee user</th>
-						<th scope="col" data-sortable="true">Type</th>
-						<th scope="col" data-sortable="true">Priority</th>
-						<th scope="col" data-sortable="true">Position</th>
-						<th scope="col" data-sortable="true">Hardware</th>
+						<th scope="col" data-field="name" data-sortable="true">Name</th>
+						<th scope="col" data-field="comment" data-sortable="true">Comment</th>
 						<th scope="col">Edit</th>
 						<th scope="col">Delete</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var='t' items="${allPendingTicketsManager}">
+					<c:forEach var='a' items="${allAnswers}">
 						<tr>
-							<th scope="row">${t.id }</th>
-							<td>${t.creationDate}</td>
-							<td>${t.status}</td>
-							<td>${t.userCreator}</td>
-							<td>${t.assigneeUser}</td>
-							<td>${t.typeOfTicket}</td>
-							<td>${t.priority}</td>
-							<td>${t.position}</td>
-							<td>${t.hardwareToBeChanged}</td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}" class='btn btn-primary'>Edit</a></td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}" class='btn btn-danger'>Delete</a></td>
+							<th scope="row">${a.id }</th>
+							<td>${a.name}</td>
+							<td>${a.comment}</td>
+							<td><a href="${pageContext.request.contextPath}/preanswers/viewbyone/${a.id}" class='btn btn-primary'>Edit</a></td>
+							<td><a href="${pageContext.request.contextPath}/preanswers/delete/${a.id}" class='btn btn-danger'>Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
