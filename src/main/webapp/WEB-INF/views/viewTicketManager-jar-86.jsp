@@ -9,11 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <style type="text/css">
 /* Google Font Link */
 @import
@@ -304,56 +300,59 @@
 	}
 }
 </style>
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
+<script>
+var preAns = [], preAnsObj;
+<c:forEach var="pAns" items="${predefinedAnswers}">
+	preAnsObj = { id: '${pAns.id}',
+				  name: '${pAns.name}',
+				  comment: '${pAns.comment}'
+				};
+	preAns.push(preAnsObj);                                  
+</c:forEach>
+
+function onClickSelect(event){
+	var e = document.getElementById("macro");
+	var optSelected = e.value - 1;
+	console.log(preAns[optSelected].comment);
+	var targ = event.target || event.srcElement;
+	document.getElementById("floatingTextarea").value += preAns[optSelected].comment || targ.innerText;
+}
+</script>
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Update ticket - Manager View</title>
 </head>
 <body>
 	<div class="sidebar">
 		<ul class="nav-list">
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/create">
-					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
-						Ticket</span>
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span class="links_name">Create Ticket</span>
 			</a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
-					class='bx bxs-book-content'></i> <span class="links_name">View
-						Tickets</span>
+			<li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span class="links_name">View Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/inventory">
-					<i class='bx bxs-book-content'></i> <span class="links_name">View
-						Inventory</span>
+			<li><a href="${pageContext.request.contextPath}/inventory"> <i class='bx bxs-book-content'></i> <span class="links_name">View Inventory</span>
 			</a> <span class="tooltip">View Inventory</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
+			<li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user-plus'></i> <span class="links_name">Create
-						Employee</span>
+			<li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user-plus'></i> <span class="links_name">Create Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bxs-user-plus'></i> <span class="links_name">Create
-						User</span>
+			<li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bxs-user-plus'></i> <span class="links_name">Create User</span>
 			</a> <span class="tooltip">Create User</span></li>
+			
+			<li><a href="${pageContext.request.contextPath}/preanswers/list"> <i class='bx bx-copy-alt'></i> <span class="links_name">Predefined Answers</span>
+			</a> <span class="tooltip">Predefined Answers</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/logout"><i
-					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
-			</a> <span class="tooltip">Logout</span></li>
+			<li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span> </a> <span class="tooltip">Logout</span></li>
 		</ul>
 	</div>
 	<section class="home-section">
 		<div class='container'>
 			<h1>Update Ticket</h1>
-			<form:form action="${pageContext.request.contextPath}/manager/tickets/update" method="POST" cssClass="form-horizontal" modelAttribute="ticketViewed">
+			<form:form action="${pageContext.request.contextPath}/manager/tickets/update" method="POST" cssClass="form-horizontal" modelAttribute="ticketViewed" name="formulario" id="formulario">
 				<div class="row">
 					<div class="col">
 						<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="creation_date" data-search="true">
@@ -413,6 +412,14 @@
 								<tr>
 									<td><span class="input-group-text" id="basic-addon1">Position number</span> <form:input path="position" type="text" /></td>
 								</tr>
+								<tr>
+									<td><span class="input-group-text" id="basic-addon1" style="color: green"><h5>Apply Macro</h5></span> 
+										<form:select path="" id="macro" class="form-select" onchange="onClickSelect(event)" style="color: green"> <!-- onclick="onClickSelect(this.value)" onfocus="onClickSelect(this.value)" onkeypress="onClickSelect(this.value)" -->
+											<c:forEach var='ans' items="${predefinedAnswers}">
+												<form:option value="${ans.id}">${ans.name}</form:option>
+											</c:forEach>
+										</form:select></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -439,6 +446,18 @@
 								</tbody>
 							</table>
 						</form:form>
+						<%-- <form:form cssClass="form-horizontal" modelAttribute="predefinedAnswers">
+							<table class="table" id="ticketList">
+								<tbody>
+									<tr style="display: none;">
+										<c:forEach var='ans' items="${predefinedAnswers}">
+											<form:input path="" type="text" value="${ans.comment}" style="display: none;"/><br>
+										</c:forEach>
+									</tr>
+									
+								</tbody>
+							</table>
+						</form:form> --%>
 					</div>
 				</div>
 			</form:form>
