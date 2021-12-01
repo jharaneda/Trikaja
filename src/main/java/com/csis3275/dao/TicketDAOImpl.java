@@ -31,6 +31,7 @@ public class TicketDAOImpl {
 	private final String SQL_GET_PENDING_TICKETS = "SELECT * FROM tickets where status = 'Pending'";
 	private final String SQL_GET_SOLVED_TICKETS = "SELECT * FROM tickets where status = 'Solved'";
 	private final String SQL_COUNT_TICKETS = "SELECT COUNT(STATUS) FROM tickets where userCreator = ?";
+	private final String SQL_TICKET_USER_JOIN_SELECT_ALL = "SELECT * FROM tickets JOIN users on tickets.userCreator = users.name";
 
 
 	@Autowired

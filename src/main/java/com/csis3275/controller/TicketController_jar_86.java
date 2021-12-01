@@ -26,6 +26,7 @@ import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_employee_model_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_user_model_kne_58;
+import com.csis3275.service.SendEmailService_kne_58;
 
 @Controller
 public class TicketController_jar_86 {
@@ -41,6 +42,9 @@ public class TicketController_jar_86 {
 	UserDAOImpl_kne_58 userDAOImpl;
 	@Autowired
 	SessionDAOImpl_jar_86 sessionDAOImpl;
+	
+	@Autowired
+	SendEmailService_kne_58 emailService;
 
 	public TicketModel_jar_86 setupAddForm() {
 		return new TicketModel_jar_86();
@@ -231,13 +235,15 @@ public class TicketController_jar_86 {
 
 		commentDAOImpl.createComment(newComment);
 
+		
 		// Populate the message into the session
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		session.setAttribute("messages", messages);
 
 		messages.add("Ticket " + ticketId + " was created");
-
+		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Test", "test");
 		return "redirect:/tickets/all";
 	}
 
@@ -307,11 +313,12 @@ public class TicketController_jar_86 {
 		commentDAOImpl.createComment(newComment);
 		ticketDAOImpl.updateTicketUserView(ticket);
 
+		emailService.sendEmail_kne_58("Kneale95@hotmial.ca","Greetings" + ticket.getAssigneeUser() + "\n" + "Here are the new details of your ticket", "Ticket Number " + ticket.getId() + "Status Change");
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Created Ticket " + ticket.getId());
 		session.setAttribute("messages", messages);
-
+		
 		return "redirect:/tickets/all";
 	}
 
@@ -575,7 +582,11 @@ public class TicketController_jar_86 {
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Created Ticket " + ticketId);
 		session.setAttribute("messages", messages);
-
+		
+		//Send Email to the creator of the ticket
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + newComment.getCreator() + "\n" +"Your " + newTicket.getTypeOfTicket() + 
+				" ticket has been created!", "test");
+		
 		return "redirect:/manager/tickets/all";
 	}
 
@@ -606,6 +617,7 @@ public class TicketController_jar_86 {
 				session.setAttribute("messages", messages);
 
 				ticketDAOImpl.deleteTicket(id);
+								
 				return "redirect:/manager/tickets/all";
 			}
 		}
@@ -632,6 +644,8 @@ public class TicketController_jar_86 {
 		newComment.setComment(comments.getComment());
 
 		commentDAOImpl.createComment(newComment);
+		
+		emailService.sendEmail_kne_58("Kneale95@hotmail.ca","Greetings " + ticket.getUserCreator() + "\n" + "Here are the new details of your ticket", "Ticket Number " + ticket.getId() + " Status Change");
 
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
