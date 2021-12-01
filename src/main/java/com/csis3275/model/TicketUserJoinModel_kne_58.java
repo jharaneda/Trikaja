@@ -1,6 +1,6 @@
 package com.csis3275.model;
 
-public class TickerUserJoinModel_kne_58 {
+public class TicketUserJoinModel_kne_58 {
 	
 	protected int userID;
 	protected String name;

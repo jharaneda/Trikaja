@@ -1,5 +1,6 @@
 package com.csis3275.controller;
 
+import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -24,6 +25,7 @@ import com.csis3275.dao.UserDAOImpl_kne_58;
 import com.csis3275.model.CommentsModel_jar_86;
 import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
+import com.csis3275.model.TicketUserJoinModel_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_employee_model_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_user_model_kne_58;
 import com.csis3275.service.SendEmailService_kne_58;
@@ -482,18 +484,18 @@ public class TicketController_jar_86 {
 		SessionModel_jar_86 dbSession = new SessionModel_jar_86();
 
 		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
-
+		
 		if (webSession.getEmail() == null) {
 			messages.add("You dont have access to this place. Please Login");
 			session.setAttribute("messages", messages);
 			return "redirect:/";
 		} else if (sessionDAOImpl.getSession(webSession.getId()) != null) {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
-			if (webSession.getId().equals(dbSession.getId())) {
-
+			if (webSession.getId().equals(dbSession.getId())) {			
+				
 				TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
 				model.addAttribute("ticketViewed", ticket);
-
+			
 				ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
 				ArrayList<CommentsModel_jar_86> allCommentsByID = new ArrayList<CommentsModel_jar_86>();
 
@@ -508,6 +510,7 @@ public class TicketController_jar_86 {
 				model.addAttribute("messages", messages != null ? messages : new ArrayList<String>());
 				// Clear the messages before the returning
 				session.removeAttribute("messages");
+				
 				return "viewTicketManager-jar-86";
 			}
 		}
@@ -642,11 +645,20 @@ public class TicketController_jar_86 {
 		newComment.setCreator(user[0]);
 		newComment.setCommentType("public");
 		newComment.setComment(comments.getComment());
+		
+		
 
 		commentDAOImpl.createComment(newComment);
 		
-		emailService.sendEmail_kne_58("Kneale95@hotmail.ca","Greetings " + ticket.getUserCreator() + "\n" + "Here are the new details of your ticket", "Ticket Number " + ticket.getId() + " Status Change");
-
+		TicketUserJoinModel_kne_58 ticketUser = ticketDAOImpl.getUserTicketEmail(ticket.getId());
+	
+		System.out.println(ticketUser.getTypeOfTicket());
+		System.out.println(ticketUser.getEmail());
+		System.out.println(ticketUser.getPriority());
+		System.out.println(ticketUser.getUserID());
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + ticketUser.getName() + "\n" +"Your " + ticketUser.getTypeOfTicket() + 
+				" ticket has been updated!", "Ticket Update");
+		
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Updated Ticket " + ticket.getId());

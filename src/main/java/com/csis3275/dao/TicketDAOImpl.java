@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.csis3275.model.TicketModel_jar_86;
 import com.csis3275.model.TicketRowMapper_jar_86;
+import com.csis3275.model.TicketUserJoinModel_kne_58;
+import com.csis3275.model.TrikajaGroupProjectCsis3275_user_model_kne_58;
+import com.csis3275.model.UserTicketRowMapper_kne_58;
 
 @Service
 public class TicketDAOImpl {
@@ -31,8 +34,8 @@ public class TicketDAOImpl {
 	private final String SQL_GET_PENDING_TICKETS = "SELECT * FROM tickets where status = 'Pending'";
 	private final String SQL_GET_SOLVED_TICKETS = "SELECT * FROM tickets where status = 'Solved'";
 	private final String SQL_COUNT_TICKETS = "SELECT COUNT(STATUS) FROM tickets where userCreator = ?";
-	private final String SQL_TICKET_USER_JOIN_SELECT_ALL = "SELECT * FROM tickets JOIN users on tickets.userCreator = users.name";
-
+	private final String SQL_TICKET_USER_JOIN_SELECT_EMAIL_BY_ID = "SELECT * FROM users JOIN tickets ON users.name = tickets.assigneeUser WHERE tickets.id = ?";
+	
 
 	@Autowired
 	public TicketDAOImpl(DataSource dataSource) {
@@ -46,7 +49,13 @@ public class TicketDAOImpl {
 
 		return allTickets;
 	}
-
+	@SuppressWarnings("deprecation")
+	public TicketUserJoinModel_kne_58 getUserTicketEmail(Long id){
+		
+		return jdbcTemplate.queryForObject(SQL_TICKET_USER_JOIN_SELECT_EMAIL_BY_ID,new Object[] {id}, new UserTicketRowMapper_kne_58());
+		
+	}
+	
 	@SuppressWarnings("deprecation")
 	public ArrayList<TicketModel_jar_86> getOpenHardwareTickets(String status, String type){
 		ArrayList<TicketModel_jar_86> openHardwareTickets = new ArrayList<TicketModel_jar_86>();

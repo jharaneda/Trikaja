@@ -327,26 +327,32 @@
 						Tickets</span>
 			</a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/inventory"> <i
-					class='bx bxs-book-content'></i> <span class="links_name">View
+			<li><a href="${pageContext.request.contextPath}/inventory">
+					<i class='bx bxs-book-content'></i> <span class="links_name">View
 						Inventory</span>
 			</a> <span class="tooltip">View Inventory</span></li>
 
 			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bx-user'></i> <span class="links_name">Users</span>
+					class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
 			</a> <span class="tooltip">Users</span></li>
 
 			<li><a
 				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user'></i> <span class="links_name">Create
+					<i class='bx bx-user-plus'></i> <span class="links_name">Create
 						Employee</span>
 			</a> <span class="tooltip">Create Employee</span></li>
 
 			<li><a
 				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bx-user'></i> <span class="links_name">Create User</span>
+					class='bx bxs-user-plus'></i> <span class="links_name">Create
+						User</span>
 			</a> <span class="tooltip">Create User</span></li>
+
+			<li><a href="${pageContext.request.contextPath}/preanswers/list">
+					<i class='bx bx-copy-alt'></i> <span class="links_name">Predefined
+						Answers</span>
+			</a> <span class="tooltip">Predefined Answers</span></li>
+
 			<li><a href="${pageContext.request.contextPath}/logout"><i
 					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
 			</a> <span class="tooltip">Logout</span></li>
