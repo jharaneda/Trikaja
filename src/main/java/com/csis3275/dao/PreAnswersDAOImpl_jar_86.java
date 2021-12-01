@@ -16,7 +16,7 @@ public class PreAnswersDAOImpl_jar_86 {
 	JdbcTemplate jdbcTemplate;
 
 	private final String SQL_GET_ANSWERS = "SELECT * FROM predefinedAnswers";
-	private final String SQL_GET_ONE_ANSWER = "SELECT * FROM comments where id = ?";
+	private final String SQL_GET_ONE_ANSWER = "SELECT * FROM predefinedAnswers where id = ?";
 	private final String SQL_INSERT_COMMENT = "insert into predefinedAnswers (name, comment) values (?,?);";
 	private final String SQL_UPDATE_ANSWER = "UPDATE predefinedAnswers SET name = ?, comment = ?WHERE id = ?";
 	private final String SQL_DELETE_ONE_ANSWER = "DELETE FROM predefinedAnswers WHERE id = ?";

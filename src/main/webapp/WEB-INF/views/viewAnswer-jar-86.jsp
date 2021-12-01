@@ -341,21 +341,23 @@
 			</div>
 		</nav>
 		<div class='container'>
-			<h1>Create Answer</h1>
-			<form:form action="${pageContext.request.contextPath}/preanswers/create" method="POST" cssClass="form-horizontal" modelAttribute="answer">
+			<h1>Edit Answer</h1>
+			<form:form action="${pageContext.request.contextPath}/preanswers/update" method="POST" cssClass="form-horizontal" modelAttribute="answerViewed">
 				<div class="row">
 					<div class="col">
 						<table class="table table-striped table-hover" id="ticketList" data-striped="true" data-sort-name="name" data-search="true">
 							<tbody>
+								<tr style="display: none">
+									<td><span class="input-group-text" id="basic-addon1">id</span> <form:input path="id" class="form-select" readonly="true" /></td>
+								</tr>
 								<tr>
 									<td><span class="input-group-text" id="basic-addon1">Name</span> <form:input path="name" type="text" required="required" /></td>
 								</tr>
 								<tr>
-									<td class="input-group mb-3 form-floating"><form:textarea path="comment" class="form-control" id="floatingTextarea" style="min-width:100px; max-width:100%;min-height:50px;height:100%;width:100%;" required="required" /> <label
-										for="floatingTextarea">Write your predefined answer</label></td>
+									<td class="input-group mb-3 form-floating"><form:textarea path="comment" class="form-control" id="floatingTextarea" style="height:120px" required="required" /> <label for="floatingTextarea">Write your predefined answer</label></td>
 								</tr>
 								<tr>
-									<td><form:button type="submit" class="btn btn-success">Create Predefined Answer</form:button></td>
+									<td><form:button type="submit" class="btn btn-success">Edit Predefined Answer</form:button></td>
 								</tr>
 							</tbody>
 						</table>
