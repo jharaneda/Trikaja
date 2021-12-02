@@ -655,7 +655,6 @@ public class TicketController_jar_86 {
 		String[] user = webSession.getEmail().split("@");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-
 		// set each attribute for comments
 		newComment.setTicketID(ticket.getId());
 		newComment.setCreationDate(formatter.format(date));
