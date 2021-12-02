@@ -36,7 +36,7 @@ import com.csis3275.service.SendEmailService_kne_58;
 public class TicketController_jar_86 {
 
 	@Autowired
-	TicketDAOImpl ticketDAOImpl;
+	TicketDAOImpl ticketContDAOImpl;
 	@Autowired
 	CommentDAOImpl commentDAOImpl;
 
@@ -156,7 +156,7 @@ public class TicketController_jar_86 {
 
 		webSession = (SessionModel_jar_86) session.getAttribute("session") != null ? (SessionModel_jar_86) session.getAttribute("session") : new SessionModel_jar_86();
 		String[] user = webSession.getEmail().split("@");
-		ArrayList<TicketModel_jar_86> allTickets = ticketDAOImpl.getTicketByUser(user[0]);
+		ArrayList<TicketModel_jar_86> allTickets = ticketContDAOImpl.getTicketByUser(user[0]);
 
 		//
 		if (webSession.getEmail() == null) {
@@ -229,7 +229,7 @@ public class TicketController_jar_86 {
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
 		// create new ticket into the DB and get the ticket ID
-		Long ticketId = ticketDAOImpl.save(newTicket);
+		Long ticketId = ticketContDAOImpl.save(newTicket);
 
 		// set each attribute for comments
 		newComment.setTicketID(ticketId);
@@ -275,7 +275,7 @@ public class TicketController_jar_86 {
 		} else if (sessionDAOImpl.getSession(webSession.getId()) != null) {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
-				TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
+				TicketModel_jar_86 ticket = ticketContDAOImpl.getTicketById(id);
 				model.addAttribute("ticketViewed", ticket);
 
 				ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
@@ -321,12 +321,13 @@ public class TicketController_jar_86 {
 		newComment.setComment(comments.getComment());
 
 		commentDAOImpl.createComment(newComment);
-		ticketDAOImpl.updateTicketUserView(ticket);
+		ticketContDAOImpl.updateTicketUserView(ticket);
 		
 		//Send email for ticket update
 		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + ticket.getAssigneeUser() + "\n" +"Your " + ticket.getTypeOfTicket() + 
 				" ticket has been updated!", "Ticket updated");
 		
+
 		ArrayList<String> messages = new ArrayList<String>();
 		messages = session.getAttribute("messages") != null ? (ArrayList<String>) session.getAttribute("messages") : new ArrayList<String>();
 		messages.add("Created Ticket " + ticket.getId());
@@ -357,7 +358,7 @@ public class TicketController_jar_86 {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
 
-				ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllTickets();
+				ArrayList<TicketModel_jar_86> allTicketsManager = ticketContDAOImpl.getAllTickets();
 				model.addAttribute("allTicketsManager", allTicketsManager);
 
 				messages = (ArrayList<String>) session.getAttribute("messages");
@@ -395,7 +396,7 @@ public class TicketController_jar_86 {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
 
-				ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllOpenTickets();
+				ArrayList<TicketModel_jar_86> allTicketsManager = ticketContDAOImpl.getAllOpenTickets();
 				model.addAttribute("allOpenTicketsManager", allTicketsManager);
 
 				messages = (ArrayList<String>) session.getAttribute("messages");
@@ -432,7 +433,7 @@ public class TicketController_jar_86 {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
 
-				ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllPendingTickets();
+				ArrayList<TicketModel_jar_86> allTicketsManager = ticketContDAOImpl.getAllPendingTickets();
 				model.addAttribute("allPendingTicketsManager", allTicketsManager);
 
 				messages = (ArrayList<String>) session.getAttribute("messages");
@@ -469,7 +470,7 @@ public class TicketController_jar_86 {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
 			if (webSession.getId().equals(dbSession.getId())) {
 
-				ArrayList<TicketModel_jar_86> allTicketsManager = ticketDAOImpl.getAllSolvedTickets();
+				ArrayList<TicketModel_jar_86> allTicketsManager = ticketContDAOImpl.getAllSolvedTickets();
 				model.addAttribute("allSolvedTicketsManager", allTicketsManager);
 
 				messages = (ArrayList<String>) session.getAttribute("messages");
@@ -502,9 +503,10 @@ public class TicketController_jar_86 {
 			return "redirect:/";
 		} else if (sessionDAOImpl.getSession(webSession.getId()) != null) {
 			dbSession = sessionDAOImpl.getSession(webSession.getId());
-			if (webSession.getId().equals(dbSession.getId())) {			
-				
-				TicketModel_jar_86 ticket = ticketDAOImpl.getTicketById(id);
+			if (webSession.getId().equals(dbSession.getId())) {
+
+				TicketModel_jar_86 ticket = ticketContDAOImpl.getTicketById(id);
+
 				model.addAttribute("ticketViewed", ticket);
 			
 				ArrayList<CommentsModel_jar_86> allComments = commentDAOImpl.getAllComments();
@@ -585,7 +587,7 @@ public class TicketController_jar_86 {
 		newTicket.setPosition(createTicket.getPosition());
 		newTicket.setHardwareToBeChanged(createTicket.getHardwareToBeChanged());
 
-		Long ticketId = ticketDAOImpl.save(newTicket);
+		Long ticketId = ticketContDAOImpl.save(newTicket);
 
 		// set each attribute for comments
 		newComment.setTicketID(ticketId);
@@ -634,8 +636,8 @@ public class TicketController_jar_86 {
 				messages.add("Deleted Ticket " + id);
 				session.setAttribute("messages", messages);
 
-				ticketDAOImpl.deleteTicket(id);
-								
+				ticketContDAOImpl.deleteTicket(id);
+
 				return "redirect:/manager/tickets/all";
 			}
 		}
@@ -675,7 +677,7 @@ public class TicketController_jar_86 {
 		messages.add("Updated Ticket " + ticket.getId());
 		session.setAttribute("messages", messages);
 
-		ticketDAOImpl.updateTicket(ticket);
+		ticketContDAOImpl.updateTicket(ticket);
 		return "redirect:/manager/tickets/all";
 	}
 }
