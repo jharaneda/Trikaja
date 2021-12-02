@@ -23,8 +23,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-public class InventoryPageTestTest {
-	
+
+public class CreateInventoryTest {
 	private static WebDriver driver;
 	private static Map<String, Object> vars;
 	static JavascriptExecutor js;
@@ -54,33 +54,22 @@ public class InventoryPageTestTest {
 	void tearDown() throws Exception {
 	}
 
-
-	//Test update returns successfully
-  @Test
-  public void inventoryPageTest() {
-    driver.get("http://localhost:8080/");
-    driver.manage().window().setSize(new Dimension(1884, 1032));
-    driver.findElement(By.id("email")).click();
-    driver.findElement(By.id("email")).sendKeys("Kneale95@hotmail.ca");
-    driver.findElement(By.id("password")).click();
-    driver.findElement(By.id("password")).sendKeys("Kneale95");
-    driver.findElement(By.id("password")).sendKeys(Keys.ENTER);
-    
-    //Test Location Change
-    driver.findElement(By.cssSelector(".nav-list > li:nth-child(3) > a")).click();
-    driver.findElement(By.linkText("Edit")).click();
-    driver.findElement(By.id("itemLocation")).click();
-    driver.findElement(By.id("itemLocation")).click();
-    driver.findElement(By.cssSelector(".btn")).click();
-    driver.findElement(By.linkText("Edit")).click();
-    driver.findElement(By.id("itemLocation")).click();
-    {
-      WebElement dropdown = driver.findElement(By.id("itemLocation"));
-      dropdown.findElement(By.xpath("//option[. = 'Send for Repairs']")).click();
-    }
-    driver.findElement(By.cssSelector(".btn")).click();
-    
-    assertEquals("Successfully Updated Item 1", driver.findElement(By.className("alert")).getText());
-  }   
-
+  @SuppressWarnings("deprecation")
+@Test
+  public void createInventory() {
+	    driver.get("http://localhost:8080/");
+	    driver.manage().window().setSize(new Dimension(1920, 1080));
+	    driver.findElement(By.id("email")).click();
+	    driver.findElement(By.id("email")).sendKeys("Kneale95@hotmail.ca");
+	    driver.findElement(By.id("password")).click();
+	    driver.findElement(By.id("password")).sendKeys("Kneale95");
+	    driver.findElement(By.id("password")).sendKeys(Keys.ENTER);
+	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	    //Test Location Change
+	    driver.findElement(By.cssSelector(".nav-list > li:nth-child(3) > a")).click();
+	    driver.findElement(By.cssSelector(".container:nth-child(2) > #inventory .btn")).click();
+	    driver.findElement(By.cssSelector(".container:nth-child(2) > h3")).click();
+	    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    assertEquals("Created Item: Keyboard", driver.findElement(By.className("alert")).getText());
+  }
 }
