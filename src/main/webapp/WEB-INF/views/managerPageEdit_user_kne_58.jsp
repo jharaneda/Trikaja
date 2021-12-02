@@ -29,7 +29,7 @@
 	left: 0;
 	top: 0;
 	height: 100%;
-	width: 120px;
+	width: 100px;
 	background: #11101D;
 	padding: 6px 14px;
 	z-index: 99;
@@ -85,7 +85,7 @@
 .sidebar i {
 	color: #fff;
 	height: 60px;
-	min-width: 50px;
+	min-width: 10px;
 	font-size: 28px;
 	text-align: center;
 	line-height: 60px;
@@ -98,7 +98,7 @@
 
 .sidebar li {
 	position: relative;
-	margin: 8px 0;
+	margin: 10px 0;
 	list-style: none;
 }
 
@@ -276,7 +276,7 @@
 	background: #E4E9F7;
 	min-height: 100vh;
 	top: 0;
-	left: 78px;
+	left: 100px;
 	width: calc(90% - 78px);
 	transition: all 0.5s ease;
 	z-index: 2;
