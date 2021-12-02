@@ -33,5 +33,41 @@ class InventoryControllerTest {
 		.andExpect(model().attributeExists("inventoryArray"))
 		.andExpect(MockMvcResultMatchers.view().name("inventoryView-kne-58"));
 	}
+	
+	//Test For Successful Inventory Creation
+	@Test
+	public void testInventoryCreate() throws Exception{
+		mvc.perform(MockMvcRequestBuilders.post("/inventory/create")
+				.param("itemType", "Keyboard")
+				.contentType(MediaType.MULTIPART_FORM_DATA)
+				.accept(MediaType.TEXT_HTML))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(model().attributeExists("messages"))
+		.andExpect(model().attribute("messages", "Created Item: Keyboard"));
+	}
+	
+	//Testing that the hardwareAssign page returns
+	@Test
+	public void testInventoryAssignPage() throws Exception{
+		mvc.perform(MockMvcRequestBuilders.get("/inventory/assign").accept(MediaType.TEXT_HTML))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(model().attributeExists("ticketArray"))
+		.andExpect(MockMvcResultMatchers.view().name("hardwareAssignPage-kne-58"));
+	}
+	
+	//Testing for ticket to assign to inventory
+	@Test
+	public void testInventoryAssign() throws Exception{
+		mvc.perform(MockMvcRequestBuilders.post("/inventory/assign/assignTo/{ticketID}/{hardware}")
+				.param("assignedTo", "1")
+				.contentType(MediaType.MULTIPART_FORM_DATA)
+				.accept(MediaType.TEXT_HTML))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(model().attributeExists("inventory"))
+		.andExpect(model().attribute("inventory", "upInventory"));
+	}
 
 }
