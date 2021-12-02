@@ -13,13 +13,14 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -28,5 +29,41 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-api-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-api-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-chrome-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-chrome-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-chromium-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-chromium-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v85-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v85-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v94-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v94-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v95-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v95-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v96-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-devtools-v96-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-edge-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-edge-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-firefox-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-firefox-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-firefox-xpi-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-firefox-xpi-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-http-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-http-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-ie-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-ie-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-java-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-java-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-json-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-json-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-opera-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-opera-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-remote-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-remote-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-safari-driver-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-safari-driver-4.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-support-4.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Kadyn/Downloads/selenium-java-4.1.0/selenium-support-4.1.0-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

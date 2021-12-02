@@ -71,6 +71,14 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>5.2.8.RELEASE</version>
 		</dependency>
+		<!-- Mock JavaMail -->
+		<dependency>
+			<groupId>org.jvnet.mock-javamail</groupId>
+			<artifactId>mock-javamail</artifactId>
+			<version>1.9</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
