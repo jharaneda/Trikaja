@@ -13,12 +13,15 @@ public class SendEmailService_kne_58{
 	
 	public void sendEmail_kne_58(String toAddress, String body, String Subject) {
 		
-		SimpleMailMessage emailMessage = new SimpleMailMessage();
-		emailMessage.setFrom("trikajahelp@gmail.com");
-		emailMessage.setSubject(Subject);
-		emailMessage.setTo(toAddress);
-		emailMessage.setText(body);
-		
-		mailSender.send(emailMessage);
+			SimpleMailMessage emailMessage = new SimpleMailMessage();
+			emailMessage.setFrom("trikajahelp@gmail.com");
+			emailMessage.setSubject(Subject);
+			emailMessage.setTo(toAddress);
+			emailMessage.setText(body);
+			
+			mailSender.send(emailMessage);
+			
+			
+
 	}
 }

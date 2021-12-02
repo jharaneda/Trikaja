@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +23,7 @@ import com.csis3275.model.SessionModel_jar_86;
 import com.csis3275.model.TicketModel_jar_86;
 import com.csis3275.service.SendEmailService_kne_58;
 
+@Repository
 @Controller
 public class InventoryController_kne_58 {
 
