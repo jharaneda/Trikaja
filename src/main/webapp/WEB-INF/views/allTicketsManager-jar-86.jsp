@@ -388,8 +388,8 @@
 							<td>${t.priority}</td>
 							<td>${t.position}</td>
 							<td>${t.hardwareToBeChanged}</td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}" class='btn btn-primary'>Edit</a></td>
-							<td><a href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}" class='btn btn-danger'>Delete</a></td>
+							<td><a href="${pageContext.request.contextPath}/manager/tickets/viewbyone/${t.id}" class='btn btn-primary' id="btn${t.id}">Edit</a></td>
+							<td><a href="${pageContext.request.contextPath}/manager/tickets/delete/${t.id}" class='btn btn-danger' id="del${t.id}">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
