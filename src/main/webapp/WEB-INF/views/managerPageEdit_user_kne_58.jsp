@@ -314,42 +314,30 @@
 </head>
 <body>
 	<div class="sidebar">
-		<ul class="nav-list">
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/create">
-					<i class='bx bx-message-alt-add'></i> <span class="links_name">Create
-						Ticket</span>
-			</a> <span class="tooltip">Create Ticket</span></li>
+<ul class="nav-list">
+            <li><a href="${pageContext.request.contextPath}/manager/tickets/create"> <i class='bx bx-message-alt-add'></i> <span class="links_name">Create Ticket</span>
+            </a> <span class="tooltip">Create Ticket</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/tickets/all"> <i
-					class='bx bxs-book-content'></i> <span class="links_name">View
-						Tickets</span>
-			</a> <span class="tooltip">View Tickets</span></li>
+            <li><a href="${pageContext.request.contextPath}/manager/tickets/all"> <i class='bx bxs-book-content'></i> <span class="links_name">View Tickets</span>
+            </a> <span class="tooltip">View Tickets</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/inventory">
-					<i class='bx bxs-book-content'></i> <span class="links_name">View
-						Inventory</span>
-			</a> <span class="tooltip">View Inventory</span></li>
+            <li><a href="${pageContext.request.contextPath}/inventory"> <i class='bx bxs-book-content'></i> <span class="links_name">View Inventory</span>
+            </a> <span class="tooltip">View Inventory</span></li>
 
-			<li><a href="${pageContext.request.contextPath}/manager"> <i
-					class='bx bx-user'></i> <span class="links_name">Users</span>
-			</a> <span class="tooltip">Users</span></li>
+            <li><a href="${pageContext.request.contextPath}/manager"> <i class='bx bxs-user-detail'></i> <span class="links_name">Users</span>
+            </a> <span class="tooltip">Users</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/employee/create">
-					<i class='bx bx-user'></i> <span class="links_name">Create
-						Employee</span>
-			</a> <span class="tooltip">Create Employee</span></li>
+            <li><a href="${pageContext.request.contextPath}/manager/employee/create"> <i class='bx bx-user-plus'></i> <span class="links_name">Create Employee</span>
+            </a> <span class="tooltip">Create Employee</span></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/manager/user/create"> <i
-					class='bx bx-user'></i> <span class="links_name">Create User</span>
-			</a> <span class="tooltip">Create User</span></li>
-			<li><a href="${pageContext.request.contextPath}/logout"><i
-					class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span>
-			</a> <span class="tooltip">Logout</span></li>
-		</ul>
+            <li><a href="${pageContext.request.contextPath}/manager/user/create"> <i class='bx bxs-user-plus'></i> <span class="links_name">Create User</span>
+            </a> <span class="tooltip">Create User</span></li>
+            
+            <li><a href="${pageContext.request.contextPath}/preanswers/list"> <i class='bx bx-copy-alt'></i> <span class="links_name">Predefined Answers</span>
+            </a> <span class="tooltip">Predefined Answers</span></li>
+
+            <li><a href="${pageContext.request.contextPath}/logout"><i class='bx bx-log-out' id="log_out"></i><span class="links_name">Logout</span> </a> <span class="tooltip">Logout</span></li>
+        </ul>
 	</div>
 	<section class="home-section">
 		<div class="container">

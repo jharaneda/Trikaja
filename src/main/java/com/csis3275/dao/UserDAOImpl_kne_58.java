@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_user_RowMapper_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_user_model_kne_58;
 
+
 @Service
 public class UserDAOImpl_kne_58 {
 

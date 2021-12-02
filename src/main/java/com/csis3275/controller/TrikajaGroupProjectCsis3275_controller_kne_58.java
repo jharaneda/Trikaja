@@ -18,6 +18,7 @@ import com.csis3275.dao.EmployeeDAOImpl_kne_58;
 import com.csis3275.dao.UserDAOImpl_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_employee_model_kne_58;
 import com.csis3275.model.TrikajaGroupProjectCsis3275_user_model_kne_58;
+import com.csis3275.service.SendEmailService_kne_58;
 
 @Controller
 public class TrikajaGroupProjectCsis3275_controller_kne_58 {
@@ -27,6 +28,9 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 
 	@Autowired
 	UserDAOImpl_kne_58 userDaoImpl;
+
+	@Autowired
+	SendEmailService_kne_58 emailService;
 
 	public TrikajaGroupProjectCsis3275_employee_model_kne_58 addforum() {
 		return new TrikajaGroupProjectCsis3275_employee_model_kne_58();
@@ -90,7 +94,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 				: new ArrayList<String>();
 
 		messages.add("Created Employee " + createEmployee.getName());
-
+		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + createEmployee.getName() + "\n" + "Your new Trikaja account has been created", "Account Created");
 		session.setAttribute("messages", messages);
 
 		return "redirect:/manager";
@@ -136,6 +141,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		model.addAttribute("employees",employees);
 		model.addAttribute("message", "Successfully Edited Employee" + upEmployee.getEmployeeID());
 		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + upEmployee.getName() + "\n" + "Your account has been updated", "Account Update");
+
 		return "redirect:/manager";
 	}
 	
@@ -170,6 +177,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		messages.add("Created User " + createUser.getName());
 
 		session.setAttribute("messages", messages);
+		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + createUser.getName() + "\n" + "Your new Trikaja account has been created", "Account Created");
 
 		return "redirect:/manager";
 
@@ -214,6 +223,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		model.addAttribute("users",users);
 		model.addAttribute("message", "Successfully Edited User" + upUser.getUserID());
 		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + upUser.getName() + "\n" + "Your account has been updated", "Account Updated");
+
 		return "redirect:/manager";
 	}
 	
@@ -269,6 +280,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		messages.add("Created User " + createUser.getName());
 
 		session.setAttribute("messages", messages);
+		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + createUser.getName() + "\n" + "Your new Trikaja account has been created", "Account Created");
 
 		return "redirect:/agent";
 
@@ -300,7 +313,8 @@ public class TrikajaGroupProjectCsis3275_controller_kne_58 {
 		List<TrikajaGroupProjectCsis3275_user_model_kne_58> users = userDaoImpl.getUsers_kne_58();
 		model.addAttribute("users",users);
 		model.addAttribute("message", "Successfully Edited User" + upUser.getUserID());
-		
+		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + upUser.getName() + "\n" + "Your account has been updated", "Account Updated");
+
 		return "redirect:/agent";
 	}
 	
