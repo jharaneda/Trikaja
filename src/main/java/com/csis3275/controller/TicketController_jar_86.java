@@ -667,7 +667,7 @@ public class TicketController_jar_86 {
 
 		commentDAOImpl.createComment(newComment);
 		
-		TicketUserJoinModel_kne_58 ticketUser = ticketDAOImpl.getUserTicketEmail(ticket.getId());
+		TicketUserJoinModel_kne_58 ticketUser = ticketContDAOImpl.getUserTicketEmail(ticket.getId());
 
 		emailService.sendEmail_kne_58("kneale95@hotmail.ca", "Greetings " + ticketUser.getName() + "\n" +"Your " + ticketUser.getTypeOfTicket() + 
 				" ticket has been updated!", "Ticket Update");

@@ -60,7 +60,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-<<<<<<< HEAD
 		<!-- Spring Email -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,7 +70,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>5.2.8.RELEASE</version>
-=======
+	</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -79,14 +78,7 @@
 			<scope>test</scope>
 
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>3.141.59</version>
-			<scope>test</scope>
->>>>>>> Testing_jar_86
-		</dependency>
+
 	</dependencies>
 
 	<build>
