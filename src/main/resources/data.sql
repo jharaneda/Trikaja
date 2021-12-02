@@ -91,14 +91,8 @@ insert into comments (id, ticketID, creationDate, creator, commentType, comment)
 Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.');
 insert into comments (id, ticketID, creationDate, creator, commentType, comment) values (20, 20, '2021-01-31 17:40:31', 'cbannonj', 'public', 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.');
 
-insert into predefinedAnswers (id, name, comment) values (1, 'Y-Solowarm', 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-insert into predefinedAnswers (id, name, comment) values (2, 'Redhold', 'In congue. Etiam justo. Etiam pretium iaculis justo.');
-insert into predefinedAnswers (id, name, comment) values (3, 'It', 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.');
-insert into predefinedAnswers (id, name, comment) values (4, 'Home Ing', 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.');
-insert into predefinedAnswers (id, name, comment) values (5, 'Tin', 'Sed ante. Vivamus tortor. Duis mattis egestas metus.');
-insert into predefinedAnswers (id, name, comment) values (6, 'Greenlam', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.');
-insert into predefinedAnswers (id, name, comment) values (7, 'Sub-Ex', 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.');
-insert into predefinedAnswers (id, name, comment) values (8, 'Fixflex', 'Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.');
-insert into predefinedAnswers (id, name, comment) values (9, 'Bytecard', 'In congue. Etiam justo. Etiam pretium iaculis justo.');
-insert into predefinedAnswers (id, name, comment) values (10, 'Voltsillam', 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.');
+insert into predefinedAnswers (id, name, comment) values (1, 'Missing Info', 'Hi, your ticket needs more information. Please add more information.');
+insert into predefinedAnswers (id, name, comment) values (2, 'Expired', 'Hi, We havent receive any reply from you. So we will close the ticket for now.');
+insert into predefinedAnswers (id, name, comment) values (3, 'Solved', 'Hi, I want to tell you that your ticket has been solved successfully.');
+insert into predefinedAnswers (id, name, comment) values (4, 'Pending', 'Hi, I have to inform you that your ticket is going to be pending for a period of 2 weeks until we get new hardwares.');
 
